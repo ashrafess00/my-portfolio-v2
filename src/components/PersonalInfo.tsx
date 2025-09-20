@@ -13,12 +13,12 @@ const PersonalInfo = () => {
     age--;
   }
   const personalDetails = [
-    { label: t("name"), value: "Achraf Essaoudi" },
-    { label: t("age"), value: `${age} ${t("age2")}` },
-    { label: t("location"), value: t("location2") },
-    { label: t("email"), value: process.env.NEXT_PUBLIC_EMAIL },
-    { label: t("phone"), value: process.env.NEXT_PUBLIC_PHONE_NUMBER },
-    { label: t("freelance"), value: t("freelance2") },
+    { id: 1, label: t("name"), value: "Achraf Essaoudi" },
+    { id: 2, label: t("age"), value: `${age} ${t("age2")}` },
+    { id: 3, label: t("location"), value: t("location2") },
+    { id: 4, label: t("email"), value: process.env.NEXT_PUBLIC_EMAIL },
+    { id: 5, label: t("phone"), value: process.env.NEXT_PUBLIC_PHONE_NUMBER },
+    { id: 6, label: t("freelance"), value: t("freelance2") },
   ];
 
   const interests = t.raw("interestsAndHobbies.interestsAndHobbies");
@@ -41,7 +41,12 @@ const PersonalInfo = () => {
                   <span className="font-semibold text-gray-700 w-32">
                     {detail.label}:
                   </span>
-                  <span className="text-gray-600">{detail.value}</span>
+                  <span
+                    dir={`${detail.id === 5 ? "ltr" : "auto"}`}
+                    className="text-gray-600"
+                  >
+                    {detail.value}
+                  </span>
                 </div>
               ))}
             </div>

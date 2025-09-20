@@ -5,6 +5,7 @@ const ContactInfo = () => {
   const t = useTranslations("ContactPage.contactDetails");
   const contactMethods = [
     {
+      id: 1,
       title: t("email"),
       value: process.env.NEXT_PUBLIC_EMAIL,
       icon: (
@@ -26,7 +27,8 @@ const ContactInfo = () => {
       bgColor: "bg-blue-100",
     },
     {
-      title: "Phone",
+      id: 2,
+      title: t("phone"),
       value: process.env.NEXT_PUBLIC_PHONE_NUMBER,
       icon: (
         <svg
@@ -47,6 +49,7 @@ const ContactInfo = () => {
       bgColor: "bg-green-100",
     },
     {
+      id: 3,
       title: "Location",
       value: process.env.NEXT_PUBLIC_LOCATION,
       icon: (
@@ -121,7 +124,12 @@ const ContactInfo = () => {
                     <h3 className="font-semibold text-gray-900">
                       {method.title}
                     </h3>
-                    <p className="text-gray-600">{method.value}</p>
+                    <p
+                      dir={`${method.id === 1 ? "ltr" : "auto"}`}
+                      className="text-gray-600"
+                    >
+                      {method.value}
+                    </p>
                   </div>
                 </div>
               ))}
