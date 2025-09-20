@@ -1,0 +1,310 @@
+{
+  "Navigation": {
+    "home": "الرئيسية",
+    "about": "عني",
+    "projects": "المشاريع",
+    "skills": "المهارات",
+    "contact": "اتصل بي"
+  },
+  "projects": [
+    {
+      "title": "منصة E-Tech",
+      "description": "منصة E-tech تركز خصيصا على SAP, قمت بعمل لوحة التحكم للمستخدم ولوحة التحكم للمدير, والبيانات الخلفية للمنصة.",
+      "image": "/projects/ederest.png",
+      "tags": ["Next.js", "TypeScript", "Redux", "Django", "Tailwind CSS"],
+      "link": "/projects/ederest"
+    },
+    {
+      "title": "منصة Carey Car Rental",
+      "description": "منصة Carey Car Rental تسمح للمستخدم بتأجير السيارات, والتحكم في السيارات, والتحكم في العملاء.",
+      "image": "/projects/carey.png",
+      "tags": ["React", "Node.js", "prisma", "Tailwind CSS"],
+      "link": "/projects/carey"
+    },
+    {
+      "title": "موقعي الشخصي",
+      "description": "موقعي الشخصي تسمح للمستخدم بعرض عملي, والتحكم في العملاء.",
+      "image": "/projects/portfolio.png",
+      "tags": ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
+      "link": "/projects/portfolio"
+    }
+  ],
+  "HomePage": {
+    "heroSection": {
+      "available": "متاح للفرص الجديدة",
+      "description": "الصفحة الرئيسية",
+      "title": "مرحبا, أنا <name>أشرف السعودي</name>",
+      "subtitle": "مطور <subtitle>برمجيات</subtitle>",
+      "viewMyWork": "عرض عملي",
+      "getInTouch": "اتصل بي"
+    },
+    "stats": [
+      {
+        "title": "المشاريع",
+        "value": "10"
+      }
+    ],
+
+    "featuredProjects": {
+      "viewProject": "عرض المشاريع",
+      "featuredProjects": "المشاريع المميزة",
+      "featuredProjectsDescription": "هنا بعض المشاريع الأخيرة التي تعرض مهاراتي وخبراتي.",
+      "viewAllProjects": "عرض جميع المشاريع"
+    },
+    "skillsOverview": {
+      "skillsTitle": "المهارات والخبرات",
+      "skillsDescription": "لقد طورت مجموعة متنوعة من المهارات من خلال سنوات من الخبرة في تطوير الويب، التصميم، والهندسة البرمجية. تتضمن مهاراتي من الواجهة الأمامية إلى الخلفية، مع تركيز على إنشاء حلول قابلة للتطوير والصيانة.",
+      "frontendDevelopment": "تطوير الواجهة الأمامية",
+      "backendDevelopment": "تطوير الخلفية",
+      "toolsOthers": "الأدوات والأخرى",
+      "additionalSkills": "مهارات اخرى"
+    },
+    "footer": {
+      "title": "هل أنت مستعد لبدء مشروعك التالي؟",
+      "description": "أنا دائمًا متحمس للعمل على مشاريع جديدة وتحديات مختلفة. سواء كان لديك فكرة محددة في ذهنك أو تحتاج إلى مساعدة لتحويل رؤيتك إلى واقع، فلنصنع شيئًا مميزًا معًا.",
+      "viewMyWork": "شاهد أعمالي",
+      "getInTouch": "تواصل معي",
+      "email": "البريد الإلكتروني",
+      "location": "الموقع",
+      "location2": "مارتيل، المغرب",
+      "responseTime": "وقت الاستجابة",
+      "within24Hours": "خلال 24 ساعة"
+    }
+  },
+  "AboutPage": {
+    "aboutHero": {
+      "title": "معلومات عني",
+      "description": [
+        "اسمي أشرف الساودي، مطور برمجيات شغوف ببناء تطبيقات الويب. درست في مدرسة 1337 ميد بتطوان. بدأت رحلتي في مجال التكنولوجيا بدافع الفضول وتطورت لتصبح مسيرة مهنية في بناء تطبيقات ذات معنى.",
+        "أؤمن بكتابة كود نظيف وقابل للصيانة، وإنشاء تجارب مستخدم تجمع بين الجمال والوظيفية. عندما لا أكون أبرمج، تجدني أستكشف تقنيات جديدة، أساهم في مشاريع مفتوحة المصدر، أو أشارك المعرفة مع مجتمع المطورين."
+      ],
+      "yearsOfExperience": "سنوات الخبرة"
+    },
+    "personalDetails": {
+      "title": "تفاصيل شخصية",
+      "description": "إليك بعض التفاصيل الشخصية عني.",
+      "name": "الاسم",
+      "name2": "أشرف السعودي",
+      "age": "العمر",
+      "age2": "سنة",
+      "location": "الموقع",
+      "location2": "مارتيل، المغرب",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "freelance": "العمل الحر",
+      "freelance2": "متاح",
+      "interestsAndHobbies": {
+        "title": "الاهتمامات والهوايات",
+        "interestsAndHobbies": [
+          "البرمجة",
+          "السفر",
+          "الألعاب",
+          "الموسيقى",
+          "القراءة"
+        ]
+      }
+    },
+    "experienceTimeline": {
+      "title": "المسار المهني",
+      "description": "رحلتي المهنية في تطوير الويب وهندسة البرمجيات.",
+      "experience": [
+        {
+          "id": 1,
+          "title": "مطور واجهة أمامية",
+          "company": "Ederest",
+          "period": "2025 - 2025",
+          "description": "استأنفت العمل مع شركة Ederest الناشئة كمستقل لمدة 6 أشهر، مع التركيز على لوحة تحكم المستخدم ولوحة تحكم المشرف."
+        },
+        {
+          "id": 2,
+          "title": "مطور واجهة أمامية - تدريب",
+          "company": "Ederest",
+          "period": "2024 - 2025",
+          "description": "قمت ببناء واجهة المستخدم من الصفر لمنصة Ederest، وكذلك نظام المصادقة والتحكم في الصلاحيات، وتعاونت مع مطور الباك إند في الفريق."
+        }
+      ]
+    },
+    "educationAndCertifications": {
+      "title": "التعليم والشهادات",
+      "description": "خلفيتي الأكاديمية والشهادات المهنية.",
+      "educationTitle": "التعليم",
+      "certificationsTitle": "الشهادات",
+      "education": [
+        {
+          "id": 1,
+          "degree": "هندسة البرمجيات",
+          "school": "مدرسة 1337 للبرمجة - المتوسط",
+          "period": "2018 - الآن",
+          "description": "أدرس في مدرسة 1337 للبرمجة، المغرب."
+        },
+        {
+          "id": 2,
+          "degree": "الدراسات الإنجليزية",
+          "school": "جامعة مولاي إسماعيل",
+          "period": "2018",
+          "description": "درست في جامعة مولاي إسماعيل بمكناس، المغرب، مع تركيز على اللغة والأدب الإنجليزي."
+        }
+      ],
+      "additionalTraining": {
+        "title": "التدريب الإضافي في مدرسة 1337 للبرمجة",
+        "additionalSkills": [
+          "برمجة C",
+          "يونكس/لينكس",
+          "تطوير الويب",
+          "الخوارزميات وهياكل البيانات",
+          "إدارة الأنظمة",
+          "أساسيات الشبكات",
+          "التحكم بالإصدارات باستخدام Git",
+          "منهجيات أجايل"
+        ]
+      }
+    }
+  },
+  "ProjectsPage": {
+    "title": "مشاريعي",
+    "description": "مجموعة من أعمالي تعرض تقنيات مختلفة، وأساليب تصميم متنوعة، ومهارات حل المشكلات. يمثل كل مشروع تحديًا فريدًا وفرصة للتعلم.",
+    "projects": [
+      {
+        "id": 1,
+        "title": "E-Tech Platform",
+        "description": "منصة E-Tech تركز بشكل خاص على SAP، حيث عملت على لوحة تحكم المستخدم والمدير، بالإضافة إلى الجانب الخلفي من المنصة.",
+        "category": "web",
+        "image": "/projects/ederest.png",
+        "technologies": [
+          "NextJs",
+          "TypeScript",
+          "PostgreSQL",
+          "Django",
+          "Tailwind CSS",
+          "Django"
+        ],
+        "liveUrl": "https://ederest.com/"
+      },
+      {
+        "id": 2,
+        "title": "Carey Car Rental Platform",
+        "description": "منصة Carey لتأجير السيارات تتيح للمستخدم استئجار السيارات، وإدارة السيارات، وإدارة العملاء.",
+        "category": "web",
+        "image": "/projects/carey.png",
+        "technologies": ["NextJs", "Tailwind CSS", "Postgresql"],
+        "liveUrl": "https://carey.ma"
+      },
+      {
+        "id": 3,
+        "title": "My Portfolio",
+        "description": "موقعي الشخصي يتيح للمستخدم استعراض أعمالي، وإدارة العملاء.",
+        "category": "web",
+        "image": "/projects/portfolio.png",
+        "technologies": [
+          "Next.js",
+          "Framer Motion",
+          "Tailwind CSS",
+          "TypeScript"
+        ],
+        "liveUrl": "https://ashrafess.me",
+        "githubUrl": "https://github.com/ashrafess00/my-portfolio-v2"
+      },
+      {
+        "id": 4,
+        "title": "Cub3D",
+        "description": "Cub3D هو مشروع جماعي في مدرسة 42 لإنشاء عرض ديناميكي داخل متاهة ثلاثية الأبعاد. باستخدام مكتبة MiniLibX، يجب علينا تنفيذ تقنية Raycasting على طريقة اللعبة الشهيرة Wolfenstein 3D، أول لعبة تصويب من منظور الشخص الأول (FPS) في تاريخ ألعاب الفيديو.",
+        "category": "42",
+        "technologies": ["C", "Raycasting", "MiniLibX"],
+        "githubUrl": "https://github.com/ashrafess00/cub3d"
+      },
+      {
+        "id": 5,
+        "title": "Inception",
+        "description": "مشروع DevOps يركز على إدارة الأنظمة والحاويات. قمت ببناء بنية تحتية كاملة باستخدام Docker و Docker Compose، مع إنشاء صور مخصصة لخدمات مثل NGINX و WordPress و MariaDB. ركز المشروع على الأمن، الشبكات، استمرارية البيانات، والأتمتة، لمحاكاة بيئة إنتاج حقيقية.",
+        "category": "42",
+        "technologies": [
+          "Docker",
+          "Docker Compose",
+          "Bash",
+          "NGINX",
+          "WordPress",
+          "MariaDB"
+        ],
+        "githubUrl": "https://github.com/ashrafess00/Inception"
+      },
+      {
+        "id": 6,
+        "title": "WebServ",
+        "description": "مشروع بلغة C++ لتنفيذ خادم HTTP خفيف من الصفر. طورت ميزات مثل معالجة طلبات واستجابات HTTP، تنفيذ CGI، تحليل ملفات التكوين، ودعم عدة عملاء باستخدام المقابس غير المحجوبة واستدعاء poll(). المشروع يحاكي السلوك الأساسي لـ NGINX، مما عزز فهمي لبرمجة الشبكات، بروتوكولات الويب، والتطوير على مستوى النظام.",
+        "category": "42",
+        "technologies": ["C++", "HTTP", "CGI", "Sockets", "poll()"],
+        "githubUrl": "https://github.com/ashrafess00/webserv"
+      },
+      {
+        "id": 7,
+        "title": "Ft_Transcendence",
+        "description": "تطبيق ويب كامل للعبة Pong الكلاسيكية، تم بناؤه باستخدام Django و JavaScript خام. بما أن استخدام الأُطر الخارجية مثل React لم يكن مسموحًا، فقد نفذت أسلوب عرض قائم على المكونات مشابه لـ React في الواجهة الأمامية. في الخلفية، صممت نماذج قواعد البيانات، نفذت نظام المصادقة، وطورت نظام بطولة في الوقت الحقيقي باستخدام Django Channels للتواصل عبر WebSocket. جمع هذا المشروع بين منطق اللعبة، الميزات الفورية، والهندسة القابلة للتوسع لتجربة جماعية متكاملة.",
+        "category": "42",
+        "technologies": [
+          "JavaScript",
+          "HTML5",
+          "CSS",
+          "WebSockets",
+          "Django Channels",
+          "PostgreSQL"
+        ],
+        "githubUrl": "https://github.com/ashrafess00/ft_transcendence"
+      }
+    ],
+    "filters": [
+      "جميع المشاريع",
+      "مشاريع 42",
+      "تطوير الويب",
+      "أتمتة الذكاء الاصطناعي"
+    ]
+  },
+  "SkillsPage": {
+    "title": "المهارات",
+    "description": "الصفحة المهارات",
+    "skills": [
+      {
+        "title": "المهارات",
+        "value": "10"
+      }
+    ]
+  },
+  "ContactPage": {
+    "contactHero": {
+      "title": "دعنا نعمل معًا",
+      "description": "أنا دائمًا متحمس للعمل على مشاريع جديدة ومليئة بالتحديات. سواء كان لديك فكرة محددة في ذهنك، أو تحتاج إلى مساعدة لتحقيق رؤيتك، أو فقط ترغب في الدردشة حول الاحتمالات، سأكون سعيدًا بسماعك.",
+      "responseTime": "الرد خلال 24 ساعة"
+    },
+    "contactForm": {
+      "title": "أرسل لي رسالة",
+      "description": "املأ النموذج أدناه وسأرد عليك في أقرب وقت ممكن.",
+      "name": "الاسم",
+      "namePlaceholder": "اسمك",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "بريدك الإلكتروني",
+      "message": "الرسالة",
+      "messagePlaceholder": "أخبرني عن مشروعك أو كيف يمكنني مساعدتك ...",
+      "subject": "الموضوع",
+      "subjectPlaceholder": "الموضوع",
+      "sendMessage": "إرسال الرسالة",
+      "sending": "جارٍ الإرسال...",
+      "successMessage": "تم إرسال رسالتك بنجاح!",
+      "errorMessage": "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقًا.",
+      "requiredField": "حقل مطلوب"
+    },
+    "contactDetails": {
+      "getInTouch": "تواصل معي",
+      "followMe": "تابعني",
+      "currentAvailability": "التوفر الحالي",
+      "currentAvailability2": "أنا متاح حاليًا لمشاريع وفرص جديدة.",
+      "currentAvailability3": "متاح للعمل",
+      "email": "البريد الإلكتروني",
+      "location": "الموقع",
+      "location2": "مرتيل، المغرب",
+      "responseTime": "وقت الرد",
+      "within24Hours": "خلال 24 ساعة",
+      "followMeOn": "تابعني على",
+      "title2": "لنصنع شيئًا رائعًا معًا",
+      "description2": "سواء كنت ترغب في بناء مشروع جديد، أو تحتاج إلى مساعدة في مشروع قائم، أو فقط تريد مناقشة الأفكار، أنا هنا لمساعدتك في تحويل رؤيتك إلى واقع."
+    }
+  }
+}

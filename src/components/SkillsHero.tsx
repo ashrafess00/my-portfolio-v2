@@ -51,10 +51,10 @@ const SkillsHero = () => {
               Skills & Expertise
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              I've developed a comprehensive skill set through years of hands-on
-              experience in web development, design, and software engineering.
-              My expertise spans from frontend to backend, with a focus on
-              creating scalable, maintainable solutions.
+              I&apos;ve developed a comprehensive skill set through years of
+              hands-on experience in web development, design, and software
+              engineering. My expertise spans from frontend to backend, with a
+              focus on creating scalable, maintainable solutions.
             </p>
           </div>
         </div>

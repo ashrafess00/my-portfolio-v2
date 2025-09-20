@@ -1,9 +1,18 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 const ExperienceTimeline = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("AboutPage.experienceTimeline");
+  const experienceT: {
+    id: number;
+    title: string;
+    company: string;
+    period: string;
+    description: string;
+  }[] = t.raw("experience");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,45 +39,19 @@ const ExperienceTimeline = () => {
   const experiences = [
     {
       id: 1,
-      title: "Senior Full-Stack Developer",
-      company: "TechCorp Inc.",
-      period: "2022 - Present",
-      description:
-        "Leading development of enterprise web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
-      technologies: ["React", "Node.js", "AWS", "TypeScript", "PostgreSQL"],
+      title: experienceT[0]?.title,
+      company: experienceT[0]?.company,
+      period: experienceT[0]?.period,
+      description: experienceT[0]?.description,
+      technologies: ["React", "Typescript", "Tailwind CSS"],
     },
     {
       id: 2,
-      title: "Full-Stack Developer",
-      company: "StartupXYZ",
-      period: "2020 - 2022",
-      description:
-        "Built and maintained multiple web applications from concept to deployment. Collaborated with design and product teams to deliver user-centric solutions.",
-      technologies: [
-        "Next.js",
-        "MongoDB",
-        "Express.js",
-        "Tailwind CSS",
-        "Socket.io",
-      ],
-    },
-    {
-      id: 3,
-      title: "Frontend Developer",
-      company: "Digital Agency ABC",
-      period: "2019 - 2020",
-      description:
-        "Developed responsive websites and web applications for various clients. Focused on performance optimization and accessibility.",
-      technologies: ["React", "JavaScript", "CSS3", "HTML5", "Webpack"],
-    },
-    {
-      id: 4,
-      title: "Junior Developer",
-      company: "Web Solutions Ltd.",
-      period: "2018 - 2019",
-      description:
-        "Started my professional journey building websites and learning modern web development practices.",
-      technologies: ["HTML", "CSS", "JavaScript", "PHP", "WordPress"],
+      title: experienceT[1]?.title,
+      company: experienceT[1]?.company,
+      period: experienceT[1]?.period,
+      description: experienceT[1]?.description,
+      technologies: ["Next.js", "TypeScript", "JavaScript", "Tailwind CSS"],
     },
   ];
 
@@ -77,10 +60,10 @@ const ExperienceTimeline = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Work Experience
+            {t("title")}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            My professional journey in web development and software engineering.
+            {t("description")}
           </p>
         </div>
 

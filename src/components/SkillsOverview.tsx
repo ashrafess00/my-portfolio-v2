@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 const SkillsOverview = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("HomePage.skillsOverview");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,7 +31,7 @@ const SkillsOverview = () => {
 
   const skillCategories = [
     {
-      category: "Frontend Development",
+      category: t("frontendDevelopment"),
       skills: [
         { name: "React", level: 90 },
         { name: "Next.js", level: 85 },
@@ -39,23 +41,23 @@ const SkillsOverview = () => {
       ],
     },
     {
-      category: "Backend Development",
+      category: t("backendDevelopment"),
       skills: [
         { name: "Node.js", level: 85 },
         { name: "Express.js", level: 80 },
-        { name: "Python", level: 75 },
+        { name: "Django", level: 75 },
         { name: "PostgreSQL", level: 70 },
         { name: "MongoDB", level: 75 },
       ],
     },
     {
-      category: "Tools & Others",
+      category: t("toolsOthers"),
       skills: [
         { name: "Git", level: 90 },
         { name: "Docker", level: 70 },
-        { name: "AWS", level: 65 },
-        { name: "Figma", level: 80 },
-        { name: "Agile", level: 85 },
+        { name: "Vercel", level: 70 },
+        { name: "Prisma", level: 70 },
+        { name: "Supabase", level: 70 },
       ],
     },
   ];
@@ -66,11 +68,10 @@ const SkillsOverview = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Skills & Expertise
+            {t("skillsTitle")}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            I've developed a diverse skill set through years of experience in
-            web development and design.
+            {t("skillsDescription")}
           </p>
         </div>
 
@@ -89,30 +90,23 @@ const SkillsOverview = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
                 {category.category}
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className={`bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out ${
-                          isVisible ? "w-full" : "w-0"
-                        }`}
-                        style={{
-                          width: isVisible ? `${skill.level}%` : "0%",
-                          transitionDelay: `${
-                            categoryIndex * 200 + skillIndex * 100
-                          }ms`,
-                        }}
-                      ></div>
-                    </div>
+                  <div
+                    key={skill.name}
+                    className={`flex items-center space-x-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-all duration-300 ${
+                      isVisible ? "animate-fade-in-up" : "opacity-0"
+                    }`}
+                    style={{
+                      animationDelay: `${
+                        categoryIndex * 200 + skillIndex * 100
+                      }ms`,
+                    }}
+                  >
+                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex-shrink-0"></div>
+                    <span className="text-sm font-medium text-gray-700">
+                      {skill.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -123,7 +117,7 @@ const SkillsOverview = () => {
         {/* Additional Skills */}
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-8">
-            Additional Skills
+            {t("additionalSkills")}
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
@@ -131,16 +125,15 @@ const SkillsOverview = () => {
               "GraphQL",
               "Redux",
               "Zustand",
-              "Jest",
-              "Cypress",
               "Webpack",
               "Vite",
-              "CI/CD",
+              "n8n",
+              "zapier",
               "SEO",
               "Performance Optimization",
               "Responsive Design",
               "Accessibility",
-              "Progressive Web Apps",
+              "AI Automation",
             ].map((skill) => (
               <span
                 key={skill}

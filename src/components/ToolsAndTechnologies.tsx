@@ -97,8 +97,9 @@ const ToolsAndTechnologies = () => {
         <div className="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white">
           <h3 className="text-2xl font-bold mb-4">Always Learning</h3>
           <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            I'm constantly exploring new technologies and methodologies to stay
-            current with industry trends and deliver cutting-edge solutions.
+            I&apos;m constantly exploring new technologies and methodologies to
+            stay current with industry trends and deliver cutting-edge
+            solutions.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <span className="px-4 py-2 bg-white/20 rounded-full text-sm font-medium">

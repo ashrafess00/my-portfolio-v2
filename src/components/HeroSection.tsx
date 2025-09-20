@@ -2,16 +2,18 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("HomePage.heroSection");
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
@@ -28,47 +30,52 @@ const HeroSection = () => {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-8">
             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
-            Available for new opportunities
+            {t("available")}
           </div>
 
           {/* Main heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
-            Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Your Name
-            </span>
+            {/* Hi, I&apos;m{" "}
+            <span className="uppercase bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Achraf Essaoudi
+            </span> */}
+            {t.rich("title", {
+              name: (chunks) => (
+                <span className="uppercase bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  {chunks}
+                </span>
+              ),
+            })}
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            A passionate{" "}
-            <span className="font-semibold text-gray-900">
-              Full-Stack Developer
-            </span>{" "}
-            and{" "}
-            <span className="font-semibold text-gray-900">UI/UX Designer</span>{" "}
-            creating digital experiences that matter
+            {t.rich("subtitle", {
+              subtitle: (chunks) => (
+                <span className="font-semibold text-gray-900">{chunks}</span>
+              ),
+            })}
           </p>
 
           {/* Stats */}
-          <div className="flex justify-center items-center space-x-8 mb-12 text-sm text-gray-600">
-            <div className="flex items-center">
-              <span className="font-bold text-2xl text-blue-600 mr-2">5+</span>
+          {/* <div className="flex justify-center items-center space-x-8 mb-12 text-sm text-gray-600"> */}
+          {/* <div className="flex items-center">
+              <span className="font-bold text-2xl text-blue-600 mr-2">1+</span>
               <span>Years Experience</span>
-            </div>
-            <div className="w-px h-6 bg-gray-300"></div>
+            </div> */}
+          {/* <div className="w-px h-6 bg-gray-300"></div>
             <div className="flex items-center">
               <span className="font-bold text-2xl text-purple-600 mr-2">
-                50+
+                N+
               </span>
               <span>Projects Completed</span>
-            </div>
-            <div className="w-px h-6 bg-gray-300"></div>
+            </div> */}
+          {/* <div className="w-px h-6 bg-gray-300"></div>
             <div className="flex items-center">
-              <span className="font-bold text-2xl text-pink-600 mr-2">20+</span>
+              <span className="font-bold text-2xl text-pink-600 mr-2">N+</span>
               <span>Happy Clients</span>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -76,13 +83,13 @@ const HeroSection = () => {
               href="/projects"
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              View My Work
+              {t("viewMyWork")}
             </Link>
             <Link
               href="/contact"
               className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 transform hover:scale-105"
             >
-              Get In Touch
+              {t("getInTouch")}
             </Link>
           </div>
 

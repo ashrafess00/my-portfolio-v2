@@ -1,23 +1,27 @@
+import { useTranslations } from "next-intl";
+
 const PersonalInfo = () => {
+  const t = useTranslations("AboutPage.personalDetails");
+  const today = new Date();
+  const birthMonth = 9;
+  const birthYear = 2000;
+  let age = today.getFullYear() - birthYear;
+  if (
+    today.getMonth() < birthMonth ||
+    (today.getMonth() === birthMonth && today.getDate() < 1) // replace 1 with your birth day
+  ) {
+    age--;
+  }
   const personalDetails = [
-    { label: "Name", value: "Your Name" },
-    { label: "Age", value: "28 years" },
-    { label: "Location", value: "San Francisco, CA" },
-    { label: "Email", value: "hello@yourname.com" },
-    { label: "Phone", value: "+1 (555) 123-4567" },
-    { label: "Freelance", value: "Available" },
+    { label: t("name"), value: "Achraf Essaoudi" },
+    { label: t("age"), value: `${age} ${t("age2")}` },
+    { label: t("location"), value: t("location2") },
+    { label: t("email"), value: process.env.NEXT_PUBLIC_EMAIL },
+    { label: t("phone"), value: process.env.NEXT_PUBLIC_PHONE_NUMBER },
+    { label: t("freelance"), value: t("freelance2") },
   ];
 
-  const interests = [
-    "Web Development",
-    "UI/UX Design",
-    "Open Source",
-    "Reading Tech Blogs",
-    "Hiking",
-    "Photography",
-    "Coffee",
-    "Travel",
-  ];
+  const interests = t.raw("interestsAndHobbies.interestsAndHobbies");
 
   return (
     <section className="py-20 bg-white">
@@ -26,7 +30,7 @@ const PersonalInfo = () => {
           {/* Personal Details */}
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Personal Details
+              {t("title")}
             </h2>
             <div className="space-y-4">
               {personalDetails.map((detail) => (
@@ -46,10 +50,10 @@ const PersonalInfo = () => {
           {/* Interests */}
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Interests & Hobbies
+              {t("interestsAndHobbies.title")}
             </h2>
             <div className="grid grid-cols-2 gap-3">
-              {interests.map((interest) => (
+              {interests.map((interest: string) => (
                 <div
                   key={interest}
                   className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors duration-200"

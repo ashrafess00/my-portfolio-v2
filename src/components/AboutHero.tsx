@@ -1,9 +1,12 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 const AboutHero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("AboutPage.aboutHero");
+  const description = t.raw("description");
 
   useEffect(() => {
     setIsVisible(true);
@@ -22,34 +25,29 @@ const AboutHero = () => {
             }`}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About Me
+              {t("title")}
             </h1>
             <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-              I'm a passionate Full-Stack Developer with over 5 years of
-              experience creating digital solutions that make a difference. My
-              journey in technology started with curiosity and has evolved into
-              a career of building meaningful applications.
+              {description[0]}
             </p>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              I believe in writing clean, maintainable code and creating user
-              experiences that are both beautiful and functional. When I'm not
-              coding, you'll find me exploring new technologies, contributing to
-              open-source projects, or sharing knowledge with the developer
-              community.
+              {description[1]}
             </p>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-                <div className="text-3xl font-bold text-blue-600 mb-1">5+</div>
-                <div className="text-sm text-gray-600">Years Experience</div>
+                <div className="text-3xl font-bold text-blue-600 mb-1">1+</div>
+                <div className="text-sm text-gray-600">
+                  {t("yearsOfExperience")}
+                </div>
               </div>
-              <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+              {/* <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
                 <div className="text-3xl font-bold text-purple-600 mb-1">
                   50+
                 </div>
                 <div className="text-sm text-gray-600">Projects Completed</div>
-              </div>
+              </div> */}
             </div>
           </div>
 

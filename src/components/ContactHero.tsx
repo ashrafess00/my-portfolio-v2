@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 const ContactHero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations("ContactPage.contactHero");
 
   useEffect(() => {
     setIsVisible(true);
@@ -21,13 +23,10 @@ const ContactHero = () => {
             }`}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Let's Work Together
+              {t("title")}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-              I'm always excited to work on new and challenging projects.
-              Whether you have a specific idea in mind, need help bringing your
-              vision to life, or just want to chat about possibilities, I'd love
-              to hear from you.
+              {t("description")}
             </p>
 
             {/* Quick Contact Options */}
@@ -47,7 +46,7 @@ const ContactHero = () => {
                   />
                 </svg>
                 <span className="text-gray-700 font-medium">
-                  hello@yourname.com
+                  {process.env.NEXT_PUBLIC_EMAIL}
                 </span>
               </div>
               <div className="flex items-center space-x-2 bg-white px-6 py-3 rounded-lg shadow-sm border border-gray-200">
@@ -65,7 +64,7 @@ const ContactHero = () => {
                   />
                 </svg>
                 <span className="text-gray-700 font-medium">
-                  +1 (555) 123-4567
+                  {process.env.NEXT_PUBLIC_PHONE_NUMBER}
                 </span>
               </div>
             </div>
@@ -85,7 +84,7 @@ const ContactHero = () => {
                   d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Response within 24 hours
+              {t("responseTime")}
             </div>
           </div>
         </div>

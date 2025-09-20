@@ -1,0 +1,347 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "HomePage": {
+    "heroSection": {
+      "available": "Available for new opportunities",
+      "description": "Home page",
+      "title": "Hi, I'm <name>Achraf Essaoudi</name>",
+      "subtitle": "A passionate <subtitle>Software Developer</subtitle>",
+      "viewMyWork": "View My Work",
+      "getInTouch": "Get In Touch"
+    },
+    "stats": [
+      {
+        "title": "Projects",
+        "value": "10"
+      }
+    ],
+    "projects": [
+      {
+        "title": "E-Tech Platform",
+        "description": "E-tech platform focusing specially on SAP, i worked on the user and admin dashboard, and the backend of the platform.",
+        "image": "/projects/ederest.png",
+        "tags": ["Next.js", "TypeScript", "Redux", "Django", "Tailwind CSS"],
+        "link": "/projects/ederest"
+      },
+      {
+        "title": "Carey Car Rental Platform",
+        "description": "Carey Car Rental platform allows user to rent cars, and manage cars, and manage clients.",
+        "image": "/projects/carey.png",
+        "tags": ["React", "Node.js", "prisma", "Tailwind CSS"],
+        "link": "/projects/carey"
+      },
+      {
+        "title": "My Portfolio",
+        "description": "My portfolio allows user to view my work, and manage clients.",
+        "image": "/projects/portfolio.png",
+        "tags": ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
+        "link": "/projects/portfolio"
+      }
+    ],
+    "featuredProjects": {
+      "viewProject": "View Project",
+      "featuredProjects": "Featured Projects",
+      "featuredProjectsDescription": "Here are some of my recent projects that showcase my skills and experience.",
+      "viewAllProjects": "View All Projects"
+    },
+    "skillsOverview": {
+      "skillsTitle": "Skills & Expertise",
+      "skillsDescription": "I've developed a comprehensive skill set through years of hands-on experience in web development, design, and software engineering. My expertise spans from frontend to backend, with a focus on creating scalable, maintainable solutions.",
+      "frontendDevelopment": "Frontend Development",
+      "backendDevelopment": "Backend Development",
+      "toolsOthers": "Tools & Others",
+      "additionalSkills": "Additional Skills"
+    },
+    "footer": {
+      "title": "Ready to start your next project?",
+      "description": "I'm always excited to work on new and challenging projects. Whether you have a specific idea in mind or need help bringing your vision to life, let's create something amazing together.",
+      "viewMyWork": "View My Work",
+      "getInTouch": "Get In Touch",
+      "email": "Email",
+      "location": "Location",
+      "location2": "Martil, Morocco",
+      "responseTime": "Response Time",
+      "within24Hours": "Within 24 Hours"
+    }
+  },
+  "AboutPage": {
+    "aboutHero": {
+      "title": "About Me",
+      "description": [
+        "My name is Achraf Essaoudi, software developer with a passion for building web applications, I studied at 1337 School Med in Tetouan, My journey in technology started with curiosity and has evolved into a career of building meaningful applications.",
+        "I believe in writing clean, maintainable code and creating user experiences that are both beautiful and functional. When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community."
+      ],
+      "yearsOfExperience": "Years of Experience"
+    },
+    "personalDetails": {
+      "title": "Personal Details",
+      "description": "Here are a few personal details about me.",
+      "name": "Name",
+      "name2": "Achraf Essaoudi",
+      "age": "Age",
+      "age2": "Years Old",
+      "location": "Location",
+      "location2": "Martil, Morocco",
+      "email": "Email",
+      "phone": "Phone",
+      "freelance": "Freelance",
+      "freelance2": "Available",
+      "interestsAndHobbies": {
+        "title": "Interests & Hobbies",
+        "interestsAndHobbies": [
+          "Coding",
+          "Traveling",
+          "Gaming",
+          "Music",
+          "Reading"
+        ]
+      }
+    },
+    "experienceTimeline": {
+      "title": "Experience Timeline",
+      "description": "My professional journey in web development and software engineering.",
+      "experience": [
+        {
+          "id": 1,
+          "title": "Front End Developer",
+          "company": "Ederest",
+          "period": "2025 - 2025",
+          "description": "Resumed working with Ederest startup as freelancer for 6 Months, focusing on the user and admin dashboard"
+        },
+        {
+          "id": 2,
+          "title": "Front End Developer - Internship",
+          "company": "Ederest",
+          "period": "2024 - 2025",
+          "description": "Built the FrontEnd layout from scract for Ederest platform, also the authentication and authorization system, and collaborated with backend developer in the team"
+        }
+      ]
+    },
+    "educationAndCertifications": {
+      "title": "Education & Certifications",
+      "description": "My academic background and professional certifications.",
+      "educationTitle": "Education",
+      "certificationsTitle": "Certifications",
+      "education": [
+        {
+          "id": 1,
+          "degree": "Software Engineering",
+          "school": "1337 Coding School Med",
+          "period": "2018 - present",
+          "description": "Studying at 1337 coding school in Med, Morocco."
+        },
+        {
+          "id": 2,
+          "degree": "English Studies",
+          "school": "University Moulay Ismail",
+          "period": "2018",
+          "description": "Studied in university Moulay Ismail in Meknes, Morocco, focusing on English language and literature."
+        }
+      ],
+      "additionalTraining": {
+        "title": "Additional Training at 1337 Coding School",
+        "additionalSkills": [
+          "C Programming",
+          "Unix/Linux",
+          "Web Development",
+          "Algorithms & Data Structures",
+          "System Administration",
+          "Network Basics",
+          "Version Control with Git",
+          "Agile Methodologies"
+        ]
+      }
+    }
+  },
+  "ProjectsPage": {
+    "title": "My Projects",
+    "description": "A collection of my work showcasing various technologies, design approaches, and problem-solving skills. Each project represents a unique challenge and learning opportunity.",
+    "projects": [
+      {
+        "id": 1,
+        "title": "E-Tech Platform",
+        "description": "E-tech platform focusing specially on SAP, i worked on the user and admin dashboard, and the backend of the platform.",
+        "category": "web",
+        "image": "/projects/ederest.png",
+        "technologies": [
+          "NextJs",
+          "TypeScript",
+          "PostgreSQL",
+          "Django",
+          "Tailwind CSS",
+          "Django"
+        ],
+        "liveUrl": "https://ederest.com/"
+      },
+      {
+        "id": 2,
+        "title": "Carey Car Rental Platform",
+        "description": "Carey Car Rental platform allows user to rent cars, and manage cars, and manage clients.",
+        "category": "web",
+        "image": "/projects/carey.png",
+        "technologies": ["NextJs", "Tailwind CSS", "Postgresql"],
+        "liveUrl": "https://carey.ma"
+      },
+      {
+        "id": 3,
+        "title": "My Portfolio",
+        "description": "My portfolio allows user to view my work, and manage clients.",
+        "category": "web",
+        "image": "/projects/portfolio.png",
+        "technologies": [
+          "Next.js",
+          "Framer Motion",
+          "Tailwind CSS",
+          "TypeScript"
+        ],
+        "liveUrl": "https://ashrafess.me",
+        "githubUrl": "https://github.com/ashrafess00/my-portfolio-v2"
+      },
+      {
+        "id": 4,
+        "title": "Cub3D",
+        "description": "Cub3D is a 42 school team project to create a dynamic view inside a 3D maze. Using the MiniLibX library, we must implement raycasting in the style of the famous Wolfenstein 3D game, the first true FPS in videogame history.",
+        "category": "42",
+        "technologies": ["C", "Raycasting", "MiniLibX"],
+        "githubUrl": "https://github.com/ashrafess00/cub3d"
+      },
+      {
+        "id": 5,
+        "title": "Inception",
+        "description": "A DevOps project focused on system administration and containerization. I built a complete infrastructure using Docker and Docker Compose, creating custom images for services like NGINX, WordPress, and MariaDB. The project emphasized security, networking, data persistence, and automation, simulating a real-world production environment.",
+        "category": "42",
+        "technologies": [
+          "Docker",
+          "Docker Compose",
+          "Bash",
+          "NGINX",
+          "WordPress",
+          "MariaDB"
+        ],
+        "githubUrl": "https://github.com/ashrafess00/Inception"
+      },
+      {
+        "id": 6,
+        "title": "WebServ",
+        "description": "A C++ project to implement a lightweight HTTP server from scratch. I developed features such as HTTP request/response handling, CGI execution, configuration parsing, and multi-client support using non-blocking sockets and the poll() system call. The project replicated the core behavior of NGINX, strengthening my understanding of network programming, web protocols, and system-level development.",
+        "category": "42",
+        "technologies": ["C++", "HTTP", "CGI", "Sockets", "poll()"],
+        "githubUrl": "https://github.com/ashrafess00/webserv"
+      },
+      {
+        "id": 7,
+        "title": "Ft_Transcendence",
+        "description": "A full-stack web application of the classic Pong game, built with Django and vanilla JavaScript. Since external frameworks like React were not allowed, I implemented a custom component-based rendering method similar to React for the frontend. On the backend, I designed database models, implemented authentication, and developed a real-time tournament system using Django Channels for WebSocket communication. This project combined game logic, real-time features, and scalable architecture into a complete multiplayer experience.",
+        "category": "42",
+        "technologies": [
+          "JavaScript",
+          "HTML5",
+          "CSS",
+          "WebSockets",
+          "Django Channels",
+          "PostgreSQL"
+        ],
+        "githubUrl": "https://github.com/ashrafess00/ft_transcendence"
+      }
+    ],
+    "filters": [
+      "All Projects",
+      "42 Projects",
+      "Web Development",
+      "AI Automation"
+    ]
+  },
+  "SkillsPage": {
+    "skillsHero": {
+      "title": "Skills & Expertise",
+      "description": "I've developed a comprehensive skill set through years of hands-on experience in web development, design, and software engineering. My expertise spans from frontend to backend, with a focus on creating scalable, maintainable solutions.",
+      "expertiseAreas": [
+        {
+          "title": "Frontend Development",
+          "description": "Proficient in building responsive and interactive user interfaces using modern frameworks and libraries.",
+          "skills": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React",
+            "Next.js",
+            "Tailwind CSS",
+            "Framer Motion"
+          ]
+        },
+        {
+          "title": "Backend Development",
+          "description": "Experienced in server-side development, database management, and API design to create robust backend systems.",
+          "skills": [
+            "Node.js",
+            "Express.js",
+            "Django",
+            "Prisma",
+            "SQL",
+            "NoSQL"
+          ]
+        },
+        {
+          "title": "Tools & Others",
+          "description": "Familiar with various development tools and practices that enhance productivity and code quality.",
+          "skills": ["Git", "GitHub", "Docker", "CI/CD", "Agile Methodologies"]
+        },
+        {
+          "title": "Additional Skills",
+          "description": "Other relevant skills that contribute to my overall effectiveness as a developer.",
+          "skills": [
+            "Problem Solving",
+            "Team Collaboration",
+            "Project Management",
+            "UI/UX Design Basics"
+          ]
+        }
+      ]
+    }
+  },
+  "ContactPage": {
+    "contactHero": {
+      "title": "Let's Work Together",
+      "description": "I'm always excited to work on new and challenging projects. Whether you have a specific idea in mind, need help bringing your vision to life, or just want to chat about possibilities, I'd love to hear from you.",
+      "responseTime": "Response within 24 hours"
+    },
+    "contactForm": {
+      "title": "Send me a message",
+      "description": "Fill out the form below and I'll get back to you as soon as possible.",
+      "name": "Name",
+      "namePlaceholder": "Your Name",
+      "email": "Email",
+      "emailPlaceholder": "Your Email",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project or how can i help you ...",
+      "subject": "Subject",
+      "subjectPlaceholder": "Subject",
+      "sendMessage": "Send Message",
+      "sending": "Sending...",
+      "successMessage": "Your message has been sent successfully!",
+      "errorMessage": "There was an error sending your message. Please try again later.",
+      "requiredField": "required field"
+    },
+    "contactDetails": {
+      "getInTouch": "Get In Touch",
+      "followMe": "Follow Me",
+      "currentAvailability": "Current Availability",
+      "currentAvailability2": "I'm currently available for new projects and opportunities.",
+      "currentAvailability3": "Available for work",
+      "email": "Email",
+      "location": "Location",
+      "location2": "Martil, Morocco",
+      "responseTime": "Response Time",
+      "within24Hours": "Within 24 Hours",
+      "followMeOn": "Follow me",
+      "title2": "Let's Create Something Amazing",
+      "description2": "Whether you're looking to build a new project, need help with an existing one, or just want to discuss possibilities, I'm here to help bring your ideas to life."
+    }
+  }
+}

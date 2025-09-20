@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const ContactCTA = () => {
+  const t = useTranslations("HomePage.footer");
   return (
     <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
       {/* Background decoration */}
@@ -13,12 +15,10 @@ const ContactCTA = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Start Your Next Project?
+            {t("title")}
           </h2>
           <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            I'm always excited to work on new and challenging projects. Whether
-            you have a specific idea in mind or need help bringing your vision
-            to life, let's create something amazing together.
+            {t("description")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -26,13 +26,13 @@ const ContactCTA = () => {
               href="/contact"
               className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              Get In Touch
+              {t("getInTouch")}
             </Link>
             <Link
               href="/projects"
               className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-200 transform hover:scale-105"
             >
-              View My Work
+              {t("viewMyWork")}
             </Link>
           </div>
 
@@ -54,8 +54,8 @@ const ContactCTA = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-2">Email</h3>
-              <p className="text-blue-100">hello@yourname.com</p>
+              <h3 className="text-white font-semibold mb-2">{t("email")}</h3>
+              <p className="text-blue-100">achrafess1937@gmail.com</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
@@ -80,8 +80,8 @@ const ContactCTA = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-2">Location</h3>
-              <p className="text-blue-100">San Francisco, CA</p>
+              <h3 className="text-white font-semibold mb-2">{t("location")}</h3>
+              <p className="text-blue-100">{t("location2")}</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
@@ -100,8 +100,10 @@ const ContactCTA = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-2">Response Time</h3>
-              <p className="text-blue-100">Within 24 hours</p>
+              <h3 className="text-white font-semibold mb-2">
+                {t("responseTime")}
+              </h3>
+              <p className="text-blue-100">{t("within24Hours")}</p>
             </div>
           </div>
         </div>

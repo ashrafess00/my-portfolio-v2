@@ -1,36 +1,51 @@
+"use client";
 import Link from "next/link";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 const FeaturedProjects = () => {
+  const t = useTranslations("HomePage.featuredProjects");
+  const tProjects = useTranslations();
+
+  const projectsT: {
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+    link: string;
+    featured: boolean;
+  }[] = tProjects.raw("ProjectsPage.projects");
+  console.log("aa:", projectsT);
+  const locale = useLocale();
+
   const featuredProjects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description:
-        "A modern e-commerce platform built with Next.js, featuring real-time inventory management and secure payment processing.",
-      image: "/api/placeholder/400/300",
-      tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-      link: "/projects/ecommerce-platform",
-      featured: true,
+      title: projectsT[0]?.title || "",
+      description: projectsT[0]?.description || "",
+      image: "/projects/ederest.png",
+      tags: ["Next.js", "TypeScript", "Redux", "Django", "Tailwind CSS"],
+      link: "https://ederest.com/",
+      featured: false,
     },
     {
       id: 2,
-      title: "Task Management App",
-      description:
-        "A collaborative task management application with real-time updates, team collaboration, and progress tracking.",
-      image: "/api/placeholder/400/300",
-      tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-      link: "/projects/task-management",
-      featured: true,
+      title: projectsT[1]?.title || "",
+      description: projectsT[1]?.description || "",
+      image: "/projects/carey.png",
+      tags: ["React", "Node.js", "prisma", "Tailwind CSS"],
+      link: "https://carey.ma/en",
+      featured: false,
     },
     {
       id: 3,
-      title: "Portfolio Website",
-      description:
-        "A responsive portfolio website showcasing creative work with smooth animations and modern design principles.",
-      image: "/api/placeholder/400/300",
+      title: projectsT[2]?.title || "",
+      description: projectsT[2]?.description || "",
+      image: "/projects/portfolio.png",
       tags: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
       link: "/projects/portfolio-website",
-      featured: true,
+      featured: false,
     },
   ];
 
@@ -40,11 +55,10 @@ const FeaturedProjects = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Featured Projects
+            {t("featuredProjects")}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and
-            passion for creating exceptional digital experiences.
+            {t("featuredProjectsDescription")}
           </p>
         </div>
 
@@ -58,9 +72,24 @@ const FeaturedProjects = () => {
               {/* Project Image */}
               <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 group-hover:opacity-0 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl text-blue-500 opacity-20">📱</div>
-                </div>
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-6xl text-blue-500 opacity-20">📱</div>
+                  </div>
+                )}
+                {project.featured && (
+                  <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Featured
+                  </div>
+                )}
               </div>
 
               {/* Project Content */}
@@ -89,9 +118,12 @@ const FeaturedProjects = () => {
                   href={project.link}
                   className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors duration-200"
                 >
-                  View Project
+                  {t("viewProject")}
                   <svg
                     className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                    style={{
+                      transform: locale === "ar" ? "rotate(180deg)" : "none",
+                    }}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -115,9 +147,12 @@ const FeaturedProjects = () => {
             href="/projects"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            View All Projects
+            {t("viewAllProjects")}
             <svg
               className="ml-2 w-5 h-5"
+              style={{
+                transform: locale === "ar" ? "rotate(180deg)" : "none",
+              }}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
