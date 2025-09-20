@@ -1,4 +1,3 @@
-import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import SkillsOverview from "@/components/SkillsOverview";

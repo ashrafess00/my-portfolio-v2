@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 const htmlEmail = (name: string, email: string, message: string) => `

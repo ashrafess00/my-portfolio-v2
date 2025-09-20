@@ -5,125 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-interface Project {
-  id: number;
+interface TProjectTypes {
   title: string;
   description: string;
-  image: string | null;
-  category: string;
+  category: "web" | "42" | "automation";
+  image?: string;
+  id: number;
   technologies: string[];
-  liveUrl: string | null;
-  githubUrl: string | null;
-  featured: boolean;
+  liveUrl?: string | null;
+  featured?: boolean;
+  githubUrl?: string | null;
 }
 
 const ProjectsGrid = ({ activeFilter }: { activeFilter: string }) => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
-  const tProjects: {
-    title: string;
-    description: string;
-    category: "web" | "42" | "automation";
-    image?: string;
-    id: number;
-    technologies: string[];
-    liveUrl?: string | null;
-    featured?: boolean;
-    githubUrl?: string | null;
-  }[] = useTranslations("ProjectsPage").raw("projects");
-
-  console.log(tProjects);
-
-  // const projects: Project[] = [
-  //   {
-  //     id: 1,
-  //     title: tProjects[0]?.title,
-  //     description:
-  //       tProjects[0]?.description ||
-  //       "E-tech platform focusing specially on SAP, i worked on the user and admin dashboard, and the backend of the platform.",
-  //     image: "/projects/ederest.png",
-  //     category: "web",
-  //     technologies: [
-  //       "Next.js",
-  //       "TypeScript",
-  //       "PostgreSQL",
-  //       "Django",
-  //       "Tailwind CSS",
-  //       "Django",
-  //     ],
-  //     liveUrl: "https://ederest.com/",
-  //     githubUrl: null,
-  //     featured: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: tProjects[1]?.title,
-  //     description:
-  //       tProjects[1]?.description ||
-  //       "Carey Car Rental platform allows user to rent cars, and manage cars, and manage clients.",
-  //     image: "/projects/carey.png",
-  //     category: "web",
-  //     technologies: ["NextJs", "Node.js", "Socket.io", "Postgresql"],
-  //     liveUrl: "https://carey.ma",
-  //     githubUrl: null,
-  //     featured: false,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: tProjects[2]?.title,
-  //     description:
-  //       tProjects[2]?.description || "My personal portfolio website.",
-  //     image: "/projects/portfolio.png",
-  //     category: "web",
-  //     technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-  //     liveUrl: "https://ashrafess.me",
-  //     githubUrl: "https://github.com/ashrafess00/my-portfolio-v2",
-  //     featured: false,
-  //   },
-  //   {
-  //     //Cub3D
-  //     id: 4,
-  //     title: tProjects[3]?.title,
-  //     description: tProjects[3]?.description,
-  //     image: null,
-  //     category: "42",
-  //     technologies: ["Docker", "wordpress", "MariaDB", "php"],
-  //     liveUrl: null,
-  //     githubUrl: "https://github.com/ashrafess00/Inception",
-  //     featured: false,
-  //   },
-  //   {
-  //     id: 5,
-  //     title: tProjects[4]?.title || "",
-  //     description: tProjects[4]?.description,
-  //     image: null,
-  //     category: "42",
-  //     technologies: ["C++", "HTML", "CSS"],
-  //     liveUrl: null,
-  //     githubUrl: "https://github.com/ashrafess00/webserv",
-  //     featured: false,
-  //   },
-  //   {
-  //     id: 6,
-  //     title: tProjects[5]?.title,
-  //     description: tProjects[5]?.description,
-  //     image: null,
-  //     category: "42",
-  //     technologies: [
-  //       "C++",
-  //       "HTML",
-  //       "CSS",
-  //       "JavaScript",
-  //       "React",
-  //       "Node.js",
-  //       "Express",
-  //       "MongoDB",
-  //     ],
-  //     liveUrl: null,
-  //     githubUrl: "https://github.com/ashrafess00/ft_transcendence",
-  //     featured: false,
-  //   },
-  // ];
+  const tProjects: TProjectTypes[] =
+    useTranslations("ProjectsPage").raw("projects");
 
   return (
     <section className="py-20 bg-white">

@@ -96,7 +96,7 @@ const Education = () => {
               {t("certificationsTitle")}
             </h3>
             <div className="space-y-4">
-              {certifications.map((cert, index) => (
+              {certifications.map((cert) => (
                 <Link
                   key={cert.name}
                   href={cert.link}
@@ -143,9 +143,9 @@ const Education = () => {
                 </div> */}
                 {t
                   .raw("additionalTraining.additionalSkills")
-                  .map((value: string) => {
+                  .map((value: string, index: number) => {
                     return (
-                      <div className="flex items-center">
+                      <div key={index} className="flex items-center">
                         <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
                         <span className="text-gray-700">{value}</span>
                       </div>
