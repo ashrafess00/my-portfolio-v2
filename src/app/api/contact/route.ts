@@ -54,7 +54,6 @@ const htmlEmail = (name: string, email: string, message: string) => `
 
 export async function POST(req: Request) {
   const { name, email, subject, message } = await req.json();
-  console.log(name, email, subject, message);
 
   const transporter = nodemailer.createTransport({
     service: "gmail",

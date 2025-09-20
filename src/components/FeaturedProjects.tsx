@@ -16,7 +16,6 @@ const FeaturedProjects = () => {
     link: string;
     featured: boolean;
   }[] = tProjects.raw("ProjectsPage.projects");
-  console.log("aa:", projectsT);
   const locale = useLocale();
 
   const featuredProjects = [

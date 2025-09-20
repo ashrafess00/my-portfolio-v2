@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,7 +19,6 @@ type Language = {
 
 const languages: Language[] = [
   { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
   { code: "ar", name: "العربية", flag: "🇸🇦" },
 ];
 
@@ -27,6 +26,20 @@ export function LanguageSwitcher() {
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(
     languages[0]
   );
+
+  // Initialize selectedLanguage from cookie on mount
+  useEffect(() => {
+    const getLangFromCookie = () => {
+      const match = document.cookie.match(/(?:^|; )lang=([^;]*)/);
+      return match ? decodeURIComponent(match[1]) : null;
+    };
+
+    const langCode = getLangFromCookie();
+    if (langCode) {
+      const found = languages.find((lang) => lang.code === langCode);
+      if (found) setSelectedLanguage(found);
+    }
+  }, []);
 
   const handleLanguageChange = (language: Language) => {
     setSelectedLanguage(language);
