@@ -50,13 +50,13 @@ const Education = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-950 dark:to-blue-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-blue-200 mb-4">
             {t("title")}
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
             {t("description")}
           </p>
         </div>
@@ -64,27 +64,29 @@ const Education = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Education */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-blue-200 mb-8">
               {t("educationTitle")}
             </h3>
             <div className="space-y-6">
               {education.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-gray-50 p-6 rounded-lg border border-gray-100"
+                  className="bg-gray-50 dark:bg-slate-800 p-6 rounded-lg border border-gray-100 dark:border-slate-800"
                 >
                   <div className="flex justify-between items-start mb-3">
-                    <h4 className="text-lg font-bold text-gray-900">
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-blue-100">
                       {item.degree}
                     </h4>
-                    <span className="text-sm text-blue-600 font-medium">
+                    <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
                       {item.period}
                     </span>
                   </div>
-                  <div className="text-lg font-semibold text-gray-700 mb-2">
+                  <div className="text-lg font-semibold text-gray-700 dark:text-blue-200 mb-2">
                     {item.school}
                   </div>
-                  <p className="text-gray-600 mb-3">{item.description}</p>
+                  <p className="text-gray-600 dark:text-slate-300 mb-3">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -92,7 +94,7 @@ const Education = () => {
 
           {/* Certifications */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-blue-200 mb-8">
               {t("certificationsTitle")}
             </h3>
             <div className="space-y-4">
@@ -102,18 +104,20 @@ const Education = () => {
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200"
+                  className="block bg-white dark:bg-slate-800 p-6 rounded-lg border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow duration-200"
                 >
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="text-lg font-bold text-gray-900">
+                      <h4 className="text-lg font-bold text-gray-900 dark:text-blue-100">
                         {cert.name}
                       </h4>
-                      <span className="text-sm text-blue-600 font-medium">
+                      <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
                         {cert.date}
                       </span>
                     </div>
-                    <div className="text-gray-600">{cert.issuer}</div>
+                    <div className="text-gray-600 dark:text-slate-300">
+                      {cert.issuer}
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -121,33 +125,19 @@ const Education = () => {
 
             {/* Additional Training */}
             <div className="mt-8">
-              <h4 className="text-lg font-bold text-gray-900 mb-4">
+              <h4 className="text-lg font-bold text-gray-900 dark:text-blue-100 mb-4">
                 {t("additionalTraining.title")}
               </h4>
               <div className="space-y-3">
-                {/* <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Data structures with C</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Docker</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Mobile Development</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  <span className="text-gray-700">Network Principles</span>
-                </div> */}
                 {t
                   .raw("additionalTraining.additionalSkills")
                   .map((value: string, index: number) => {
                     return (
                       <div key={index} className="flex items-center">
                         <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                        <span className="text-gray-700">{value}</span>
+                        <span className="text-gray-700 dark:text-blue-100">
+                          {value}
+                        </span>
                       </div>
                     );
                   })}

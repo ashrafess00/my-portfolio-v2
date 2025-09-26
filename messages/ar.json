@@ -166,8 +166,8 @@
     "projects": [
       {
         "id": 1,
-        "title": "E-Tech Platform",
-        "description": "منصة E-Tech تركز بشكل خاص على SAP، حيث عملت على لوحة تحكم المستخدم والمدير، بالإضافة إلى الجانب الخلفي من المنصة.",
+        "title": "Education Tech Platform",
+        "description": "كانت أول فترة تدريب لي لمدة 6 أشهر في شركة Ederest الناشئة، حيث عملت على تطوير واجهة المستخدم ولوحة التحكم الخاصة بالمشرف من الصفر، بالإضافة إلى العمل على الجزء الخلفي للمنصة.",
         "category": "web",
         "image": "/projects/ederest.png",
         "technologies": [
@@ -183,16 +183,25 @@
       {
         "id": 2,
         "title": "Carey Car Rental Platform",
-        "description": "منصة Carey لتأجير السيارات تتيح للمستخدم استئجار السيارات، وإدارة السيارات، وإدارة العملاء.",
+        "description": "منصة Carey لتأجير السيارات تتيح للمستخدم استئجار السيارات وإدارتها. ساهمت في إصلاح الأخطاء البرمجية وإضافة بعض المزايا الناقصة فيها.",
         "category": "web",
         "image": "/projects/carey.png",
         "technologies": ["NextJs", "Tailwind CSS", "Postgresql"],
         "liveUrl": "https://carey.ma"
       },
       {
+        "id": 8,
+        "title": "Budget Tracker with n8n and OpenAI",
+        "description": "أنشأت تدفقًا بسيطًا لتتبع مصاريفك وإيراداتك باستخدام n8n، والفكرة هي أنك تستطيع تسجيل نفقاتك ودخلك من خلال رسائل سهلة عبر الدردشة مع بوت على تيليجرام.",
+        "category": "automation",
+        "technologies": ["n8n", "OpenAI API", "Automation"],
+        "image": "/projects/budget-n8n.png",
+        "githubUrl": "https://github.com/ashrafess00/my-personal-budget-tracker-n8n"
+      },
+      {
         "id": 3,
         "title": "My Portfolio",
-        "description": "موقعي الشخصي يتيح للمستخدم استعراض أعمالي، وإدارة العملاء.",
+        "description": "موقعي الشخصي مبني باستخدام NextJs مع بعض الحركات التفاعلية. يمكنك التبديل بين الوضع الفاتح والداكن، واستعراض مشاريعي ومهاراتي، والتواصل معي عبر نموذج الاتصال.",
         "category": "web",
         "image": "/projects/portfolio.png",
         "technologies": [
@@ -205,17 +214,27 @@
         "githubUrl": "https://github.com/ashrafess00/my-portfolio-v2"
       },
       {
+        "id": 9,
+        "title": "Hirfaty.com",
+        "description": "مهمتي في هذا المشروع كانت إصلاح الأخطاء واستضافة المنصة على Hostinger. استخدمت Nginx كـ reverse proxy لخدمة الواجهة الأمامية المبنية بـ ReactJs والواجهة الخلفية المبنية بـ NodeJs، مع استخدام MongoDb كقاعدة بيانات.",
+        "category": "web",
+        "technologies": ["Hostinger", "MongoDb", "ReactJs", "Hosting"],
+        "image": "/projects/hirfaty.png",
+        "liveUrl": "https://hirfaty.com/"
+      },
+      {
         "id": 4,
         "title": "Cub3D",
-        "description": "Cub3D هو مشروع جماعي في مدرسة 42 لإنشاء عرض ديناميكي داخل متاهة ثلاثية الأبعاد. باستخدام مكتبة MiniLibX، يجب علينا تنفيذ تقنية Raycasting على طريقة اللعبة الشهيرة Wolfenstein 3D، أول لعبة تصويب من منظور الشخص الأول (FPS) في تاريخ ألعاب الفيديو.",
+        "description": "Cub3D هو مشروع جماعي في مدرسة 42 لإنشاء عرض ديناميكي داخل متاهة ثلاثية الأبعاد. باستخدام مكتبة MiniLibX، كان علينا تنفيذ تقنية Raycasting على غرار لعبة Wolfenstein 3D الشهيرة، أول لعبة تصويب من منظور الشخص الأول في تاريخ ألعاب الفيديو.",
         "category": "42",
         "technologies": ["C", "Raycasting", "MiniLibX"],
-        "githubUrl": "https://github.com/ashrafess00/cub3d"
+        "githubUrl": "https://github.com/ashrafess00/cub3d",
+        "image": "/projects/cub3d.png"
       },
       {
         "id": 5,
         "title": "Inception",
-        "description": "مشروع DevOps يركز على إدارة الأنظمة والحاويات. قمت ببناء بنية تحتية كاملة باستخدام Docker و Docker Compose، مع إنشاء صور مخصصة لخدمات مثل NGINX و WordPress و MariaDB. ركز المشروع على الأمن، الشبكات، استمرارية البيانات، والأتمتة، لمحاكاة بيئة إنتاج حقيقية.",
+        "description": "مشروع DevOps يركز على إدارة الأنظمة والحاويات. أنشأت بنية تحتية متكاملة باستخدام Docker وDocker Compose، مع إنشاء صور مخصصة لخدمات مثل NGINX وWordPress وMariaDB. ركز المشروع على الأمن والشبكات واستمرارية البيانات والأتمتة، ليحاكي بيئة إنتاج حقيقية.",
         "category": "42",
         "technologies": [
           "Docker",
@@ -225,20 +244,22 @@
           "WordPress",
           "MariaDB"
         ],
-        "githubUrl": "https://github.com/ashrafess00/Inception"
+        "githubUrl": "https://github.com/ashrafess00/Inception",
+        "image": "/projects/inception.jpg"
       },
       {
         "id": 6,
         "title": "WebServ",
-        "description": "مشروع بلغة C++ لتنفيذ خادم HTTP خفيف من الصفر. طورت ميزات مثل معالجة طلبات واستجابات HTTP، تنفيذ CGI، تحليل ملفات التكوين، ودعم عدة عملاء باستخدام المقابس غير المحجوبة واستدعاء poll(). المشروع يحاكي السلوك الأساسي لـ NGINX، مما عزز فهمي لبرمجة الشبكات، بروتوكولات الويب، والتطوير على مستوى النظام.",
+        "description": "مشروع بلغة C++ لبناء خادم HTTP خفيف من الصفر. طورت ميزات مثل معالجة طلبات واستجابات HTTP، وتنفيذ CGI، وتحليل ملفات التكوين، ودعم اتصالات متعددة باستخدام المقابس غير المحجوبة ودالة poll(). المشروع أعاد إنشاء السلوك الأساسي لـ NGINX، مما عزز فهمي لبرمجة الشبكات والبروتوكولات والتطوير على مستوى النظام.",
         "category": "42",
         "technologies": ["C++", "HTTP", "CGI", "Sockets", "poll()"],
-        "githubUrl": "https://github.com/ashrafess00/webserv"
+        "githubUrl": "https://github.com/ashrafess00/webserv",
+        "image": "/projects/webserv.jpg"
       },
       {
         "id": 7,
         "title": "Ft_Transcendence",
-        "description": "تطبيق ويب كامل للعبة Pong الكلاسيكية، تم بناؤه باستخدام Django و JavaScript خام. بما أن استخدام الأُطر الخارجية مثل React لم يكن مسموحًا، فقد نفذت أسلوب عرض قائم على المكونات مشابه لـ React في الواجهة الأمامية. في الخلفية، صممت نماذج قواعد البيانات، نفذت نظام المصادقة، وطورت نظام بطولة في الوقت الحقيقي باستخدام Django Channels للتواصل عبر WebSocket. جمع هذا المشروع بين منطق اللعبة، الميزات الفورية، والهندسة القابلة للتوسع لتجربة جماعية متكاملة.",
+        "description": "تطبيق ويب متكامل للعبة Pong الكلاسيكية، مبني باستخدام Django وJavaScript العادي. نظرًا لعدم السماح باستخدام مكتبات خارجية مثل React، قمت بتنفيذ نظام عرض قائم على المكونات مشابه لـ React للواجهة الأمامية. في الخلفية، صممت نماذج قاعدة البيانات، ونفذت نظام التوثيق، وطورت نظام بطولة في الوقت الحقيقي باستخدام Django Channels وWebSockets. جمع المشروع بين منطق اللعبة والميزات اللحظية والهيكلية القابلة للتوسع لتجربة جماعية متكاملة.",
         "category": "42",
         "technologies": [
           "JavaScript",
@@ -251,12 +272,8 @@
         "githubUrl": "https://github.com/ashrafess00/ft_transcendence"
       }
     ],
-    "filters": [
-      "جميع المشاريع",
-      "مشاريع 42",
-      "تطوير الويب",
-      "أتمتة الذكاء الاصطناعي"
-    ]
+
+    "filters": ["جميع المشاريع", "مشاريع 42", "تطوير الويب", "الأتممة"]
   },
   "SkillsPage": {
     "title": "المهارات",

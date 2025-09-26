@@ -50,18 +50,20 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-950 dark:to-blue-950">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-blue-200 mb-4">
             {t("title")}
           </h2>
-          <p className="text-xl text-gray-600">{t("description")}</p>
+          <p className="text-xl text-gray-600 dark:text-slate-400">
+            {t("description")}
+          </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-100 dark:border-slate-800 p-8">
           {submitStatus === "success" && (
-            <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            <div className="mb-6 p-4 bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-200 rounded-lg">
               {t("successMessage")}
             </div>
           )}
@@ -71,7 +73,7 @@ const ContactForm = () => {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-gray-700 dark:text-blue-100 mb-2"
                 >
                   {t("name")} *
                 </label>
@@ -82,7 +84,7 @@ const ContactForm = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="text-slate-500 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  className="text-slate-500 w-full px-4 py-3 border border-gray-300 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                   placeholder={t("namePlaceholder")}
                 />
               </div>
@@ -90,7 +92,7 @@ const ContactForm = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-gray-700 dark:text-blue-100 mb-2"
                 >
                   {t("email")} *
                 </label>
@@ -101,7 +103,7 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="text-slate-500 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  className="text-slate-500 w-full px-4 py-3 border border-gray-300 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -110,12 +112,12 @@ const ContactForm = () => {
             <div>
               <label
                 htmlFor="subject"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-700 dark:text-blue-100 mb-2"
               >
                 {t("subject")}
               </label>
               <input
-                className="text-slate-500 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                className="text-slate-500 w-full px-4 py-3 border border-gray-300 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                 type="text"
                 id="subject"
                 name="subject"
@@ -128,7 +130,7 @@ const ContactForm = () => {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-700 dark:text-blue-100 mb-2"
               >
                 {t("message")} *
               </label>
@@ -139,17 +141,19 @@ const ContactForm = () => {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="text-slate-500 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
+                className="text-slate-500 w-full px-4 py-3 border border-gray-300 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
                 placeholder={t("messagePlaceholder")}
               />
             </div>
 
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500">* {t("requiredField")}</p>
+              <p className="text-sm text-gray-500 dark:text-slate-400">
+                * {t("requiredField")}
+              </p>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 cursor-pointer py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 cursor-pointer py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 dark:bg-gradient-to-r dark:from-blue-800 dark:to-purple-800 dark:hover:from-blue-900 dark:hover:to-purple-900 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <div className="flex items-center">

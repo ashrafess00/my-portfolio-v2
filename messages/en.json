@@ -11,7 +11,7 @@
       "available": "Available for new opportunities",
       "description": "Home page",
       "title": "Hi, I'm <name>Achraf Essaoudi</name>",
-      "subtitle": "A passionate <subtitle>Software Developer</subtitle>",
+      "subtitle": "A <subtitle>Full-Stack Software Engineer</subtitle>",
       "viewMyWork": "View My Work",
       "getInTouch": "Get In Touch"
     },
@@ -19,29 +19,6 @@
       {
         "title": "Projects",
         "value": "10"
-      }
-    ],
-    "projects": [
-      {
-        "title": "E-Tech Platform",
-        "description": "E-tech platform focusing specially on SAP, i worked on the user and admin dashboard, and the backend of the platform.",
-        "image": "/projects/ederest.png",
-        "tags": ["Next.js", "TypeScript", "Redux", "Django", "Tailwind CSS"],
-        "link": "/projects/ederest"
-      },
-      {
-        "title": "Carey Car Rental Platform",
-        "description": "Carey Car Rental platform allows user to rent cars, and manage cars, and manage clients.",
-        "image": "/projects/carey.png",
-        "tags": ["React", "Node.js", "prisma", "Tailwind CSS"],
-        "link": "/projects/carey"
-      },
-      {
-        "title": "My Portfolio",
-        "description": "My portfolio allows user to view my work, and manage clients.",
-        "image": "/projects/portfolio.png",
-        "tags": ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-        "link": "/projects/portfolio"
       }
     ],
     "featuredProjects": {
@@ -165,8 +142,8 @@
     "projects": [
       {
         "id": 1,
-        "title": "E-Tech Platform",
-        "description": "E-tech platform focusing specially on SAP, i worked on the user and admin dashboard, and the backend of the platform.",
+        "title": "Education Tech Platform",
+        "description": "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform.",
         "category": "web",
         "image": "/projects/ederest.png",
         "technologies": [
@@ -182,16 +159,25 @@
       {
         "id": 2,
         "title": "Carey Car Rental Platform",
-        "description": "Carey Car Rental platform allows user to rent cars, and manage cars, and manage clients.",
+        "description": "Carey Car Rental platform allows user to rent cars, and manage cars, contributed to fix bugs, and add some missing features in it.",
         "category": "web",
         "image": "/projects/carey.png",
         "technologies": ["NextJs", "Tailwind CSS", "Postgresql"],
         "liveUrl": "https://carey.ma"
       },
       {
+        "id": 8,
+        "title": "Budget Tracker with n8n and OpenAI",
+        "description": "I create a simple flow that tracks your expenses and income using n8n, the idea is you can record your expenses and incomes with a user friendly message via chatting with telegram bot with user friendly bot.",
+        "category": "automation",
+        "technologies": ["n8n", "OpenAI API", "Automation"],
+        "image": "/projects/budget-n8n.png",
+        "githubUrl": "https://github.com/ashrafess00/my-personal-budget-tracker-n8n"
+      },
+      {
         "id": 3,
         "title": "My Portfolio",
-        "description": "My portfolio allows user to view my work, and manage clients.",
+        "description": "My portfolio built with NextJs and some animation, you can toggle between light and dark mode, and view my projects, skills, and contact me via the contact form.",
         "category": "web",
         "image": "/projects/portfolio.png",
         "technologies": [
@@ -204,17 +190,27 @@
         "githubUrl": "https://github.com/ashrafess00/my-portfolio-v2"
       },
       {
+        "id": 9,
+        "title": "Hirfaty.com",
+        "description": "My job in the project was to fix bugs, and host the platform on hostinger, i used Ngnix as a reverse proxy to serve the ReactJs frontend and the NodeJs backend, and MongoDb as a database.",
+        "category": "web",
+        "technologies": ["Hostinger", "MongoDb", "ReactJs", "Hosting"],
+        "image": "/projects/hirfaty.png",
+        "liveUrl": "https://hirfaty.com/"
+      },
+      {
         "id": 4,
         "title": "Cub3D",
-        "description": "Cub3D is a 42 school team project to create a dynamic view inside a 3D maze. Using the MiniLibX library, we must implement raycasting in the style of the famous Wolfenstein 3D game, the first true FPS in videogame history.",
+        "description": "Cub3D is a 42 school team project to create a dynamic view inside a 3D maze. Using the MiniLibX library, we must have implement raycasting in the style of the famous Wolfenstein 3D game, the first true FPS in videogame history.",
         "category": "42",
         "technologies": ["C", "Raycasting", "MiniLibX"],
-        "githubUrl": "https://github.com/ashrafess00/cub3d"
+        "githubUrl": "https://github.com/ashrafess00/cub3d",
+        "image": "/projects/cub3d.png"
       },
       {
         "id": 5,
         "title": "Inception",
-        "description": "A DevOps project focused on system administration and containerization. I built a complete infrastructure using Docker and Docker Compose, creating custom images for services like NGINX, WordPress, and MariaDB. The project emphasized security, networking, data persistence, and automation, simulating a real-world production environment.",
+        "description": "A DevOps project focused on system administration and containerization. I built a complete infrastructure using Docker and Docker Compose, creating custom images for services NGINX, WordPress, and MariaDB. The project emphasized security, networking, data persistence, and automation, simulating a real-world production environment.",
         "category": "42",
         "technologies": [
           "Docker",
@@ -224,7 +220,8 @@
           "WordPress",
           "MariaDB"
         ],
-        "githubUrl": "https://github.com/ashrafess00/Inception"
+        "githubUrl": "https://github.com/ashrafess00/Inception",
+        "image": "/projects/inception.jpg"
       },
       {
         "id": 6,
@@ -232,7 +229,8 @@
         "description": "A C++ project to implement a lightweight HTTP server from scratch. I developed features such as HTTP request/response handling, CGI execution, configuration parsing, and multi-client support using non-blocking sockets and the poll() system call. The project replicated the core behavior of NGINX, strengthening my understanding of network programming, web protocols, and system-level development.",
         "category": "42",
         "technologies": ["C++", "HTTP", "CGI", "Sockets", "poll()"],
-        "githubUrl": "https://github.com/ashrafess00/webserv"
+        "githubUrl": "https://github.com/ashrafess00/webserv",
+        "image": "/projects/webserv.jpg"
       },
       {
         "id": 7,

@@ -104,29 +104,29 @@ const ContactInfo = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-950 dark:to-blue-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Methods */}
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-blue-200 mb-8">
               {t("getInTouch")}
             </h2>
             <div className="space-y-6">
               {contactMethods.map((method) => (
                 <div key={method.title} className="flex items-center space-x-4">
                   <div
-                    className={`w-12 h-12 ${method.bgColor} rounded-lg flex items-center justify-center ${method.color}`}
+                    className={`w-12 h-12 ${method.bgColor} dark:bg-slate-800 rounded-lg flex items-center justify-center ${method.color} dark:text-blue-300`}
                   >
                     {method.icon}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-900 dark:text-blue-100">
                       {method.title}
                     </h3>
                     <p
                       dir={`${method.id === 1 ? "ltr" : "auto"}`}
-                      className="text-gray-600"
+                      className="text-gray-600 dark:text-blue-100"
                     >
                       {method.value}
                     </p>
@@ -138,7 +138,7 @@ const ContactInfo = () => {
 
           {/* Social Links */}
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-blue-200 mb-8">
               {t("followMe")}
             </h2>
             <div className="grid grid-cols-2 gap-4">
@@ -148,12 +148,12 @@ const ContactInfo = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200 group"
+                  className="flex items-center space-x-3 p-4 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
                 >
-                  <div className="text-gray-600 group-hover:text-blue-600 transition-colors duration-200">
+                  <div className="text-gray-600 dark:text-blue-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                     {social.icon}
                   </div>
-                  <span className="font-medium text-gray-700 group-hover:text-blue-600 transition-colors duration-200">
+                  <span className="font-medium text-gray-700 dark:text-blue-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                     {social.name}
                   </span>
                 </a>
@@ -161,11 +161,13 @@ const ContactInfo = () => {
             </div>
 
             {/* Availability */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl text-white">
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800 rounded-xl text-white">
               <h3 className="text-xl font-bold mb-2">
                 {t("currentAvailability")}
               </h3>
-              <p className="text-blue-100 mb-4">{t("currentAvailability2")}</p>
+              <p className="text-blue-100 dark:text-blue-200 mb-4">
+                {t("currentAvailability2")}
+              </p>
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                 <span className="text-sm">{t("currentAvailability3")}</span>
@@ -176,10 +178,12 @@ const ContactInfo = () => {
 
         {/* Additional Info */}
         <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-blue-200 mb-4">
             {t("title2")}
           </h3>
-          <p className="text-gray-600 max-w-2xl mx-auto">{t("description2")}</p>
+          <p className="text-gray-600 dark:text-blue-100 max-w-2xl mx-auto">
+            {t("description2")}
+          </p>
         </div>
       </div>
     </section>

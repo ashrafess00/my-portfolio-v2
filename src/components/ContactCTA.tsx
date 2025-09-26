@@ -4,33 +4,38 @@ import Link from "next/link";
 const ContactCTA = () => {
   const t = useTranslations("HomePage.footer");
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-300/10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300/10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+        {/* Light mode blobs */}
+        <div className="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full mix-blend-multiply filter blur-xl animate-blob dark:hidden"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-300/10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000 dark:hidden"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300/10 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000 dark:hidden"></div>
+        {/* Dark mode blobs */}
+        <div className="absolute top-0 left-0 w-80 h-80 bg-blue-900/30 rounded-full mix-blend-screen filter blur-2xl animate-blob hidden dark:block"></div>
+        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-900/30 rounded-full mix-blend-screen filter blur-2xl animate-blob animation-delay-2000 hidden dark:block"></div>
+        <div className="absolute -bottom-8 left-20 w-80 h-80 bg-pink-900/30 rounded-full mix-blend-screen filter blur-2xl animate-blob animation-delay-4000 hidden dark:block"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white dark:text-blue-200 mb-6">
             {t("title")}
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+          <p className="text-xl text-blue-100 dark:text-blue-200 mb-8 leading-relaxed">
             {t("description")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/contact"
-              className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 dark:bg-blue-800 dark:text-blue-100 dark:hover:bg-blue-900 dark:hover:text-white transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t("getInTouch")}
             </Link>
             <Link
               href="/projects"
-              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-200 transform hover:scale-105"
+              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 dark:border-blue-200 dark:hover:bg-blue-800 dark:hover:text-white transition-all duration-200 transform hover:scale-105"
             >
               {t("viewMyWork")}
             </Link>
@@ -38,8 +43,8 @@ const ContactCTA = () => {
 
           {/* Contact Info */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white/10 dark:bg-blue-900/30 backdrop-blur-sm rounded-lg p-6 border border-white/10 dark:border-blue-800">
+              <div className="w-12 h-12 bg-white/20 dark:bg-blue-800/40 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -54,12 +59,16 @@ const ContactCTA = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-2">{t("email")}</h3>
-              <p className="text-blue-100">achrafess1937@gmail.com</p>
+              <h3 className="text-white dark:text-blue-200 font-semibold mb-2">
+                {t("email")}
+              </h3>
+              <p className="text-blue-100 dark:text-blue-200">
+                achrafess1937@gmail.com
+              </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white/10 dark:bg-blue-900/30 backdrop-blur-sm rounded-lg p-6 border border-white/10 dark:border-blue-800">
+              <div className="w-12 h-12 bg-white/20 dark:bg-blue-800/40 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -80,12 +89,16 @@ const ContactCTA = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-2">{t("location")}</h3>
-              <p className="text-blue-100">{t("location2")}</p>
+              <h3 className="text-white dark:text-blue-200 font-semibold mb-2">
+                {t("location")}
+              </h3>
+              <p className="text-blue-100 dark:text-blue-200">
+                {t("location2")}
+              </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white/10 dark:bg-blue-900/30 backdrop-blur-sm rounded-lg p-6 border border-white/10 dark:border-blue-800">
+              <div className="w-12 h-12 bg-white/20 dark:bg-blue-800/40 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -100,10 +113,12 @@ const ContactCTA = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-2">
+              <h3 className="text-white dark:text-blue-200 font-semibold mb-2">
                 {t("responseTime")}
               </h3>
-              <p className="text-blue-100">{t("within24Hours")}</p>
+              <p className="text-blue-100 dark:text-blue-200">
+                {t("within24Hours")}
+              </p>
             </div>
           </div>
         </div>

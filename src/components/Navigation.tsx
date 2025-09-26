@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { ThemeToggle } from "./theme-toggle";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +29,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
+    <nav className="fixed top-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -50,20 +51,21 @@ const Navigation = () => {
                 href={item.href}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isActive(item.href)
-                    ? "text-blue-600"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
             <LanguageSwitcher />
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
           >
             <svg
               className="h-6 w-6"
@@ -93,15 +95,15 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      ? "text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-blue-900/30"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-slate-800"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
