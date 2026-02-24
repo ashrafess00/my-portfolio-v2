@@ -1,24 +1,24 @@
-import HeroSection from "@/components/HeroSection";
-import FeaturedProjects from "@/components/FeaturedProjects";
-import SkillsOverview from "@/components/SkillsOverview";
-import ContactCTA from "@/components/ContactCTA";
+"use client";
+import FloatingOrbs from "@/components/FloatingOrbs";
+import GridBackground from "@/components/GridBackground";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
+import About from "@/components/About";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="pt-16">
-      {/* <div className="absolute min-w-screen min-h-screen overflow-hidden"> */}
-      {/* <div className="sticky top-0 flex justify-center items-center h-screen opacity-10">
-          <img
-            src="/logo/logo.png"
-            alt="hero"
-            className="w-1/2 transition-transform duration-500 ease-out"
-          />
-        </div> */}
-      {/* </div> */}
-      <HeroSection />
-      <FeaturedProjects />
-      <SkillsOverview />
-      <ContactCTA />
+    <div className="relative noise-bg">
+      <FloatingOrbs />
+      <GridBackground />
+      <Navbar />
+      <Hero />
+      <Projects />
+      <About />
+      <Contact />
+      <Footer />
     </div>
   );
 }

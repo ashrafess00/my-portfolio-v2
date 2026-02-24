@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+// import { Button } from "@/components/ui/button";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
+// import { ChevronDown } from "lucide-react";
 import { setCookie } from "@/lib/actions";
 import { Globe } from "lucide-react";
 
@@ -25,7 +25,7 @@ const languages: Language[] = [
 
 export function LanguageSwitcher() {
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(
-    languages[0]
+    languages[0],
   );
 
   // Initialize selectedLanguage from cookie on mount
