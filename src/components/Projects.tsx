@@ -32,18 +32,32 @@ const projects = [
   },
 ];
 
-const Projects = () => (
-  <section id="projects" className="relative py-32 px-6">
-    <div className="max-w-6xl mx-auto">
-      <SectionHeader label="Portfolio" title="Selected Work" />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {projects.map((project, i) => (
-          <ProjectCard key={project.title} project={project} index={i} />
-        ))}
+const Projects = () => {
+  const largeProjects = projects.filter((p) => p.size === "large");
+  const smallProjects = projects.filter((p) => p.size === "small");
+
+  return (
+    <section id="projects" className="relative py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader label="Portfolio" title="Selected Work" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="md:col-span-2 flex flex-col gap-6">
+            {largeProjects.map((project, i) => (
+              <ProjectCard key={project.title} project={project} index={i} />
+            ))}
+          </div>
+
+          <div className="md:col-span-1 flex flex-col gap-6">
+            {smallProjects.map((project, i) => (
+              <ProjectCard key={project.title} project={project} index={i} />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const ProjectCard = ({
   project,
@@ -53,9 +67,7 @@ const ProjectCard = ({
   index: number;
 }) => (
   <motion.div
-    className={`group relative glass rounded-2xl overflow-hidden hover-glow cursor-pointer ${
-      project.size === "large" ? "md:col-span-2 md:row-span-2" : ""
-    }`}
+    className="group relative glass rounded-2xl overflow-hidden hover-glow cursor-pointer"
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-80px" }}
