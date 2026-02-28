@@ -1,36 +1,7 @@
 import SectionHeader from "./SectionHeader";
 import { motion } from "motion/react";
-
-const projects = [
-  {
-    title: "Education Tech Platform",
-    desc: "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform.",
-    tags: ["TypeScript", "NextJs", "Django"],
-    img: "/projects/ederest.png",
-    size: "large",
-  },
-  {
-    title: "Golden Ambassador",
-    desc: "Am exclusive platform for referral system built with Laravel and react",
-    tags: ["Laravel", "React", "MySql", "Hostinger", "TypScript"],
-    img: "/projects/ga.png",
-    size: "small",
-  },
-  {
-    title: "Food Tracker Platform",
-    desc: "Natinx is a SaaS platform that tracks food from cooperative until the custom, and a QR code is generated at the end that shows all steps food went through",
-    tags: ["React", "Tanstack", "GraphQl", "Supabase"],
-    img: "/projects/natinx.png",
-    size: "small",
-  },
-  {
-    title: "Carey Car Rental Platform",
-    desc: "Carey Car Rental platform allows user to rent cars, and manage cars, contributed to fix bugs, and add some missing features in it.",
-    tags: ["TypeScript", "Docker", "React", "PostgreSQL"],
-    img: "/projects/carey.png",
-    size: "large",
-  },
-];
+import Link from "next/link";
+import { projects } from "@/data/projects";
 
 const Projects = () => {
   const largeProjects = projects.filter((p) => p.size === "large");
@@ -65,50 +36,75 @@ const ProjectCard = ({
 }: {
   project: (typeof projects)[0];
   index: number;
-}) => (
-  <motion.div
-    className="group relative glass rounded-2xl overflow-hidden hover-glow cursor-pointer"
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.6, delay: index * 0.1 }}
-    whileHover={{ y: -6, scale: 1.01 }}
-  >
-    {/* Placeholder image area */}
-    <div
-      className={`relative overflow-hidden ${project.size === "large" ? "h-64 md:h-80" : "h-48"}`}
+}) => {
+  const isExternal = project.uri.startsWith("http");
+  const cardContent = (
+    <motion.div
+      className="group relative glass rounded-2xl overflow-hidden hover-glow cursor-pointer h-full flex flex-col"
+      initial={{ opacity: 0, y: 44 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2, margin: "0px 0px -60px 0px" }}
+      transition={{
+        duration: 0.85,
+        ease: [0.22, 0.61, 0.36, 1],
+        delay: index * 0.12,
+      }}
+      whileHover={{ y: -6, scale: 1.01 }}
     >
-      <img
-        src={project.img}
-        alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
-      <div className="absolute inset-0 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-        <span className="text-sm font-heading font-medium text-primary border border-primary/30 rounded-full px-5 py-2">
-          View Project →
-        </span>
-      </div>
-    </div>
-
-    <div className="p-6">
-      <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-        {project.title}
-      </h3>
-      <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4">
-        {project.desc}
-      </p>
-      <div className="flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-xs font-body text-primary/80 bg-primary/[0.08] rounded-full px-3 py-1"
-          >
-            {tag}
+      <div
+        className={`relative overflow-hidden flex-shrink-0 ${project.size === "large" ? "h-64 md:h-80" : "h-48"}`}
+      >
+        <img
+          src={project.img}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+          <span className="text-sm font-heading font-medium text-primary border border-primary/30 rounded-full px-5 py-2">
+            View Project →
           </span>
-        ))}
+        </div>
       </div>
-    </div>
-  </motion.div>
-);
+
+      <div className="p-6 flex-1 flex flex-col">
+        <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+          {project.title}
+        </h3>
+        <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4">
+          {project.desc}
+        </p>
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs font-body text-primary/80 bg-primary/[0.08] rounded-full px-3 py-1"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  if (isExternal) {
+    return (
+      <a
+        href={project.uri}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block h-full"
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={project.uri} className="block h-full">
+      {cardContent}
+    </Link>
+  );
+};
 
 export default Projects;

@@ -54,10 +54,10 @@ const Contact = () => {
 
         <motion.form
           className="glass-strong rounded-2xl p-8 md:p-10 space-y-6"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -80px 0px" }}
+          transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1] }}
           onSubmit={handleSubmit}
         >
           <div className="grid md:grid-cols-2 gap-6">

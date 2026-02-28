@@ -1,13 +1,13 @@
 import SectionHeader from "./SectionHeader";
 import { motion } from "framer-motion";
 
-const skills = [
-  { name: "React / Next.js", level: 95 },
-  { name: "TypeScript", level: 90 },
-  { name: "Node.js", level: 88 },
-  { name: "UI/UX Design", level: 85 },
-  { name: "DevOps / Cloud", level: 78 },
-];
+// const skills = [
+//   { name: "React / Next.js", level: 95 },
+//   { name: "TypeScript", level: 90 },
+//   { name: "Node.js", level: 88 },
+//   { name: "UI/UX Design", level: 85 },
+//   { name: "DevOps / Cloud", level: 78 },
+// ];
 
 const stats = [
   { value: "3+", label: "Years Experience" },
@@ -23,10 +23,10 @@ const About = () => (
 
       <div className="grid md:grid-cols-2 gap-16 items-start">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -28 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -60px 0px" }}
+          transition={{ duration: 0.85, ease: [0.22, 0.61, 0.36, 1] }}
         >
           <p className="text-muted-foreground font-body leading-relaxed mb-6">
             I&apos;m a full stack developer with a passion for creating elegant,
@@ -78,19 +78,27 @@ const About = () => (
         {/* Stats */}
         <motion.div
           className="grid grid-cols-2 gap-4"
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 28 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -60px 0px" }}
+          transition={{
+            duration: 0.85,
+            ease: [0.22, 0.61, 0.36, 1],
+            delay: 0.15,
+          }}
         >
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               className="glass rounded-2xl p-6 text-center hover-glow transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.75,
+                ease: [0.22, 0.61, 0.36, 1],
+                delay: 0.25 + i * 0.12,
+              }}
               whileHover={{ y: -4 }}
             >
               <div className="font-heading text-3xl md:text-4xl font-bold text-gradient mb-2">
