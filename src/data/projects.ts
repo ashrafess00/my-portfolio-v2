@@ -1,6 +1,8 @@
 export const projects = [
   {
     id: "ederest",
+    index: "01",
+    year: "2024",
     title: "Education Tech Platform",
     desc: "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform.",
     tags: ["TypeScript", "NextJs", "Django"],
@@ -14,6 +16,8 @@ export const projects = [
   },
   {
     id: "golden-ambassador",
+    index: "02",
+    year: "2026",
     title: "Golden Ambassador",
     desc: "Am exclusive platform for referral system built with Laravel and react",
     tags: ["Laravel", "React", "MySql", "Hostinger", "TypScript"],
@@ -27,6 +31,8 @@ export const projects = [
   },
   {
     id: "natinx",
+    index: "03",
+    year: "2025",
     title: "Food Tracker Platform",
     desc: "Natinx is a SaaS platform that tracks food from cooperative until the custom, and a QR code is generated at the end that shows all steps food went through",
     tags: ["React", "Tanstack", "GraphQl", "Supabase"],
@@ -40,6 +46,8 @@ export const projects = [
   },
   {
     id: "carey",
+    index: "04",
+    year: "2025",
     title: "Carey Car Rental Platform",
     desc: "Carey Car Rental platform allows user to rent cars, and manage cars, contributed to fix bugs, and add some missing features in it.",
     tags: ["TypeScript", "Docker", "React", "PostgreSQL"],

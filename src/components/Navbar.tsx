@@ -1,127 +1,54 @@
-"use client";
-
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 const Navbar = () => {
-  const { scrollY } = useScroll();
-  const bgOpacity = useTransform(scrollY, [0, 100], [0, 0.8]);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const [scrolled, setScrolled] = useState(false);
 
-  const links = ["About", "Projects", "Contact"];
+  useEffect(() => {
+    gsap.fromTo(
+      navRef.current,
+      { y: -60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 1.5, ease: "power3.out" }
+    );
 
-  const closeMobile = () => setMobileOpen(false);
+    const handleScroll = () => setScrolled(window.scrollY > 100);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const navLink = (link: string) => (
-    <a
-      key={link}
-      href={`#${link.toLowerCase()}`}
-      onClick={closeMobile}
-      className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-body"
-    >
-      {link}
-    </a>
-  );
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4"
-      style={{ backgroundColor: `hsl(220 20% 4% / ${bgOpacity})` }}
+    <nav
+      ref={navRef}
+      className={`fixed top-0 left-0 right-0 z-50 section-padding py-6 flex justify-between items-center transition-all duration-300 ${
+        scrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : ""
+      }`}
     >
-      <motion.div
-        className="max-w-6xl mx-auto flex items-center justify-between glass rounded-full px-4 sm:px-6 py-3"
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="font-display text-sm font-bold tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors"
       >
-        <a
-          href="#"
-          onClick={closeMobile}
-          className="font-heading font-bold text-lg text-foreground tracking-tight"
-        >
-          <span className="text-primary">{"<"}</span>dev
-          <span className="text-primary">{"/>"}</span>
-        </a>
+        DEV<span className="text-primary">.</span>
+      </button>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map(navLink)}
-          <a
-            href="#contact"
-            onClick={closeMobile}
-            className="text-sm bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+      <div className="hidden md:flex items-center gap-8">
+        {["about", "projects", "skills", "contact"].map((item) => (
+          <button
+            key={item}
+            onClick={() => scrollTo(item)}
+            className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
           >
-            Let&apos;s Talk
-          </a>
-        </div>
+            {item}
+          </button>
+        ))}
+      </div>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((o) => !o)}
-          className="md:hidden p-2 rounded-lg text-foreground hover:bg-white/5 transition-colors"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden
-          >
-            {mobileOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-      </motion.div>
-
-      {/* Mobile menu panel */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden overflow-hidden"
-          >
-            <div className="mt-3 glass rounded-2xl p-4 flex flex-col gap-1">
-              {links.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  onClick={closeMobile}
-                  className="py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-xl transition-colors font-body"
-                >
-                  {link}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={closeMobile}
-                className="mt-2 py-3 px-4 text-center bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity"
-              >
-                Let&apos;s Talk
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+      <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+    </nav>
   );
 };
 

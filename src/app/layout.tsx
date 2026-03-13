@@ -42,7 +42,7 @@ export default async function RootLayout({
           <PostHogProvider>
             <NextIntlClientProvider>
               {/* <Navigation /> */}
-              <main className="min-h-screen">{children}</main>
+              <main className="min-h-screen relative">{children}</main>
               <Toaster />
             </NextIntlClientProvider>
           </PostHogProvider>
