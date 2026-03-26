@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,9 +101,10 @@ const ProjectsSection = () => {
 
       <div className="relative z-10 space-y-0">
         {projects.map((project, i) => (
-          <div
-            key={i}
-            className="project-item group border-t border-border py-10 md:py-14 cursor-pointer transition-colors duration-500 hover:bg-secondary/30"
+          <Link
+            key={project.id}
+            href={project.uri}
+            className="project-item group block border-t border-border py-10 md:py-14 transition-colors duration-500 hover:bg-secondary/30"
           >
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
               {/* Index */}
@@ -125,9 +127,7 @@ const ProjectsSection = () => {
               </div>
 
               {/* Description + tags */}
-              <div
-                className={`md:col-span-4 ${i % 2 !== 0 ? "md:col-start-8" : "md:col-start-8"}`}
-              >
+              <div className="md:col-span-4 md:col-start-8">
                 <p className="text-dim font-body text-sm md:text-base leading-relaxed mb-4">
                   {project.desc}
                 </p>
@@ -143,7 +143,7 @@ const ProjectsSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
         {/* Bottom border */}
         <div className="border-t border-border" />
