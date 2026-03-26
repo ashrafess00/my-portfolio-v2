@@ -47,15 +47,23 @@ const IntroSection = () => {
         );
 
       // Parallax on scroll
-      gsap.to(nameRef.current, {
-        y: -100,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
+      // Use `fromTo` with an explicit start value so the parallax tween doesn't
+      // re-render from the intro timeline's initial `y: 120` state.
+      gsap.fromTo(
+        nameRef.current,
+        { y: 0 },
+        {
+          y: -100,
+          ease: "none",
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
         },
-      });
+      );
     }, sectionRef);
 
     return () => ctx.revert();
