@@ -175,6 +175,31 @@ const ContactSection = () => {
           </form>
         )}
 
+        <div className="contact-reveal grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto mt-16">
+          <div className="space-y-1">
+            <p className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground">
+              Email
+            </p>
+            <a
+              href="mailto:contact@achrafessaoudi.com"
+              className="font-body text-sm text-foreground hover:text-primary transition-colors duration-300"
+            >
+              contact@achrafessaoudi.com
+            </a>
+          </div>
+          <div className="space-y-1 text-right">
+            <p className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground">
+              Phone
+            </p>
+            <a
+              href="https://wa.me/212699229443"
+              className="font-body text-sm text-foreground hover:text-primary transition-colors duration-300"
+            >
+              +212 6 99 22 94 43
+            </a>
+          </div>
+        </div>
+
         <div className="contact-reveal flex items-center justify-center gap-6 mt-16">
           <a
             href="https://github.com/ashrafess00"
