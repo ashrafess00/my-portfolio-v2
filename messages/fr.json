@@ -1,0 +1,88 @@
+{
+  "Navigation": {
+    "home": "Accueil",
+    "about": "A propos",
+    "projects": "Projets",
+    "skills": "Competences",
+    "contact": "Contact"
+  },
+  "HomePage": {
+    "introSection": {
+      "backgroundWord": "Essaoudi",
+      "role": "Developpeur Full Stack",
+      "titleLine1": "Je cree",
+      "titleHighlight": "des experiences",
+      "titleLine3": "numeriques.",
+      "tagline": "Je conçois des applications web elegantes et performantes avec des technologies modernes, au croisement du design et de l'ingenierie.",
+      "scroll": "Defiler"
+    },
+    "aboutSection": {
+      "backgroundWord": "A propos",
+      "sectionLabel": "A propos",
+      "titleLine1": "Je ne fais pas qu'ecrire du code.",
+      "titleLine2": "Je resols des problemes.",
+      "paragraph1": "Achraf Essaoudi est un developpeur full stack passionne par la creation d'applications web elegantes et performantes. Il construit des produits a l'intersection du design et de l'ingenierie, ou chaque pixel et chaque milliseconde comptent.",
+      "paragraph2": "Quand je ne code pas, j'explore de nouvelles technologies, je contribue a l'open source et je dessine des concepts UI. Je crois que les excellents logiciels se construisent avec empathie, curiosite et souci du detail.",
+      "stats": {
+        "yearsOfExperience": "Annees d'experience"
+      }
+    },
+    "projectsSection": {
+      "backgroundWord": "Experiences marquantes",
+      "sectionLabel": "Selection",
+      "titleLine1": "Des projets qui",
+      "titleLine2": "parlent d'eux-memes.",
+      "projects": {
+        "ederest": {
+          "title": "Plateforme EdTech",
+          "desc": "Mon premier stage de 6 mois chez Ederest : j'ai travaille sur les tableaux de bord utilisateur et admin depuis zero, ainsi que sur le backend de la plateforme."
+        },
+        "golden-ambassador": {
+          "title": "Golden Ambassador",
+          "desc": "Plateforme exclusive de parrainage construite avec Laravel et React."
+        },
+        "natinx": {
+          "title": "Suivi alimentaire",
+          "desc": "Natinx est une plateforme SaaS qui trace l'alimentaire de la cooperative au client, avec un QR code final recapitulant toutes les etapes."
+        },
+        "carey": {
+          "title": "Carey Car Rental",
+          "desc": "Plateforme de location de voitures : correction de bugs et ajout de fonctionnalites manquantes."
+        }
+      }
+    },
+    "contactSection": {
+      "backgroundWord": "Travaillons ensemble",
+      "titleLine1": "Construisons",
+      "titleLine2": "quelque chose de grand.",
+      "description": "Vous avez un projet en tete ? Envoyez-moi un message et realisons-le ensemble.",
+      "toast": {
+        "success": "Message envoye ! Je vous repondrai tres bientot.",
+        "error": "Une erreur est survenue. Veuillez reessayer."
+      },
+      "success": {
+        "title": "Message envoye",
+        "message": "Merci pour votre message. Je vous repondrai des que possible.",
+        "sendAnother": "Envoyer un autre message"
+      },
+      "form": {
+        "name": "Nom",
+        "namePlaceholder": "Votre nom",
+        "email": "Email",
+        "emailPlaceholder": "you@email.com",
+        "message": "Message",
+        "messagePlaceholder": "Parlez-moi de votre projet...",
+        "send": "Envoyer le message",
+        "sending": "Envoi..."
+      },
+      "contactInfo": {
+        "email": "Email",
+        "phone": "Telephone"
+      },
+      "footer": {
+        "copy": "© 2025 — Concu et developpe avec intention",
+        "role": "Developpeur Full Stack"
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,7 @@ const IntroSection = () => {
   const lineRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
   const scrollHintRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("HomePage.introSection");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -76,7 +78,7 @@ const IntroSection = () => {
     >
       {/* Background number */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[15vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        Essaoudi
+        {t("backgroundWord")}
       </div>
 
       <div className="relative z-10 max-w-5xl">
@@ -85,24 +87,23 @@ const IntroSection = () => {
           ref={roleRef}
           className="font-body text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-4"
         >
-          Full Stack Developer
+          {t("role")}
         </p>
         <h1
           ref={nameRef}
           className="font-display text-[12vw] md:text-[8vw] lg:text-[6vw] font-bold leading-[0.9] tracking-tight mb-6"
         >
-          I build
+          {t("titleLine1")}
           <br />
-          <span className="text-gradient">digital</span>
+          <span className="text-gradient">{t("titleHighlight")}</span>
           <br />
-          experiences.
+          {t("titleLine3")}
         </h1>
         <p
           ref={taglineRef}
           className="text-dim font-body text-base md:text-lg max-w-md leading-relaxed"
         >
-          Crafting performant, elegant web applications with modern
-          technologies. Based in the intersection of design and engineering.
+          {t("tagline")}
         </p>
       </div>
 
@@ -111,7 +112,7 @@ const IntroSection = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-dim text-xs tracking-[0.2em] uppercase font-body">
-          Scroll
+          {t("scroll")}
         </span>
         <div className="w-px h-12 bg-muted-foreground/30 relative overflow-hidden">
           <div className="w-full h-1/3 bg-primary animate-[slideDown_1.5s_ease-in-out_infinite]" />

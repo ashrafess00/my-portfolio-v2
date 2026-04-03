@@ -4,11 +4,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations("HomePage.contactSection");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -50,9 +52,9 @@ const ContactSection = () => {
       setName("");
       setEmail("");
       setMessage("");
-      toast.success("Message sent! I'll get back to you soon.");
+      toast.success(t("toast.success"));
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("toast.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -64,21 +66,20 @@ const ContactSection = () => {
       className="relative py-32 md:py-48 section-padding"
     >
       <div className="absolute top-0 left-6 md:left-24 text-[12vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        Let's Work Together
+        {t("backgroundWord")}
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
         <div className="contact-reveal line-accent mb-8 mx-auto" />
 
         <h2 className="contact-reveal font-display text-[10vw] md:text-[6vw] font-bold leading-[0.9] text-center mb-4">
-          Let`&apos;s build
+          {t("titleLine1")}
           <br />
-          <span className="text-gradient">something great.</span>
+          <span className="text-gradient">{t("titleLine2")}</span>
         </h2>
 
         <p className="contact-reveal text-dim font-body text-base md:text-lg text-center max-w-md mx-auto mb-12 leading-relaxed">
-          Got a project in mind? Drop me a message and let`&apos;s make it
-          happen.
+          {t("description")}
         </p>
 
         {sent ? (
@@ -87,18 +88,17 @@ const ContactSection = () => {
               <Send className="w-7 h-7 text-primary" />
             </div>
             <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
-              Message sent
+              {t("success.title")}
             </h3>
             <p className="text-dim font-body text-sm md:text-base mb-8 max-w-sm mx-auto">
-              Thanks for reaching out. I`&apos;ll get back to you as soon as I
-              can.
+              {t("success.message")}
             </p>
             <button
               type="button"
               onClick={() => setSent(false)}
               className="font-display text-sm tracking-[0.2em] uppercase px-6 py-3 border border-border text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
             >
-              Send another message
+              {t("success.sendAnother")}
             </button>
           </div>
         ) : (
@@ -112,7 +112,7 @@ const ContactSection = () => {
                   htmlFor="name"
                   className="block font-display text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2"
                 >
-                  Name
+                  {t("form.name")}
                 </label>
                 <input
                   id="name"
@@ -122,7 +122,7 @@ const ContactSection = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full bg-transparent border-b border-border focus:border-primary text-foreground font-body text-sm py-3 px-1 outline-none transition-colors duration-300 placeholder:text-muted-foreground/40"
-                  placeholder="Your name"
+                  placeholder={t("form.namePlaceholder")}
                 />
               </div>
               <div>
@@ -130,7 +130,7 @@ const ContactSection = () => {
                   htmlFor="email"
                   className="block font-display text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2"
                 >
-                  Email
+                  {t("form.email")}
                 </label>
                 <input
                   id="email"
@@ -140,7 +140,7 @@ const ContactSection = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-transparent border-b border-border focus:border-primary text-foreground font-body text-sm py-3 px-1 outline-none transition-colors duration-300 placeholder:text-muted-foreground/40"
-                  placeholder="you@email.com"
+                  placeholder={t("form.emailPlaceholder")}
                 />
               </div>
             </div>
@@ -150,7 +150,7 @@ const ContactSection = () => {
                 htmlFor="message"
                 className="block font-display text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2"
               >
-                Message
+                {t("form.message")}
               </label>
               <textarea
                 id="message"
@@ -160,7 +160,7 @@ const ContactSection = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full bg-transparent border-b border-border focus:border-primary text-foreground font-body text-sm py-3 px-1 outline-none transition-colors duration-300 resize-none placeholder:text-muted-foreground/40"
-                placeholder="Tell me about your project..."
+                placeholder={t("form.messagePlaceholder")}
               />
             </div>
 
@@ -169,7 +169,7 @@ const ContactSection = () => {
               disabled={isSubmitting}
               className="group font-display text-sm tracking-[0.2em] uppercase px-8 py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center gap-3 mx-auto disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Sending..." : "Send message"}
+              {isSubmitting ? t("form.sending") : t("form.send")}
               <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </form>
@@ -178,7 +178,7 @@ const ContactSection = () => {
         <div className="contact-reveal grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto mt-16">
           <div className="space-y-1">
             <p className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              Email
+              {t("contactInfo.email")}
             </p>
             <a
               href="mailto:contact@achrafessaoudi.com"
@@ -189,11 +189,12 @@ const ContactSection = () => {
           </div>
           <div className="space-y-1 text-right">
             <p className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              Phone
+              {t("contactInfo.phone")}
             </p>
             <a
+              dir="ltr"
               href="https://wa.me/212699229443"
-              className="font-body text-sm text-foreground hover:text-primary transition-colors duration-300"
+              className="font-body  text-sm text-foreground hover:text-primary transition-colors duration-300"
             >
               +212 6 99 22 94 43
             </a>
@@ -223,11 +224,9 @@ const ContactSection = () => {
 
       {/* Footer */}
       <div className="relative z-10 mt-32 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-dim text-xs font-body">
-          © 2025 — Designed & Developed with intention
-        </p>
+        <p className="text-dim text-xs font-body">{t("footer.copy")}</p>
         <p className="text-dim text-xs font-body tracking-[0.2em] uppercase">
-          Full Stack Developer
+          {t("footer.role")}
         </p>
       </div>
     </section>

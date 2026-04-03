@@ -6,7 +6,99 @@
     "skills": "Skills",
     "contact": "Contact"
   },
+
   "HomePage": {
+    "introSection": {
+      "backgroundWord": "Essaoudi",
+      "role": "Full Stack Developer",
+      "titleLine1": "I build",
+      "titleHighlight": "digital",
+      "titleLine3": "experiences.",
+      "tagline": "Crafting performant, elegant web applications with modern technologies. Based in the intersection of design and engineering.",
+      "scroll": "Scroll"
+    },
+    "aboutSection": {
+      "backgroundWord": "About Me",
+      "sectionLabel": "About",
+      "titleLine1": "I don't just write code.",
+      "titleLine2": "I solve problems.",
+      "paragraph1": "Achraf Essaoudi is a full stack developer with a passion for creating elegant, performant web applications. He specializes in building products that sit at the intersection of design and engineering — where every pixel matters and every millisecond counts.",
+      "paragraph2": "When I'm not coding, you'll find me exploring new technologies, contributing to open source, or sketching UI concepts. I believe great software is built with empathy, curiosity, and relentless attention to detail.",
+      "stats": {
+        "yearsOfExperience": "Years of Experience"
+      }
+    },
+    "projectsSection": {
+      "backgroundWord": "Stunning Experiences",
+      "sectionLabel": "Selected Work",
+      "titleLine1": "Projects that",
+      "titleLine2": "speak for themselves.",
+      "projects": {
+        "ederest": {
+          "title": "Education Tech Platform",
+          "desc": "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform."
+        },
+        "golden-ambassador": {
+          "title": "Golden Ambassador",
+          "desc": "Am exclusive platform for referral system built with Laravel and react"
+        },
+        "natinx": {
+          "title": "Food Tracker Platform",
+          "desc": "Natinx is a SaaS platform that tracks food from cooperative until the custom, and a QR code is generated at the end that shows all steps food went through"
+        },
+        "carey": {
+          "title": "Carey Car Rental Platform",
+          "desc": "Carey Car Rental platform allows user to rent cars, and manage cars, contributed to fix bugs, and add some missing features in it."
+        }
+      }
+    },
+    "contactSection": {
+      "backgroundWord": "Let's Work Together",
+      "titleLine1": "Let's build",
+      "titleLine2": "something great.",
+      "description": "Got a project in mind? Drop me a message and let's make it happen.",
+      "toast": {
+        "success": "Message sent! I'll get back to you soon.",
+        "error": "Something went wrong. Please try again."
+      },
+      "success": {
+        "title": "Message sent",
+        "message": "Thanks for reaching out. I'll get back to you as soon as I can.",
+        "sendAnother": "Send another message"
+      },
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "you@email.com",
+        "message": "Message",
+        "messagePlaceholder": "Tell me about your project...",
+        "send": "Send message",
+        "sending": "Sending..."
+      },
+      "contactInfo": {
+        "email": "Email",
+        "phone": "Phone"
+      },
+      "footer": {
+        "copy": "© 2025 — Designed & Developed with intention",
+        "role": "Full Stack Developer"
+      }
+    }
+  },
+
+  "homePage": {
+
+    "introSection": {
+      "available": "Available for new opportunities",
+      "description": "Home page",
+      "title": "Hi, I'm <name>Achraf Essaoudi</name>",
+      "subtitle": "A <subtitle>Full-Stack Software Engineer</subtitle>",
+      "viewMyWork": "View My Work",
+      "getInTouch": "Get In Touch"
+    },
+
+
     "heroSection": {
       "available": "Available for new opportunities",
       "description": "Home page",

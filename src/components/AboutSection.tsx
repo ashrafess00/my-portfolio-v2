@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations("HomePage.aboutSection");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -34,9 +36,9 @@ const AboutSection = () => {
       if (counter) {
         gsap.fromTo(
           { val: 0 },
-          { val: 5 },
+          { val: 3 },
           {
-            val: 5,
+            val: 3,
             duration: 2,
             ease: "power2.out",
             scrollTrigger: {
@@ -57,7 +59,11 @@ const AboutSection = () => {
   }, []);
 
   const stats = [
-    { number: "3+", label: "Years of Experience", className: "year-counter" },
+    {
+      number: "3+",
+      label: t("stats.yearsOfExperience"),
+      className: "year-counter",
+    },
     // { number: "30+", label: "Projects Delivered" },
     // { number: "15+", label: "Happy Clients" },
   ];
@@ -68,7 +74,7 @@ const AboutSection = () => {
       className="relative py-32 md:py-48 section-padding"
     >
       <div className="absolute top-0 right-12 md:right-24 text-[15vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        About Me
+        {t("backgroundWord")}
       </div>
 
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
@@ -76,30 +82,23 @@ const AboutSection = () => {
         <div className="md:col-span-3 about-reveal">
           <div className="line-accent mb-4" />
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-body">
-            About
+            {t("sectionLabel")}
           </p>
         </div>
 
         {/* Main content — offset */}
         <div className="md:col-span-7 md:col-start-5 space-y-8">
           <h2 className="about-reveal font-display text-3xl md:text-5xl font-bold leading-tight">
-            I don`&apos;t just write code.
+            {t("titleLine1")}
             <br />
-            <span className="text-dim">I solve problems.</span>
+            <span className="text-dim">{t("titleLine2")}</span>
           </h2>
 
           <p className="about-reveal text-dim font-body text-base md:text-lg leading-relaxed max-w-lg">
-            Achraf Essaoudi is a full stack developer with a passion for
-            creating elegant, performant web applications. He specializes in
-            building products that sit at the intersection of design and
-            engineering — where every pixel matters and every millisecond
-            counts.
+            {t("paragraph1")}
           </p>
           <p className="about-reveal text-dim font-body text-base md:text-lg leading-relaxed max-w-lg">
-            When I&apos;m not coding, you&apos;ll find me exploring new
-            technologies, contributing to open source, or sketching UI concepts.
-            I believe great software is built with empathy, curiosity, and
-            relentless attention to detail.
+            {t("paragraph2")}
           </p>
 
           {/* Stats — intentionally asymmetric */}

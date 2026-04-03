@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,6 +52,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations("HomePage.projectsSection");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -84,20 +86,18 @@ const ProjectsSection = () => {
       className="relative py-32 md:py-48 section-padding"
     >
       <div className="absolute top-0 left-6 md:left-24 text-[12vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        {/* 03
-         */}
-        Stunning Experiences
+        {t("backgroundWord")}
       </div>
 
       <div className="relative z-10 mb-16 md:mb-24">
         <div className="line-accent mb-4" />
         <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-body mb-4">
-          Selected Work
+          {t("sectionLabel")}
         </p>
         <h2 className="font-display text-3xl md:text-5xl font-bold">
-          Projects that
+          {t("titleLine1")}
           <br />
-          <span className="text-gradient">speak for themselves.</span>
+          <span className="text-gradient">{t("titleLine2")}</span>
         </h2>
       </div>
 
@@ -121,7 +121,7 @@ const ProjectsSection = () => {
                 className={`md:col-span-5 ${i % 2 !== 0 ? "md:col-start-3" : ""}`}
               >
                 <h3 className="font-display text-2xl md:text-4xl font-bold leading-tight group-hover:text-primary transition-colors duration-300">
-                  {project.title}
+                  {t(`projects.${project.id}.title`)}
                 </h3>
                 <span className="text-dim text-sm font-body mt-2 block">
                   {project.year}
@@ -131,7 +131,7 @@ const ProjectsSection = () => {
               {/* Description + tags */}
               <div className="md:col-span-4 md:col-start-8">
                 <p className="text-dim font-body text-sm md:text-base leading-relaxed mb-4">
-                  {project.desc}
+                  {t(`projects.${project.id}.desc`)}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, j) => (

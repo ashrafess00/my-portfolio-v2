@@ -7,7 +7,6 @@ export default async function middleware(req: Request) {
 
   if (!lang) {
     const acceptLang = req.headers.get("accept-language") || "";
-    console.log(acceptLang);
     const userLang = acceptLang.split(",")[0].split("-")[0];
     const locale = ["en", "es", "fr", "de", "ar"].includes(userLang)
       ? userLang

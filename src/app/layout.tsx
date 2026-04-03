@@ -32,7 +32,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
+  let locale = await getLocale();
+  console.log("locale", locale);
+
+  if (locale !== "en" && locale !== "ar" && locale !== "fr") {
+    locale = "en";
+  }
+
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
