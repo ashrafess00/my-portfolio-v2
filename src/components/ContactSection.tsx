@@ -63,8 +63,8 @@ const ContactSection = () => {
       ref={sectionRef}
       className="relative py-32 md:py-48 section-padding"
     >
-      <div className="absolute top-0 left-6 md:left-24 text-[20vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        05
+      <div className="absolute top-0 left-6 md:left-24 text-[12vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
+        Let's Work Together
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">

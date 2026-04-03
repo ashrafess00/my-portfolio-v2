@@ -75,8 +75,8 @@ const IntroSection = () => {
       className="relative min-h-screen flex flex-col justify-end section-padding pb-16 md:pb-24"
     >
       {/* Background number */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[20vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        01
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[15vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
+        Essaoudi
       </div>
 
       <div className="relative z-10 max-w-5xl">

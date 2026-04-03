@@ -67,8 +67,8 @@ const AboutSection = () => {
       ref={sectionRef}
       className="relative py-32 md:py-48 section-padding"
     >
-      <div className="absolute top-0 right-12 md:right-24 text-[20vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        02
+      <div className="absolute top-0 right-12 md:right-24 text-[15vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
+        About Me
       </div>
 
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
@@ -89,16 +89,17 @@ const AboutSection = () => {
           </h2>
 
           <p className="about-reveal text-dim font-body text-base md:text-lg leading-relaxed max-w-lg">
-            With a deep understanding of both frontend and backend
-            architectures, I build applications that are not only visually
-            compelling but technically sound. From pixel-perfect interfaces to
-            robust APIs, I handle the full spectrum.
+            Achraf Essaoudi is a full stack developer with a passion for
+            creating elegant, performant web applications. He specializes in
+            building products that sit at the intersection of design and
+            engineering — where every pixel matters and every millisecond
+            counts.
           </p>
-
           <p className="about-reveal text-dim font-body text-base md:text-lg leading-relaxed max-w-lg">
-            My toolkit includes React, Next.js, TypeScript on the frontend, and
-            Laravel, Node.js, PostgreSQL on the backend. I thrive in startup
-            environments where speed and quality must coexist.
+            When I&apos;m not coding, you&apos;ll find me exploring new
+            technologies, contributing to open source, or sketching UI concepts.
+            I believe great software is built with empathy, curiosity, and
+            relentless attention to detail.
           </p>
 
           {/* Stats — intentionally asymmetric */}

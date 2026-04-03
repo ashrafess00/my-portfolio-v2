@@ -34,12 +34,12 @@ const About = () => (
             sit at the intersection of design and engineering — where every
             pixel matters and every millisecond counts.
           </p>
-          <p className="text-muted-foreground font-body leading-relaxed mb-10">
+          {/* <p className="text-muted-foreground font-body leading-relaxed mb-10">
             When I&apos;m not coding, you&apos;ll find me exploring new
             technologies, contributing to open source, or sketching UI concepts.
             I believe great software is built with empathy, curiosity, and
             relentless attention to detail.
-          </p>
+          </p> */}
 
           {/* Skills */}
           {/* <div className="space-y-5">

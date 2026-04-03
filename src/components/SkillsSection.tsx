@@ -92,10 +92,10 @@ const SkillsSection = () => {
 
       <div className="section-padding">
         <div
-          className="absolute right-6 md:right-24 text-[20vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none"
+          className="absolute right-6 md:right-24 text-[10vw] text-right font-display font-bold text-muted/30 select-none pointer-events-none leading-none"
           style={{ top: "30%" }}
         >
-          04
+          Modern Technologies
         </div>
 
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12">
