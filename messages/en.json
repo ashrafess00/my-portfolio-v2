@@ -38,6 +38,10 @@
           "title": "Education Tech Platform",
           "desc": "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform."
         },
+        "news-publisher-agent": {
+          "title": "News Publisher Agent",
+          "desc": "An autonomous LangGraph workflow that turns trending developer news into Instagram posts, routes them through a human approval step in Telegram, and publishes approved content to Instagram."
+        },
         "golden-ambassador": {
           "title": "Golden Ambassador",
           "desc": "Am exclusive platform for referral system built with Laravel and react"
@@ -88,7 +92,6 @@
   },
 
   "homePage": {
-
     "introSection": {
       "available": "Available for new opportunities",
       "description": "Home page",
@@ -97,7 +100,6 @@
       "viewMyWork": "View My Work",
       "getInTouch": "Get In Touch"
     },
-
 
     "heroSection": {
       "available": "Available for new opportunities",

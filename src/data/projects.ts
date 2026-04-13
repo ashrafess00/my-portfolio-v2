@@ -1,7 +1,6 @@
 export const projects = [
   {
     id: "ederest",
-    index: "01",
     year: "2024",
     title: "Education Tech Platform",
     desc: "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform.",
@@ -16,10 +15,9 @@ export const projects = [
   },
   {
     id: "golden-ambassador",
-    index: "02",
     year: "2026",
     title: "Golden Ambassador",
-    desc: "Am exclusive platform for referral system built with Laravel and react",
+    desc: "An exclusive platform for referral system built with Laravel and react",
     tags: ["Laravel", "React", "MySql", "Hostinger", "TypScript"],
     img: "/projects/ga.png",
     size: "small",
@@ -27,11 +25,24 @@ export const projects = [
     websiteUrl: null,
     githubUrl: null,
     fullDesc:
-      "Am exclusive platform for referral system built with Laravel and react",
+      "An exclusive platform for referral system built with Laravel and react",
+  },
+  {
+    id: "news-publisher-agent",
+    year: "2026",
+    title: "News Publisher Agent",
+    desc: "An autonomous LangGraph workflow that turns trending developer news into Instagram posts, routes them through a human approval step in Telegram, and publishes approved content to Instagram.",
+    tags: ["Python", "Langgraph", "AI"],
+    img: "/projects/news-publisher.png",
+    size: "small",
+    uri: "/projects/news-publisher-agent",
+    websiteUrl: null,
+    githubUrl: "https://github.com/ashrafess00/news_publisher_agent",
+    fullDesc:
+      "An autonomous LangGraph workflow that turns trending developer news into Instagram posts, routes them through a human approval step in Telegram, and publishes approved content to Instagram.",
   },
   {
     id: "natinx",
-    index: "03",
     year: "2025",
     title: "Food Tracker Platform",
     desc: "Natinx is a SaaS platform that tracks food from cooperative until the custom, and a QR code is generated at the end that shows all steps food went through",
@@ -46,7 +57,6 @@ export const projects = [
   },
   {
     id: "carey",
-    index: "04",
     year: "2025",
     title: "Carey Car Rental Platform",
     desc: "Carey Car Rental platform allows user to rent cars, and manage cars, contributed to fix bugs, and add some missing features in it.",

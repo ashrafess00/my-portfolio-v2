@@ -35,7 +35,7 @@ export default function Projects() {
     if (filter === "all") return true;
     return project.category === filter;
   });
-  console.log("filteredProjects", filteredProjects);
+  // console.log("filteredProjects", filteredProjects);
 
   const handleCategoryChange = (category: string) => {
     if (category === filter) return;

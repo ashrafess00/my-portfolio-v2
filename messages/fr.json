@@ -37,6 +37,10 @@
           "title": "Plateforme EdTech",
           "desc": "Mon premier stage de 6 mois chez Ederest : j'ai travaille sur les tableaux de bord utilisateur et admin depuis zero, ainsi que sur le backend de la plateforme."
         },
+        "news-publisher-agent": {
+          "title": "Agent de Publication de News",
+          "desc": "Un workflow autonome basé sur LangGraph qui transforme les actualités tendances des développeurs en publications Instagram, les fait passer par une étape d'approbation humaine via Telegram, puis publie le contenu approuvé sur Instagram."
+        },
         "golden-ambassador": {
           "title": "Golden Ambassador",
           "desc": "Plateforme exclusive de parrainage construite avec Laravel et React."

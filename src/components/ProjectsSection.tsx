@@ -112,7 +112,7 @@ const ProjectsSection = () => {
               {/* Index */}
               <div className="md:col-span-1">
                 <span className="font-display text-sm text-muted-foreground">
-                  {project.index}
+                  0{i + 1}
                 </span>
               </div>
 
