@@ -61,8 +61,6 @@ const LanguageSwitcher = () => {
 
   const currentLang = languages.find((l) => l.code === active)!;
 
-  console.log("currentLang", currentLang);
-
   const handleLanguageChange = (lang: "en" | "ar" | "dr" | "fr") => {
     setActive(lang);
     setCookie("lang", lang);
@@ -72,7 +70,7 @@ const LanguageSwitcher = () => {
     <div ref={menuRef} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="group flex items-center gap-2 px-3 py-1.5 border border-border rounded-sm bg-secondary/50 hover:border-primary/50 hover:bg-secondary transition-all duration-300"
+        className="group flex items-center gap-2 px-3.5 py-2 border border-border rounded-full bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300"
       >
         <span className="font-display text-xs tracking-[0.15em] uppercase text-foreground group-hover:text-primary transition-colors duration-300">
           {currentLang.label}
@@ -85,7 +83,7 @@ const LanguageSwitcher = () => {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 min-w-[140px] border border-border bg-card/95 backdrop-blur-md rounded-sm overflow-hidden z-50">
+        <div className="absolute right-0 top-full mt-2 min-w-[150px] border border-border bg-popover/95 backdrop-blur-md rounded-2xl overflow-hidden z-50 shadow-2xl shadow-black/50">
           <div ref={itemsRef}>
             {languages.map((lang) => (
               <button

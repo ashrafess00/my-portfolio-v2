@@ -1,12 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Send } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
 import { useTranslations } from "next-intl";
+import { SOCIALS } from "@/lib/site";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const ArrowRight = ({ className = "" }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 20 20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.25"
+    aria-hidden
+  >
+    <path d="M3 10h14M12 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -19,25 +32,24 @@ const ContactSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(".contact-reveal").forEach((el) => {
+      gsap.utils.toArray<HTMLElement>(".reveal-item").forEach((el) => {
         gsap.fromTo(
           el,
-          { y: 40, opacity: 0 },
+          { y: 24, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: 0.9,
             ease: "power3.out",
             scrollTrigger: {
               trigger: el,
-              start: "top 85%",
+              start: "top 90%",
               toggleActions: "play none none reverse",
             },
           },
         );
       });
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
@@ -45,7 +57,6 @@ const ContactSection = () => {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
     setIsSubmitting(true);
-
     try {
       await axios.post("/api/contact", { name, email, subject, message });
       setSent(true);
@@ -60,174 +71,162 @@ const ContactSection = () => {
     }
   };
 
+  const inputClass =
+    "w-full border-b border-hairline bg-transparent py-2 text-[14px] text-foreground placeholder:text-muted-foreground/50 focus:border-accent focus:outline-none transition-colors";
+  const labelClass =
+    "mb-2 block text-[11px] uppercase tracking-[0.22em] text-muted-foreground";
+
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-32 md:py-48 section-padding"
-    >
-      <div className="absolute top-0 left-6 md:left-24 text-[12vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        {t("backgroundWord")}
-      </div>
-
-      <div className="relative z-10 max-w-4xl mx-auto">
-        <div className="contact-reveal line-accent mb-8 mx-auto" />
-
-        <h2 className="contact-reveal font-display text-[10vw] md:text-[6vw] font-bold leading-[0.9] text-center mb-4">
-          {t("titleLine1")}
-          <br />
-          <span className="text-gradient">{t("titleLine2")}</span>
-        </h2>
-
-        <p className="contact-reveal text-dim font-body text-base md:text-lg text-center max-w-md mx-auto mb-12 leading-relaxed">
-          {t("description")}
-        </p>
-
-        {sent ? (
-          <div className="contact-reveal max-w-lg mx-auto text-center py-12 px-6 border border-primary/20 rounded-lg bg-primary/5">
-            <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
-              <Send className="w-7 h-7 text-primary" />
+    <section ref={sectionRef} className="relative border-b border-hairline">
+      <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left: pitch + info */}
+          <div className="reveal-item lg:col-span-5">
+            <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              <span className="font-serif italic text-accent">04</span>
+              <span className="h-px w-8 bg-rule" />
+              <span>{t("sectionLabel")}</span>
             </div>
-            <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
-              {t("success.title")}
-            </h3>
-            <p className="text-dim font-body text-sm md:text-base mb-8 max-w-sm mx-auto">
-              {t("success.message")}
+
+            <h2 className="mt-8 font-serif text-[38px] font-light leading-[1.03] tracking-[-0.02em] text-foreground text-balance sm:text-[52px]">
+              {t("titleLine1")}{" "}
+              <em className="italic text-accent-warm">{t("titleLine2")}</em>
+            </h2>
+            <p className="mt-6 max-w-md text-[14px] leading-relaxed text-muted-foreground">
+              {t("description")}
             </p>
-            <button
-              type="button"
-              onClick={() => setSent(false)}
-              className="font-display text-sm tracking-[0.2em] uppercase px-6 py-3 border border-border text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
-            >
-              {t("success.sendAnother")}
-            </button>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="contact-reveal max-w-lg mx-auto space-y-6"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block font-display text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2"
-                >
-                  {t("form.name")}
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  maxLength={100}
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-transparent border-b border-border focus:border-primary text-foreground font-body text-sm py-3 px-1 outline-none transition-colors duration-300 placeholder:text-muted-foreground/40"
-                  placeholder={t("form.namePlaceholder")}
-                />
+
+            <dl className="mt-12 space-y-6 border-t border-hairline pt-8 text-[13px]">
+              <div className="grid grid-cols-[110px_1fr] items-baseline gap-4">
+                <dt className={labelClass + " mb-0"}>{t("contactInfo.email")}</dt>
+                <dd>
+                  <a
+                    href={`mailto:${SOCIALS.email}`}
+                    className="border-b border-rule pb-1 text-foreground transition-colors hover:border-accent hover:text-accent"
+                  >
+                    {SOCIALS.email}
+                  </a>
+                </dd>
               </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block font-display text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2"
-                >
-                  {t("form.email")}
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  maxLength={255}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-transparent border-b border-border focus:border-primary text-foreground font-body text-sm py-3 px-1 outline-none transition-colors duration-300 placeholder:text-muted-foreground/40"
-                  placeholder={t("form.emailPlaceholder")}
-                />
+              <div className="grid grid-cols-[110px_1fr] items-baseline gap-4">
+                <dt className={labelClass + " mb-0"}>{t("contactInfo.phone")}</dt>
+                <dd dir="ltr" className="text-foreground">
+                  <a
+                    href={SOCIALS.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-b border-rule pb-1 transition-colors hover:border-accent hover:text-accent"
+                  >
+                    {SOCIALS.phone}
+                  </a>
+                </dd>
               </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="block font-display text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2"
-              >
-                {t("form.message")}
-              </label>
-              <textarea
-                id="message"
-                required
-                maxLength={1000}
-                rows={5}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full bg-transparent border-b border-border focus:border-primary text-foreground font-body text-sm py-3 px-1 outline-none transition-colors duration-300 resize-none placeholder:text-muted-foreground/40"
-                placeholder={t("form.messagePlaceholder")}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="group font-display text-sm tracking-[0.2em] uppercase px-8 py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center gap-3 mx-auto disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? t("form.sending") : t("form.send")}
-              <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </button>
-          </form>
-        )}
-
-        <div className="contact-reveal grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto mt-16">
-          <div className="space-y-1">
-            <p className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              {t("contactInfo.email")}
-            </p>
-            <a
-              href="mailto:contact@achrafessaoudi.com"
-              className="font-body text-sm text-foreground hover:text-primary transition-colors duration-300"
-            >
-              contact@achrafessaoudi.com
-            </a>
+              <div className="grid grid-cols-[110px_1fr] items-baseline gap-4">
+                <dt className={labelClass + " mb-0"}>Elsewhere</dt>
+                <dd className="flex flex-wrap gap-4 text-foreground">
+                  <a
+                    href={SOCIALS.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-b border-rule pb-0.5 transition-colors hover:border-accent hover:text-accent"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href={SOCIALS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-b border-rule pb-0.5 transition-colors hover:border-accent hover:text-accent"
+                  >
+                    LinkedIn
+                  </a>
+                </dd>
+              </div>
+            </dl>
           </div>
-          <div className="space-y-1 text-right">
-            <p className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              {t("contactInfo.phone")}
-            </p>
-            <a
-              dir="ltr"
-              href="https://wa.me/212699229443"
-              className="font-body  text-sm text-foreground hover:text-primary transition-colors duration-300"
-            >
-              +212 6 99 22 94 43
-            </a>
+
+          {/* Right: form */}
+          <div className="reveal-item lg:col-span-7">
+            {sent ? (
+              <div className="flex h-full min-h-[320px] flex-col items-start justify-center rounded-sm border border-hairline bg-surface/40 p-8 md:p-10">
+                <span className="font-serif text-[15px] italic text-accent">
+                  ✦
+                </span>
+                <h3 className="mt-4 font-serif text-[28px] font-light text-foreground">
+                  {t("success.title")}
+                </h3>
+                <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-muted-foreground">
+                  {t("success.message")}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSent(false)}
+                  className="mt-8 border-b border-rule pb-1 text-[12px] uppercase tracking-[0.18em] text-foreground transition-colors hover:border-accent hover:text-accent"
+                >
+                  {t("success.sendAnother")}
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div className="rounded-sm border border-hairline bg-surface/40 p-6 md:p-10">
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <label className="block">
+                      <span className={labelClass}>{t("form.name")}</span>
+                      <input
+                        type="text"
+                        required
+                        maxLength={100}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder={t("form.namePlaceholder")}
+                        className={inputClass}
+                      />
+                    </label>
+                    <label className="block">
+                      <span className={labelClass}>{t("form.email")}</span>
+                      <input
+                        type="email"
+                        required
+                        maxLength={255}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder={t("form.emailPlaceholder")}
+                        className={inputClass}
+                      />
+                    </label>
+                  </div>
+
+                  <div className="mt-6">
+                    <span className={labelClass}>{t("form.message")}</span>
+                    <textarea
+                      required
+                      maxLength={1000}
+                      rows={5}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder={t("form.messagePlaceholder")}
+                      className={`${inputClass} resize-none`}
+                    />
+                  </div>
+
+                  <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-hairline pt-6 sm:flex-row sm:items-center">
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                      {t("footer.role")}
+                    </p>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3.5 text-[13px] font-medium tracking-wide text-accent-foreground transition-all hover:bg-accent-warm disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {isSubmitting ? t("form.sending") : t("form.send")}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            )}
           </div>
         </div>
-
-        <div className="contact-reveal flex items-center justify-center gap-6 mt-16">
-          <a
-            href="https://github.com/ashrafess00"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
-          >
-            GitHub
-          </a>
-          <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
-          <a
-            href="https://www.linkedin.com/in/achrafessaoudi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="relative z-10 mt-32 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-dim text-xs font-body">{t("footer.copy")}</p>
-        <p className="text-dim text-xs font-body tracking-[0.2em] uppercase">
-          {t("footer.role")}
-        </p>
       </div>
     </section>
   );

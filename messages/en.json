@@ -11,21 +11,63 @@
     "introSection": {
       "backgroundWord": "Essaoudi",
       "role": "Full Stack Developer",
+      "available": "Available for new projects",
+      "greeting": "Hi, I'm Achraf",
       "titleLine1": "I build",
-      "titleHighlight": "digital",
-      "titleLine3": "experiences.",
-      "tagline": "Crafting performant, elegant web applications with modern technologies. Based in the intersection of design and engineering.",
-      "scroll": "Scroll"
+      "titleHighlight": "beautiful",
+      "titleLine3": "websites & web apps.",
+      "tagline": "Full stack developer crafting friendly, fast, and reliable websites — from hotels and restaurants to complex custom platforms.",
+      "viewMyWork": "View my work",
+      "getInTouch": "Get in touch",
+      "badgeTitle": "Full Stack Dev",
+      "badgeSubtitle": "Let's build together",
+      "scroll": "Scroll",
+      "eyebrow": "Full-stack developer",
+      "location": "Based in Morocco · Working worldwide",
+      "figCaption": "a landing in progress for a neighbourhood dental clinic.",
+      "meta": "N° 001 — Portfolio · MMXXVI",
+      "stats": {
+        "projectsK": "20+",
+        "projectsV": "Projects shipped",
+        "yearsK": "3 yrs",
+        "yearsV": "Full-stack craft",
+        "referralK": "100%",
+        "referralV": "Client-focused"
+      },
+      "clients": [
+        "Dentists & clinics",
+        "Boutique hotels",
+        "Restaurants & cafés",
+        "Kitchen & cabinet makers",
+        "Gyms & studios",
+        "Local shops",
+        "Custom platforms",
+        "Startups"
+      ]
     },
     "aboutSection": {
       "backgroundWord": "About Me",
       "sectionLabel": "About",
-      "titleLine1": "I don't just write code.",
-      "titleLine2": "I solve problems.",
-      "paragraph1": "Achraf Essaoudi is a full stack developer with a passion for creating elegant, performant web applications. He specializes in building products that sit at the intersection of design and engineering — where every pixel matters and every millisecond counts.",
-      "paragraph2": "When I'm not coding, you'll find me exploring new technologies, contributing to open source, or sketching UI concepts. I believe great software is built with empathy, curiosity, and relentless attention to detail.",
+      "titleLine1": "I turn ideas into",
+      "titleLine2": "delightful websites.",
+      "paragraph1": "I'm Achraf Essaoudi, a full stack developer who loves building elegant, performant web applications. I work across the whole stack — from pixel-perfect interfaces to solid, scalable backends.",
+      "paragraph2": "Whether you run a hotel, a restaurant, or need a complex custom platform, I'll help bring your vision to life with clean code and thoughtful design. Great software is built with empathy, curiosity, and care for detail.",
       "stats": {
         "yearsOfExperience": "Years of Experience"
+      },
+      "services": {
+        "hotels": {
+          "title": "Hotels",
+          "desc": "Booking-ready sites that showcase your rooms and story."
+        },
+        "restaurants": {
+          "title": "Restaurants",
+          "desc": "Menus, reservations, and mouth-watering visuals."
+        },
+        "custom": {
+          "title": "Custom Platforms",
+          "desc": "Dashboards, SaaS, and complex tailor-made apps."
+        }
       }
     },
     "projectsSection": {
@@ -33,7 +75,21 @@
       "sectionLabel": "Selected Work",
       "titleLine1": "Projects that",
       "titleLine2": "speak for themselves.",
+      "viewProject": "View project",
+      "viewOnGithub": "View on GitHub",
       "projects": {
+        "myjibi": {
+          "title": "MyJibi",
+          "desc": "My personal finance web and mobile app to track your money, set savings goals, and stay on top of your budget."
+        },
+        "myvantour": {
+          "title": "My Van Tour",
+          "desc": "A touristic transport platform for a chauffeur service in Morocco, offering airport transfers, excursions, and desert circuits with a bilingual booking experience."
+        },
+        "iron-works": {
+          "title": "Iron Works Gym",
+          "desc": "A demo gym web application showcasing classes, memberships, and a modern fitness brand experience."
+        },
         "ederest": {
           "title": "Education Tech Platform",
           "desc": "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform."
@@ -56,8 +112,19 @@
         }
       }
     },
+    "skillsSection": {
+      "sectionLabel": "Skills",
+      "titleLine1": "The tools I use to",
+      "titleLine2": "build great things.",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "tools": "Tools & DevOps"
+      }
+    },
     "contactSection": {
       "backgroundWord": "Let's Work Together",
+      "sectionLabel": "Contact",
       "titleLine1": "Let's build",
       "titleLine2": "something great.",
       "description": "Got a project in mind? Drop me a message and let's make it happen.",

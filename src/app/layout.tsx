@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist_Mono, Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 // import Navigation from "@/components/Navigation";
 import { NextIntlClientProvider } from "next-intl";
@@ -8,23 +8,37 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import { PostHogProvider } from "@/providers/PostHogProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
+// Editorial serif display face — variable, with optical sizing + italics.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
+
 export const metadata: Metadata = {
-  title: "Portfolio | Developer & Designer",
+  title: "Achraf Essaoudi — Full Stack Developer & Web Builder",
   description:
-    "Professional portfolio showcasing my work in development and design",
-  keywords: ["portfolio", "developer", "designer", "web development", "UI/UX"],
+    "I design and build fast, friendly websites and web apps for real businesses — from booking-ready sites for hotels and restaurants to custom platforms. Let's build yours.",
+  keywords: ["portfolio", "full stack developer", "web development", "Next.js", "Laravel", "React", "Morocco"],
   authors: [{ name: "Achraf Essaoudi" }],
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#030f18",
 };
 
 export default async function RootLayout({
@@ -33,23 +47,32 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   let locale = await getLocale();
-  console.log("locale", locale);
 
   if (locale !== "en" && locale !== "ar" && locale !== "fr") {
     locale = "en";
   }
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      className="dark"
+      suppressHydrationWarning
+    >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          enableSystem={false}
+        >
           <PostHogProvider>
             <NextIntlClientProvider>
               {/* <Navigation /> */}
               <main className="min-h-screen relative">{children}</main>
-              <Toaster />
+              <Toaster theme="dark" position="bottom-right" richColors />
             </NextIntlClientProvider>
           </PostHogProvider>
         </ThemeProvider>

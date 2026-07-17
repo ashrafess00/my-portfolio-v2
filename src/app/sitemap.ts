@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/data/projects";
 
 const baseUrl = "https://achrafessaoudi.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes: MetadataRoute.Sitemap = [
+  return [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -18,13 +17,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
   ];
-
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.id}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  return [...routes, ...projectRoutes];
 }

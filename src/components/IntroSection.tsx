@@ -1,130 +1,118 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
+import HeroMockup from "@/components/HeroMockup";
 
-gsap.registerPlugin(ScrollTrigger);
+const ArrowRight = ({ className = "" }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 20 20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.25"
+    aria-hidden
+  >
+    <path
+      d="M3 10h14M12 5l5 5-5 5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const IntroSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const nameRef = useRef<HTMLHeadingElement>(null);
-  const roleRef = useRef<HTMLParagraphElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
-  const taglineRef = useRef<HTMLParagraphElement>(null);
-  const scrollHintRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("HomePage.introSection");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-      tl.fromTo(
-        lineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 1.2, transformOrigin: "left center" },
-      )
-        .fromTo(
-          nameRef.current,
-          { y: 120, opacity: 0, skewY: 8 },
-          { y: 0, opacity: 1, skewY: 0, duration: 1 },
-          "-=0.6",
-        )
-        .fromTo(
-          roleRef.current,
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-          "-=0.4",
-        )
-        .fromTo(
-          taglineRef.current,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-          "-=0.3",
-        )
-        .fromTo(
-          scrollHintRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.6 },
-          "-=0.2",
-        );
-
-      // Parallax on scroll
-      // Use `fromTo` with an explicit start value so the parallax tween doesn't
-      // re-render from the intro timeline's initial `y: 120` state.
-      gsap.fromTo(
-        nameRef.current,
-        { y: 0 },
-        {
-          y: -100,
-          ease: "none",
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
-        },
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const stats = [
+    // { k: t("stats.projectsK"), v: t("stats.projectsV") },
+    { k: t("stats.yearsK"), v: t("stats.yearsV") },
+    // { k: t("stats.referralK"), v: t("stats.referralV") },
+  ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen flex flex-col justify-end section-padding pb-16 md:pb-24"
-    >
-      {/* Background number */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 text-[15vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        {t("backgroundWord")}
-      </div>
-
-      <div className="relative z-10 max-w-5xl">
-        <div ref={lineRef} className="line-accent mb-8 origin-left" />
-        <p
-          ref={roleRef}
-          className="font-body text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-4"
-        >
-          {t("role")}
-        </p>
-        <h1
-          ref={nameRef}
-          className="font-display text-[12vw] md:text-[8vw] lg:text-[6vw] font-bold leading-[0.9] tracking-tight mb-6"
-        >
-          {t("titleLine1")}
-          <br />
-          <span className="text-gradient">{t("titleHighlight")}</span>
-          <br />
-          {t("titleLine3")}
-        </h1>
-        <p
-          ref={taglineRef}
-          className="text-dim font-body text-base md:text-lg max-w-md leading-relaxed"
-        >
-          {t("tagline")}
-        </p>
-      </div>
-
+    <section id="top" className="relative overflow-hidden">
+      {/* soft warm wash top-right */}
       <div
-        ref={scrollHintRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-dim text-xs tracking-[0.2em] uppercase font-body">
-          {t("scroll")}
-        </span>
-        <div className="w-px h-12 bg-muted-foreground/30 relative overflow-hidden">
-          <div className="w-full h-1/3 bg-primary animate-[slideDown_1.5s_ease-in-out_infinite]" />
+        aria-hidden
+        className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full opacity-[0.15] blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(212,163,115,0.5), transparent 60%)",
+        }}
+      />
+
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-6 pb-24 pt-14 md:px-10 md:pt-16 lg:grid-cols-12 lg:gap-8 lg:pb-28 lg:pt-20">
+        {/* Left: copy */}
+        <div className="reveal lg:col-span-6 lg:pr-6">
+          {/* <div className="mb-9 flex flex-wrap items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            <span className="font-serif italic text-accent">{t("eyebrow")}</span>
+            <span className="h-px w-8 bg-rule" />
+            <span>{t("location")}</span>
+          </div> */}
+
+          <h1 className="font-serif text-[42px] font-light leading-[1.03] tracking-[-0.02em] text-foreground text-balance sm:text-[54px] lg:text-[66px]">
+            {t("titleLine1")}{" "}
+            <em className="italic text-accent-warm">{t("titleHighlight")}</em>{" "}
+            {t("titleLine3")}
+          </h1>
+
+          <p className="mt-8 max-w-[46ch] text-[15px] leading-relaxed text-muted-foreground text-pretty">
+            {t("tagline")}
+          </p>
+
+          <div className="mt-10 flex flex-wrap items-center gap-5">
+            <button
+              onClick={() => scrollTo("projects")}
+              className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3.5 text-[13px] font-medium tracking-wide text-accent-foreground transition-all hover:bg-accent-warm"
+            >
+              {t("viewMyWork")}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </button>
+            <button
+              onClick={() => scrollTo("contact")}
+              className="group inline-flex items-center gap-2 border-b border-rule pb-1 text-[13px] tracking-wide text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              {t("getInTouch")}
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </button>
+          </div>
+
+          <dl className="mt-16 grid max-w-md grid-cols-3 gap-6 border-t border-hairline pt-8 text-start">
+            {stats.map((s) => (
+              <div key={s.v}>
+                <dt className="font-serif text-2xl font-light text-foreground">
+                  {s.k}
+                </dt>
+                <dd className="mt-1 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {s.v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {/* Right: desk + monitor */}
+        <div
+          className="reveal relative lg:col-span-6"
+          style={{ animationDelay: "0.15s" }}
+        >
+          <HeroMockup />
         </div>
       </div>
 
-      <style>{`
-        @keyframes slideDown {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(400%); }
-        }
-      `}</style>
+      {/* Bottom hairline meta */}
+      {/* <div className="border-t border-hairline">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground md:px-10">
+          <span>{t("meta")}</span>
+          <button
+            onClick={() => scrollTo("about")}
+            className="hidden items-center gap-2 transition-colors hover:text-accent sm:inline-flex"
+          >
+            {t("scroll")} <span className="text-accent">↓</span>
+          </button>
+        </div>
+      </div> */}
     </section>
   );
 };

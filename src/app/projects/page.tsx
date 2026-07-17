@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 
 export interface TProjectTypes {
   title: string;
@@ -39,8 +40,6 @@ export default function Projects() {
 
   const handleCategoryChange = (category: string) => {
     if (category === filter) return;
-    console.log("category: ", category);
-
     setIsAnimating(true);
     setTimeout(() => {
       setFilter(category);
@@ -49,32 +48,41 @@ export default function Projects() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-950 dark:to-blue-950">
+    <div className="min-h-screen bg-background grain">
       <div className="flex flex-col md:flex-row h-auto md:h-screen">
         {/* Left Sidebar */}
-        <div className="w-full md:w-80 pt-20 bg-transparent border-r border-sidebar-border p-8 flex flex-col">
-          <div className="mb-12">
-            <h1 className="text-3xl font-bold text-sidebar-foreground mb-2">
+        <div className="w-full md:w-80 pt-20 bg-transparent border-b md:border-b-0 md:border-r border-hairline p-8 md:px-10 flex flex-col">
+          <Link
+            href="/"
+            className="group mb-10 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-accent"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
+            Home
+          </Link>
+          <div className="mb-8">
+            <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground mb-5">
+              <span className="font-serif italic text-accent">✦</span>
+              <span className="h-px w-8 bg-rule" />
+              <span>Archive</span>
+            </div>
+            <h1 className="font-serif text-4xl font-light leading-tight text-foreground mb-4">
               {t("title")}
             </h1>
-          </div>
-
-          <div className="mb-8">
-            <p className="text-sidebar-foreground/80 text-sm leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm leading-relaxed">
               {t("description")}
             </p>
           </div>
 
           {/* Category Navigation */}
-          <nav className="space-y-2 flex flex-row md:flex-col">
+          <nav className="space-y-1 flex flex-row flex-wrap md:flex-col md:mt-4">
             {filters.map((category, index) => (
               <button
                 key={category.id + index}
                 onClick={() => handleCategoryChange(category.id)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 text-sm font-medium ${
+                className={`text-left px-4 py-2.5 rounded-sm transition-all duration-200 text-[13px] tracking-wide ${
                   filter === category.id
-                    ? "bg-transparent md:bg-sidebar-accent text-blue-600 foreground border-0 md:border-l-2 border-primary"
-                    : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/50"
+                    ? "text-accent md:border-l-2 border-accent"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {category.label}
@@ -85,11 +93,14 @@ export default function Projects() {
 
         {/* Right Content Area */}
         <div className="flex-1 overflow-y-auto">
-          <div className="p-8">
-            <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-foreground mb-2">
-                {filter === "All" ? "All Projects" : filter}
+          <div className="p-8 md:p-10 pt-10 md:pt-20">
+            <div className="mb-8 flex items-baseline gap-3">
+              <h2 className="font-serif text-2xl font-light capitalize text-foreground">
+                {filters.find((f) => f.id === filter)?.label ?? filter}
               </h2>
+              <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                {filteredProjects.length} projects
+              </span>
             </div>
 
             {/* Projects Grid */}
@@ -101,7 +112,7 @@ export default function Projects() {
               {filteredProjects.map((project, index) => (
                 <Card
                   key={project.id}
-                  className="group overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-300 animate-slide-in"
+                  className="group overflow-hidden rounded-sm bg-card border-hairline hover:border-accent/50 transition-all duration-300 animate-slide-in"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="aspect-video overflow-hidden">
@@ -119,7 +130,7 @@ export default function Projects() {
                   </div>
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-semibold text-card-foreground group-hover:text-primary transition-colors">
+                      <h3 className="font-serif text-xl font-light text-card-foreground group-hover:text-accent transition-colors">
                         {project.title}
                       </h3>
                     </div>
@@ -144,7 +155,7 @@ export default function Projects() {
                       {project?.liveUrl && (
                         <a
                           href={project.liveUrl}
-                          className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
+                          className="inline-flex items-center text-sm text-accent hover:text-accent-warm transition-colors"
                         >
                           <ExternalLink className="w-4 h-4 mr-1" />
                           Live Demo

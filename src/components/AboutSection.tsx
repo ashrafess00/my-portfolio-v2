@@ -2,8 +2,18 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { PROFILE_IMAGE } from "@/lib/site";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SectionLabel = ({ index, title }: { index: string; title: string }) => (
+  <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+    <span className="font-serif italic text-accent">{index}</span>
+    <span className="h-px w-8 bg-rule" />
+    <span>{title}</span>
+  </div>
+);
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -11,108 +21,108 @@ const AboutSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Stagger reveal for text blocks
-      gsap.utils.toArray<HTMLElement>(".about-reveal").forEach((el) => {
+      gsap.utils.toArray<HTMLElement>(".reveal-item").forEach((el, i) => {
         gsap.fromTo(
           el,
-          { y: 60, opacity: 0 },
+          { y: 22, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.9,
+            delay: (i % 3) * 0.05,
             ease: "power3.out",
             scrollTrigger: {
               trigger: el,
-              start: "top 85%",
-              end: "top 50%",
+              start: "top 90%",
               toggleActions: "play none none reverse",
             },
           },
         );
       });
-
-      // Counter animation for years
-      const counter = sectionRef.current?.querySelector(".year-counter");
-      if (counter) {
-        gsap.fromTo(
-          { val: 0 },
-          { val: 3 },
-          {
-            val: 3,
-            duration: 2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: counter,
-              start: "top 80%",
-            },
-            onUpdate: function () {
-              if (counter)
-                counter.textContent =
-                  Math.round(this.targets()[0].val).toString() + "+";
-            },
-          },
-        );
-      }
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
-  const stats = [
-    {
-      number: "3+",
-      label: t("stats.yearsOfExperience"),
-      className: "year-counter",
-    },
-    // { number: "30+", label: "Projects Delivered" },
-    // { number: "15+", label: "Happy Clients" },
-  ];
+  const services = ["hotels", "restaurants", "custom"] as const;
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-32 md:py-48 section-padding"
-    >
-      <div className="absolute top-0 right-12 md:right-24 text-[15vw] font-display font-bold text-muted/30 select-none pointer-events-none leading-none">
-        {t("backgroundWord")}
-      </div>
-
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-        {/* Left label */}
-        <div className="md:col-span-3 about-reveal">
-          <div className="line-accent mb-4" />
-          <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground font-body">
-            {t("sectionLabel")}
-          </p>
+    <section ref={sectionRef} className="relative border-b border-hairline">
+      <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32">
+        <div className="reveal-item">
+          <SectionLabel index="01" title={t("sectionLabel")} />
         </div>
 
-        {/* Main content — offset */}
-        <div className="md:col-span-7 md:col-start-5 space-y-8">
-          <h2 className="about-reveal font-display text-3xl md:text-5xl font-bold leading-tight">
-            {t("titleLine1")}
-            <br />
-            <span className="text-dim">{t("titleLine2")}</span>
-          </h2>
+        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Statement + copy */}
+          <div className="lg:col-span-7">
+            <p className="reveal-item font-serif text-[32px] font-light leading-[1.15] tracking-[-0.015em] text-foreground text-balance sm:text-[42px] lg:text-[50px]">
+              {t("titleLine1")}{" "}
+              <em className="italic text-accent-warm">{t("titleLine2")}</em>
+            </p>
 
-          <p className="about-reveal text-dim font-body text-base md:text-lg leading-relaxed max-w-lg">
-            {t("paragraph1")}
-          </p>
-          <p className="about-reveal text-dim font-body text-base md:text-lg leading-relaxed max-w-lg">
-            {t("paragraph2")}
-          </p>
+            <div className="mt-10 grid grid-cols-1 gap-8 border-t border-hairline pt-8 sm:grid-cols-2 md:gap-12">
+              <p className="reveal-item text-[14px] leading-relaxed text-muted-foreground">
+                {t("paragraph1")}
+              </p>
+              <p className="reveal-item text-[14px] leading-relaxed text-muted-foreground">
+                {t("paragraph2")}
+              </p>
+            </div>
 
-          {/* Stats — intentionally asymmetric */}
-          <div className="about-reveal flex flex-wrap gap-12 pt-8">
-            {stats.map((stat, i) => (
-              <div key={i} className={i === 1 ? "mt-6" : ""}>
-                <span
-                  className={`font-display text-4xl md:text-5xl font-bold text-gradient ${stat.className || ""}`}
-                >
-                  {stat.number}
-                </span>
-                <p className="text-dim text-sm mt-1 font-body">{stat.label}</p>
+            <div className="mt-12 grid grid-cols-1 gap-6 border-t border-hairline pt-8 sm:grid-cols-3 md:gap-10">
+              {services.map((key) => (
+                <div key={key} className="reveal-item">
+                  <div className="font-serif text-[17px] italic text-accent">
+                    {t(`services.${key}.title`)}.
+                  </div>
+                  <div className="mt-2 text-[13px] leading-snug text-muted-foreground">
+                    {t(`services.${key}.desc`)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Portrait */}
+          <div className="reveal-item lg:col-span-5">
+            <figure className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-surface">
+                {PROFILE_IMAGE ? (
+                  <>
+                    <Image
+                      src={PROFILE_IMAGE}
+                      alt="Achraf Essaoudi"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover"
+                    />
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(3,15,24,0) 40%, rgba(3,15,24,0.45) 100%)",
+                      }}
+                    />
+                  </>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center border border-hairline">
+                    <span className="font-serif text-[15px] italic text-muted-foreground">
+                      Photo coming soon
+                    </span>
+                  </div>
+                )}
               </div>
-            ))}
+              <figcaption className="mt-4 flex items-start gap-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                <span className="mt-2 h-px w-6 bg-rule" />
+                <span className="normal-case">
+                  <span className="font-serif italic text-foreground">
+                    Achraf Essaoudi
+                  </span>{" "}
+                  — Martil, Morocco.
+                </span>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

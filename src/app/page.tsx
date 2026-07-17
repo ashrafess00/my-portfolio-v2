@@ -12,12 +12,14 @@ import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative noise-bg">
+    <div className="relative">
       <Navbar />
       <IntroSection />
+      {/* <ClientsMarquee /> */}
       <div id="about">
         <AboutSection />
       </div>
@@ -30,6 +32,7 @@ export default function Home() {
       <div id="contact">
         <ContactSection />
       </div>
+      <Footer />
     </div>
   );
 }

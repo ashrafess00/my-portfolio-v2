@@ -1,5 +1,47 @@
 export const projects = [
   {
+    id: "myjibi",
+    year: "2026",
+    title: "MyJibi",
+    desc: "My personal finance web and mobile app to track your money, set savings goals, and stay on top of your budget.",
+    tags: ["Laravel", "TypeScript", "React Native"],
+    img: "/projects/myjibi.png",
+    size: "large",
+    uri: "/projects/myjibi",
+    websiteUrl: "https://myjibi.com",
+    githubUrl: null,
+    fullDesc:
+      "MyJibi is a personal finance platform available on web and mobile, built to help people track their money, set savings goals, and stay on top of their spending. It combines a clean, friendly interface with the tools needed to build better money habits.",
+  },
+  {
+    id: "myvantour",
+    year: "2025",
+    title: "My Van Tour",
+    desc: "A touristic transport platform for a chauffeur service in Morocco, offering airport transfers, excursions, and desert circuits with a bilingual booking experience.",
+    tags: ["Next.js", "Tourism", "Multilingual"],
+    img: "/projects/myvantour.png",
+    size: "large",
+    uri: "/projects/myvantour",
+    websiteUrl: "https://www.myvantour.com",
+    githubUrl: null,
+    fullDesc:
+      "My Van Tour is a private chauffeur and tourism transport service based in Essaouira, Morocco. The site presents their fleet — from Mercedes Vito vans to Sprinter minibuses — alongside airport transfers, daily excursions, and multi-day desert circuits, with a bilingual (French/English) experience and direct WhatsApp booking.",
+  },
+  {
+    id: "iron-works",
+    year: "2026",
+    title: "Iron Works Gym",
+    desc: "A demo gym web application showcasing classes, memberships, and a modern fitness brand experience.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    img: "/projects/iron_works.png",
+    size: "small",
+    uri: "/projects/iron-works",
+    websiteUrl: "https://gymdemo-zeta.vercel.app/",
+    githubUrl: "https://github.com/ashrafess00/demo_project_1",
+    fullDesc:
+      "Iron Works is a demo gym website built to showcase a modern, energetic fitness brand — complete with class schedules, membership plans, and a polished landing experience.",
+  },
+  {
     id: "ederest",
     year: "2024",
     title: "Education Tech Platform",
@@ -13,20 +55,20 @@ export const projects = [
     fullDesc:
       "My first 6 months internship was at Ederest startup, where i worked on the user and admin dashboard from scratch, and the backend of the platform.",
   },
-  {
-    id: "golden-ambassador",
-    year: "2026",
-    title: "Golden Ambassador",
-    desc: "An exclusive platform for referral system built with Laravel and react",
-    tags: ["Laravel", "React", "MySql", "Hostinger", "TypScript"],
-    img: "/projects/ga.png",
-    size: "small",
-    uri: "/projects/golden-ambassador",
-    websiteUrl: null,
-    githubUrl: null,
-    fullDesc:
-      "An exclusive platform for referral system built with Laravel and react",
-  },
+  // {
+  //   id: "golden-ambassador",
+  //   year: "2026",
+  //   title: "Golden Ambassador",
+  //   desc: "An exclusive platform for referral system built with Laravel and react",
+  //   tags: ["Laravel", "React", "MySql", "Hostinger", "TypScript"],
+  //   img: "/projects/ga.png",
+  //   size: "small",
+  //   uri: "/projects/golden-ambassador",
+  //   websiteUrl: null,
+  //   githubUrl: null,
+  //   fullDesc:
+  //     "An exclusive platform for referral system built with Laravel and react",
+  // },
   {
     id: "news-publisher-agent",
     year: "2026",
@@ -64,7 +106,7 @@ export const projects = [
     img: "/projects/carey.png",
     size: "large",
     uri: "/projects/carey",
-    websiteUrl: null,
+    websiteUrl: "https://carey.ma",
     githubUrl: null,
     fullDesc:
       "Carey Car Rental platform allows user to rent cars, and manage cars, contributed to fix bugs, and add some missing features in it.",

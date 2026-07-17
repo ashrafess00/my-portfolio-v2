@@ -10,21 +10,63 @@
     "introSection": {
       "backgroundWord": "Essaoudi",
       "role": "Developpeur Full Stack",
-      "titleLine1": "Je cree",
-      "titleHighlight": "des experiences",
-      "titleLine3": "numeriques.",
-      "tagline": "Je conçois des applications web elegantes et performantes avec des technologies modernes, au croisement du design et de l'ingenierie.",
-      "scroll": "Defiler"
+      "available": "Disponible pour de nouveaux projets",
+      "greeting": "Bonjour, je suis Achraf",
+      "titleLine1": "Je cree de",
+      "titleHighlight": "beaux",
+      "titleLine3": "sites et applications web.",
+      "tagline": "Developpeur full stack qui conçoit des sites conviviaux, rapides et fiables — des hotels et restaurants aux plateformes sur mesure complexes.",
+      "viewMyWork": "Voir mes projets",
+      "getInTouch": "Me contacter",
+      "badgeTitle": "Dev Full Stack",
+      "badgeSubtitle": "Construisons ensemble",
+      "scroll": "Defiler",
+      "eyebrow": "Developpeur full stack",
+      "location": "Base au Maroc · Disponible partout",
+      "figCaption": "une page d'accueil en cours pour une clinique dentaire de quartier.",
+      "meta": "N° 001 — Portfolio · MMXXVI",
+      "stats": {
+        "projectsK": "20+",
+        "projectsV": "Projets livres",
+        "yearsK": "3 ans",
+        "yearsV": "Savoir-faire full stack",
+        "referralK": "100%",
+        "referralV": "A l'ecoute du client"
+      },
+      "clients": [
+        "Dentistes & cliniques",
+        "Hotels de charme",
+        "Restaurants & cafes",
+        "Cuisinistes & menuisiers",
+        "Salles de sport & studios",
+        "Commerces locaux",
+        "Plateformes sur mesure",
+        "Startups"
+      ]
     },
     "aboutSection": {
       "backgroundWord": "A propos",
       "sectionLabel": "A propos",
-      "titleLine1": "Je ne fais pas qu'ecrire du code.",
-      "titleLine2": "Je resols des problemes.",
-      "paragraph1": "Achraf Essaoudi est un developpeur full stack passionne par la creation d'applications web elegantes et performantes. Il construit des produits a l'intersection du design et de l'ingenierie, ou chaque pixel et chaque milliseconde comptent.",
-      "paragraph2": "Quand je ne code pas, j'explore de nouvelles technologies, je contribue a l'open source et je dessine des concepts UI. Je crois que les excellents logiciels se construisent avec empathie, curiosite et souci du detail.",
+      "titleLine1": "Je transforme les idees en",
+      "titleLine2": "sites web remarquables.",
+      "paragraph1": "Je suis Achraf Essaoudi, un developpeur full stack qui adore creer des applications web elegantes et performantes. Je maîtrise toute la chaîne — des interfaces soignees aux backends solides et evolutifs.",
+      "paragraph2": "Que vous geriez un hotel, un restaurant ou que vous ayez besoin d'une plateforme sur mesure, je donne vie a votre vision avec un code propre et un design reflechi. Un bon logiciel se construit avec empathie, curiosite et souci du detail.",
       "stats": {
         "yearsOfExperience": "Annees d'experience"
+      },
+      "services": {
+        "hotels": {
+          "title": "Hotels",
+          "desc": "Des sites prets pour la reservation qui mettent en valeur vos chambres."
+        },
+        "restaurants": {
+          "title": "Restaurants",
+          "desc": "Menus, reservations et visuels allechants."
+        },
+        "custom": {
+          "title": "Plateformes sur mesure",
+          "desc": "Tableaux de bord, SaaS et applications complexes."
+        }
       }
     },
     "projectsSection": {
@@ -32,7 +74,21 @@
       "sectionLabel": "Selection",
       "titleLine1": "Des projets qui",
       "titleLine2": "parlent d'eux-memes.",
+      "viewProject": "Voir le projet",
+      "viewOnGithub": "Voir sur GitHub",
       "projects": {
+        "myjibi": {
+          "title": "MyJibi",
+          "desc": "Mon application web et mobile de finances personnelles pour suivre votre argent, definir des objectifs d'epargne et garder le controle de votre budget."
+        },
+        "myvantour": {
+          "title": "My Van Tour",
+          "desc": "Une plateforme de transport touristique pour un service de chauffeur au Maroc, proposant transferts aeroport, excursions et circuits desert avec une reservation bilingue."
+        },
+        "iron-works": {
+          "title": "Iron Works Gym",
+          "desc": "Une application web de demonstration pour une salle de sport, presentant les cours, les abonnements et une experience de marque fitness moderne."
+        },
         "ederest": {
           "title": "Plateforme EdTech",
           "desc": "Mon premier stage de 6 mois chez Ederest : j'ai travaille sur les tableaux de bord utilisateur et admin depuis zero, ainsi que sur le backend de la plateforme."
@@ -55,8 +111,19 @@
         }
       }
     },
+    "skillsSection": {
+      "sectionLabel": "Competences",
+      "titleLine1": "Les outils que j'utilise pour",
+      "titleLine2": "creer de belles choses.",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "tools": "Outils & DevOps"
+      }
+    },
     "contactSection": {
       "backgroundWord": "Travaillons ensemble",
+      "sectionLabel": "Contact",
       "titleLine1": "Construisons",
       "titleLine2": "quelque chose de grand.",
       "description": "Vous avez un projet en tete ? Envoyez-moi un message et realisons-le ensemble.",
