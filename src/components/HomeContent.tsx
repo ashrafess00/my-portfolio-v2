@@ -1,12 +1,5 @@
 "use client";
-// import FloatingOrbs from "@/components/FloatingOrbs";
-// import GridBackground from "@/components/GridBackground";
 import Navbar from "@/components/Navbar";
-// import Hero from "@/components/Hero";
-// import Projects from "@/components/Projects";
-// import About from "@/components/About";
-// import Contact from "@/components/Contact";
-// import Footer from "@/components/Footer";
 import IntroSection from "@/components/IntroSection";
 import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -14,25 +7,25 @@ import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function HomeContent() {
   return (
-    <div className="relative">
+    <>
       <Navbar />
       <IntroSection />
-      {/* <ClientsMarquee /> */}
-      <div id="about">
+      {/* scroll-mt keeps section tops clear of the sticky navbar */}
+      <div id="about" className="scroll-mt-14">
         <AboutSection />
       </div>
-      <div id="projects">
+      <div id="projects" className="scroll-mt-14">
         <ProjectsSection />
       </div>
-      <div id="skills">
+      <div id="skills" className="scroll-mt-14">
         <SkillsSection />
       </div>
-      <div id="contact">
+      <div id="contact" className="scroll-mt-14">
         <ContactSection />
       </div>
       <Footer />
-    </div>
+    </>
   );
 }

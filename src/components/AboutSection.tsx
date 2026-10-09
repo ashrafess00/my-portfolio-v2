@@ -1,129 +1,126 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useTranslations } from "next-intl";
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
-import { PROFILE_IMAGE } from "@/lib/site";
+import { useTranslations } from "next-intl";
+import { SectionHeading } from "@/components/notebook/SectionHeading";
+import { Tape } from "@/components/notebook/Tape";
+import { withEmoji } from "@/components/notebook/withEmoji";
+import { useReveal } from "@/hooks/useReveal";
+import { useRuleSnap } from "@/hooks/useRuleSnap";
+import { HERO_MOCKUP_IMAGE, PROFILE_IMAGE } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
-gsap.registerPlugin(ScrollTrigger);
+const STAMPS = [
+  { key: "websites", emoji: "🌐", color: "bg-sun text-ink", tilt: "-rotate-2" },
+  { key: "webApps", emoji: "⚡", color: "bg-leaf text-ink", tilt: "rotate-1" },
+  { key: "dashboards", emoji: "📊", color: "bg-bubblegum text-ink", tilt: "rotate-2" },
+  { key: "automation", emoji: "🤖", color: "bg-cobalt text-white", tilt: "-rotate-1" },
+] as const;
 
-const SectionLabel = ({ index, title }: { index: string; title: string }) => (
-  <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-    <span className="font-serif italic text-accent">{index}</span>
-    <span className="h-px w-8 bg-rule" />
-    <span>{title}</span>
-  </div>
+const Polaroid = ({
+  src,
+  alt,
+  caption,
+  className,
+  frameClass,
+  imageClass,
+}: {
+  src: string | null;
+  alt: string;
+  caption: string;
+  className?: string;
+  frameClass: string;
+  imageClass?: string;
+}) => (
+  <figure
+    data-reveal
+    className={cn(
+      "polaroid relative w-full p-2.5 pb-0 transition-[rotate,translate] duration-300 hover:-translate-y-1 hover:rotate-0",
+      className,
+    )}
+  >
+    <Tape color="blue" className="-start-5 -top-1 -rotate-[38deg]" />
+    <Tape color="yellow" className="-end-5 -top-1 rotate-[38deg]" />
+    <div className={cn("relative overflow-hidden bg-paper-line", frameClass)}>
+      {src && (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 45vw, 240px"
+          className={cn("object-cover", imageClass)}
+        />
+      )}
+    </div>
+    <figcaption className="py-2.5 text-center font-note text-[19px] leading-none text-ink-soft">
+      {caption}
+    </figcaption>
+  </figure>
 );
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const noteRef = useRef<HTMLParagraphElement>(null);
+  const baselineRef = useRef<HTMLSpanElement>(null);
   const t = useTranslations("HomePage.aboutSection");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(".reveal-item").forEach((el, i) => {
-        gsap.fromTo(
-          el,
-          { y: 22, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            delay: (i % 3) * 0.05,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 90%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
-  const services = ["hotels", "restaurants", "custom"] as const;
+  useReveal(sectionRef);
+  // Sit the handwriting on the sheet's ruled lines.
+  useRuleSnap(noteRef, baselineRef);
 
   return (
-    <section ref={sectionRef} className="relative border-b border-hairline">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32">
-        <div className="reveal-item">
-          <SectionLabel index="01" title={t("sectionLabel")} />
+    <section ref={sectionRef} className="relative px-4 pb-20 pt-10 sm:px-8 md:pb-28 md:pt-14">
+      <SectionHeading note={t("note")} label={t("label")} />
+
+      <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-12 [grid-template-areas:'note_note'_'me_desk'] md:grid-cols-[1fr_minmax(0,600px)_1fr] md:gap-x-10 md:[grid-template-areas:'me_note_desk']">
+        <div className="[grid-area:note]">
+          <p
+            ref={noteRef}
+            className="relative mx-auto max-w-[600px] text-center font-hand text-[21px] leading-8 text-ink text-pretty sm:text-[25px]"
+          >
+            <span ref={baselineRef} aria-hidden className="inline-block h-0 w-0 align-baseline" />
+            {withEmoji(t("story"))}
+          </p>
+
+          <ul className="mx-auto mt-12 flex max-w-[540px] flex-wrap justify-center gap-x-5 gap-y-4">
+            {STAMPS.map(({ key, emoji, color, tilt }) => (
+              <li
+                key={key}
+                data-reveal
+                className={cn("hover-wiggle flex items-center gap-1.5", tilt)}
+              >
+                <span className={cn("stamp px-4 py-2.5 text-[15px] font-semibold tracking-[-0.01em] sm:text-[16px]", color)}>
+                  {t(`stamps.${key}`)}
+                </span>
+                <span aria-hidden className={cn("stamp grid h-11 w-11 place-items-center text-[18px]", color)}>
+                  <span className="emoji">{emoji}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Statement + copy */}
-          <div className="lg:col-span-7">
-            <p className="reveal-item font-serif text-[32px] font-light leading-[1.15] tracking-[-0.015em] text-foreground text-balance sm:text-[42px] lg:text-[50px]">
-              {t("titleLine1")}{" "}
-              <em className="italic text-accent-warm">{t("titleLine2")}</em>
-            </p>
+        <div className="flex justify-center [grid-area:me] md:justify-end md:pt-24">
+          <Polaroid
+            src={PROFILE_IMAGE}
+            alt={t("photoAlt")}
+            caption={t("photoCaption")}
+            className="max-w-[210px] -rotate-[5deg]"
+            frameClass="aspect-[4/5]"
+            imageClass="object-[50%_22%]"
+          />
+        </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-8 border-t border-hairline pt-8 sm:grid-cols-2 md:gap-12">
-              <p className="reveal-item text-[14px] leading-relaxed text-muted-foreground">
-                {t("paragraph1")}
-              </p>
-              <p className="reveal-item text-[14px] leading-relaxed text-muted-foreground">
-                {t("paragraph2")}
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-6 border-t border-hairline pt-8 sm:grid-cols-3 md:gap-10">
-              {services.map((key) => (
-                <div key={key} className="reveal-item">
-                  <div className="font-serif text-[17px] italic text-accent">
-                    {t(`services.${key}.title`)}.
-                  </div>
-                  <div className="mt-2 text-[13px] leading-snug text-muted-foreground">
-                    {t(`services.${key}.desc`)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Portrait */}
-          <div className="reveal-item lg:col-span-5">
-            <figure className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-surface">
-                {PROFILE_IMAGE ? (
-                  <>
-                    <Image
-                      src={PROFILE_IMAGE}
-                      alt="Achraf Essaoudi"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                      className="object-cover"
-                    />
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(180deg, rgba(3,15,24,0) 40%, rgba(3,15,24,0.45) 100%)",
-                      }}
-                    />
-                  </>
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center border border-hairline">
-                    <span className="font-serif text-[15px] italic text-muted-foreground">
-                      Photo coming soon
-                    </span>
-                  </div>
-                )}
-              </div>
-              <figcaption className="mt-4 flex items-start gap-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                <span className="mt-2 h-px w-6 bg-rule" />
-                <span className="normal-case">
-                  <span className="font-serif italic text-foreground">
-                    Achraf Essaoudi
-                  </span>{" "}
-                  — Martil, Morocco.
-                </span>
-              </figcaption>
-            </figure>
-          </div>
+        <div className="flex items-start justify-center [grid-area:desk] md:justify-start md:-mt-4">
+          <Polaroid
+            src={HERO_MOCKUP_IMAGE}
+            alt={t("deskAlt")}
+            caption={t("deskCaption")}
+            className="mt-6 max-w-[240px] rotate-[4deg] md:mt-0"
+            frameClass="aspect-[5/4]"
+            imageClass="object-left-top"
+          />
         </div>
       </div>
     </section>

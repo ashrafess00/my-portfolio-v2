@@ -4,9 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   Editorial dark design system.
-   BG anchored at #030f18. Warm cream text, muted amber accent,
-   hairline rules — a printed-magazine feel, not a template.
+   Notebook design system.
+   A sheet of ruled paper lying on a grid desk. Notes are written
+   by hand (Gochi Hand / Caveat), the name is pixel type (Jersey 15),
+   labels are typewritten (Space Mono), headlines + body are Inter.
+   Everything on the sheet looks stuck on: tape, stamps, polaroids,
+   sticky notes and folder tabs.
    ============================================================ */
 @theme inline {
   --color-background: var(--background);
@@ -23,33 +26,34 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent-warm: var(--accent-warm);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-rule: var(--rule);
-  --color-hairline: var(--hairline);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* Notebook palette */
+  --color-desk: var(--desk);
+  --color-paper: var(--paper);
+  --color-paper-line: var(--paper-line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-sun: var(--sun);
+  --color-cream: var(--cream);
+  --color-leaf: var(--leaf);
+  --color-mint: var(--mint);
+  --color-bubblegum: var(--bubblegum);
+  --color-blush: var(--blush);
+  --color-cobalt: var(--cobalt);
+  --color-sky: var(--sky);
+  --color-tangerine: var(--tangerine);
 
-  --font-serif: var(--font-serif-stack);
   --font-sans: var(--font-sans-stack);
-  --font-display: var(--font-serif-stack);
-  --font-body: var(--font-sans-stack);
-  --font-mono: var(--font-geist-mono);
-
-  --breakpoint-2xl: 87.5rem;
+  --font-hand: var(--font-hand-stack);
+  --font-note: var(--font-note-stack);
+  --font-mono: var(--font-mono-stack);
+  --font-pixel: var(--font-pixel-stack);
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
@@ -61,143 +65,270 @@
 }
 
 :root {
-  --radius: 0.375rem;
+  --radius: 0.5rem;
+  /* Spacing of the ruled lines on the sheet. Handwriting snaps to it. */
+  --rule: 32px;
 
-  --background: #030f18;
-  --foreground: #ede4d3;
-  --surface: #08192a;
-  --surface-2: #0d2436;
+  --desk: #9d9b96;
+  --paper: #fbfaf6;
+  --paper-line: #e6e2d8;
 
-  --card: #08192a;
-  --card-foreground: #ede4d3;
-  --popover: #0d2436;
-  --popover-foreground: #ede4d3;
+  --ink: #1c1b18;
+  --ink-soft: #4d4a43;
+  --ink-faint: #8a857a;
 
-  --primary: #ede4d3;
-  --primary-foreground: #030f18;
-  --secondary: #0d2436;
-  --secondary-foreground: #ede4d3;
+  --sun: #f6c445;
+  --cream: #f7e6b1;
+  --leaf: #22a85f;
+  --mint: #bfe8d1;
+  --bubblegum: #ff5d93;
+  --blush: #ffd6e3;
+  --cobalt: #2b4fd8;
+  --sky: #cfdcff;
+  --tangerine: #f26b3d;
 
-  --muted: #0d2436;
-  --muted-foreground: #8a8578;
+  /* shadcn/ui tokens, mapped onto the notebook palette */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: #f1eee6;
+  --secondary-foreground: var(--ink);
+  --muted: #f1eee6;
+  --muted-foreground: #6b675e;
+  --accent: var(--sun);
+  --accent-foreground: var(--ink);
+  --destructive: #d64545;
+  --destructive-foreground: #ffffff;
+  --border: #e2ded4;
+  --input: #e2ded4;
+  --ring: var(--cobalt);
 
-  --accent: #d4a373;
-  --accent-foreground: #030f18;
-  --accent-warm: #e8b783;
-
-  --destructive: #b3402f;
-  --destructive-foreground: #ede4d3;
-
-  --border: #14283a;
-  --input: #14283a;
-  --ring: #d4a373;
-
-  --rule: rgba(237, 228, 211, 0.12);
-  --hairline: rgba(237, 228, 211, 0.08);
-
-  --sidebar: #08192a;
-  --sidebar-foreground: #ede4d3;
-  --sidebar-primary: #d4a373;
-  --sidebar-primary-foreground: #030f18;
-  --sidebar-accent: #0d2436;
-  --sidebar-accent-foreground: #ede4d3;
-  --sidebar-border: #14283a;
-  --sidebar-ring: #d4a373;
-
-  --font-serif-stack: var(--font-fraunces), "Iowan Old Style", "Palatino", Georgia, serif;
-  --font-sans-stack: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* next/font puts the --font-* variables on <html>, so these resolve there. */
+  --font-sans-stack: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-hand-stack: var(--font-gochi), "Comic Sans MS", cursive;
+  --font-note-stack: var(--font-caveat), "Segoe Print", cursive;
+  --font-mono-stack: var(--font-space-mono), ui-monospace, monospace;
+  --font-pixel-stack: var(--font-jersey), var(--font-space-mono), monospace;
 }
 
-/* Mirror onto .dark so next-themes' forced dark class never overrides. */
-.dark {
-  --background: #030f18;
-  --foreground: #ede4d3;
-  --surface: #08192a;
-  --surface-2: #0d2436;
-  --card: #08192a;
-  --card-foreground: #ede4d3;
-  --popover: #0d2436;
-  --popover-foreground: #ede4d3;
-  --primary: #ede4d3;
-  --primary-foreground: #030f18;
-  --secondary: #0d2436;
-  --secondary-foreground: #ede4d3;
-  --muted: #0d2436;
-  --muted-foreground: #8a8578;
-  --accent: #d4a373;
-  --accent-foreground: #030f18;
-  --accent-warm: #e8b783;
-  --destructive: #b3402f;
-  --destructive-foreground: #ede4d3;
-  --border: #14283a;
-  --input: #14283a;
-  --ring: #d4a373;
-  --rule: rgba(237, 228, 211, 0.12);
-  --hairline: rgba(237, 228, 211, 0.08);
+/* Arabic: lead each stack with an Arabic face. Marhey + Aref Ruqaa keep the
+   hand-written feel (Ruqʿah is the everyday handwriting script). */
+[lang="ar"] {
+  --font-sans-stack: var(--font-plex-arabic), var(--font-inter), sans-serif;
+  --font-hand-stack: var(--font-marhey), var(--font-gochi), cursive;
+  --font-note-stack: var(--font-ruqaa), var(--font-caveat), cursive;
+  --font-mono-stack: var(--font-plex-arabic), var(--font-space-mono), monospace;
+}
+
+/* Letter-spacing breaks the joins of Arabic script. Unlayered on purpose so it
+   beats the tracking-* utilities (which live in @layer utilities). */
+[lang="ar"] * {
+  letter-spacing: 0;
 }
 
 /* ============================================================
-   Animations
+   Keyframes
    ============================================================ */
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes pop {
+  0% { opacity: 0; scale: 0.4; }
+  65% { opacity: 1; scale: 1.08; }
+  100% { opacity: 1; scale: 1; }
 }
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes rise {
+  from { opacity: 0; translate: 0 18px; }
+  to { opacity: 1; translate: 0 0; }
 }
-@keyframes slide-in {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
 }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* Uses `transform` so it stacks on top of the static `rotate` tilt. */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
 }
 @keyframes accordion-down {
   from { height: 0; }
-  to   { height: var(--radix-accordion-content-height); }
+  to { height: var(--radix-accordion-content-height); }
 }
 @keyframes accordion-up {
   from { height: var(--radix-accordion-content-height); }
-  to   { height: 0; }
+  to { height: 0; }
 }
 
 /* ============================================================
    Base
    ============================================================ */
-html {
-  scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--background); }
-::-webkit-scrollbar-thumb {
-  background: #1c3348;
-  border-radius: 0;
-}
-::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
 @layer base {
   * {
     border-color: var(--border);
   }
 
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--desk);
+  }
+
+  /* The desk: plain grey. */
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    min-height: 100vh;
+    background-color: var(--desk);
+    color: var(--ink);
     font-family: var(--font-sans-stack);
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
   }
 
   ::selection {
-    background: var(--accent);
-    color: var(--accent-foreground);
+    background: var(--sun);
+    color: var(--ink);
+  }
+
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: var(--desk); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--ink-soft);
+    border: 3px solid var(--desk);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--ink); }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+@layer components {
+  /* The sheet of ruled paper everything sits on. */
+  .sheet {
+    background-color: var(--paper);
+    background-image: linear-gradient(
+      to bottom,
+      transparent calc(var(--rule) - 1px),
+      var(--paper-line) calc(var(--rule) - 1px)
+    );
+    background-size: 100% var(--rule);
+    box-shadow:
+      0 0 0 1px rgba(28, 27, 24, 0.06),
+      0 30px 60px -30px rgba(28, 27, 24, 0.5);
+  }
+
+  /* Washi tape with zig-zag torn ends. Colour via --tape. */
+  .tape {
+    position: absolute;
+    z-index: 2;
+    width: 78px;
+    height: 22px;
+    pointer-events: none;
+    background-color: var(--tape, rgba(246, 214, 110, 0.7));
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0) 35%,
+      rgba(255, 255, 255, 0.15) 70%,
+      rgba(255, 255, 255, 0)
+    );
+    clip-path: polygon(
+      0 0, 100% 0, 97% 17%, 100% 33%, 97% 50%, 100% 67%, 97% 83%, 100% 100%,
+      0 100%, 3% 83%, 0 67%, 3% 50%, 0 33%, 3% 17%
+    );
+  }
+
+  /* Postage-stamp perforated edge (holes of radius --r along every side). */
+  .stamp {
+    --r: 3px;
+    -webkit-mask:
+      radial-gradient(var(--r), #0000 98%, #000)
+        calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)) round,
+      linear-gradient(#000 0 0) 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r)) no-repeat;
+    mask:
+      radial-gradient(var(--r), #0000 98%, #000)
+        calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)) round,
+      linear-gradient(#000 0 0) 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r)) no-repeat;
+  }
+
+  .polaroid {
+    background: #fff;
+    box-shadow:
+      0 1px 2px rgba(28, 27, 24, 0.12),
+      0 18px 30px -18px rgba(28, 27, 24, 0.55);
+  }
+
+  .sticky-note {
+    position: relative;
+    background-color: var(--note, var(--cream));
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 20%);
+    box-shadow:
+      0 1px 1px rgba(28, 27, 24, 0.08),
+      0 24px 26px -20px rgba(28, 27, 24, 0.5);
+  }
+
+  /* Highlighter swipe behind a word. Colour via --marker. */
+  .marker {
+    padding-inline: 0.12em;
+    margin-inline: -0.06em;
+    background-image: linear-gradient(
+      transparent 56%,
+      color-mix(in srgb, var(--marker, var(--sun)) 90%, transparent) 56%,
+      color-mix(in srgb, var(--marker, var(--sun)) 90%, transparent) 90%,
+      transparent 90%
+    );
+    border-radius: 0.15em 0.5em 0.2em 0.4em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  /* Lined writing field (textarea) whose lines scroll with the text. */
+  .ruled-field {
+    line-height: 2rem;
+    background-image: linear-gradient(
+      transparent calc(2rem - 1px),
+      var(--paper-line) calc(2rem - 1px)
+    );
+    background-size: 100% 2rem;
+    background-attachment: local;
+  }
+
+  /* Red / white / blue airmail envelope border. */
+  .airmail {
+    background: repeating-linear-gradient(
+      135deg,
+      var(--tangerine) 0 14px,
+      #fff 14px 22px,
+      var(--cobalt) 22px 36px,
+      #fff 36px 44px
+    );
+  }
+
+  /* Project folders stack on top of each other while scrolling, leaving
+     their tabs lined up like a filing drawer. Only where there's room. */
+  @media (min-width: 768px) and (min-height: 640px) {
+    .folder {
+      position: sticky;
+      top: 5.5rem;
+    }
+  }
+
+  /* Folder tab. --tab-m / --tab-d (0…1) place it along the folder's top edge
+     on phones / wider screens; --tab-w is its width. */
+  .folder-tab {
+    width: var(--tab-w);
+    clip-path: polygon(0 100%, 10% 0, 90% 0, 100% 100%);
+    inset-inline-start: calc(var(--tab-m) * (100% - var(--tab-w)));
+  }
+  @media (min-width: 768px) {
+    .folder-tab {
+      inset-inline-start: calc(var(--tab-d) * (100% - var(--tab-w)));
+    }
   }
 }
 
@@ -205,82 +336,57 @@ html {
    Utilities
    ============================================================ */
 @layer utilities {
-  .font-serif {
-    font-family: var(--font-serif-stack);
-    font-optical-sizing: auto;
-  }
-
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
 
-  .border-rule { border-color: var(--rule); }
-  .border-hairline { border-color: var(--hairline); }
-  .bg-rule { background-color: var(--rule); }
-  .bg-hairline { background-color: var(--hairline); }
-  .divide-hairline > :not([hidden]) ~ :not([hidden]) {
-    border-color: var(--hairline);
+  /* Full-width hand-drawn wavy divider. */
+  .wavy-rule {
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M0 5 Q 6 0 12 5 T 24 5' fill='none' stroke='%23c9c4b8' stroke-width='2'/%3E%3C/svg%3E")
+      repeat-x center / 24px 10px;
   }
 
-  .reveal {
-    animation: reveal-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-  .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-  .animate-slide-in { animation: slide-in 0.6s ease-out forwards; }
-  .marquee { animation: marquee 40s linear infinite; }
-
-  /* Fine warm noise grain — kills the flat AI look */
-  .grain { position: relative; }
-  .grain::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.32;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.75 0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  /* Emoji that never stretch a line box (keeps handwriting on the rules). */
+  .emoji {
+    line-height: 0;
+    font-style: normal;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   }
 
-  /* legacy alias used by project pages */
-  .noise-bg { position: relative; }
-  .noise-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.3;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.75 0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  /* Entrance animations. Stagger with style={{ "--d": "0.3s" }}.
+     `backwards` (not `both`) so hover translate/scale still work afterwards. */
+  .anim-pop {
+    animation: pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.25) backwards;
+    animation-delay: var(--d, 0s);
   }
-
-  .glass {
-    background-color: color-mix(in srgb, var(--surface-2) 70%, transparent);
-    backdrop-filter: blur(14px);
-    border: 1px solid var(--rule);
+  .anim-rise {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    animation-delay: var(--d, 0s);
   }
-
-  .hover-glow { transition: all 0.4s ease; }
-  .hover-glow:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 40px -12px rgba(212, 163, 115, 0.35);
+  /* For SVG paths with pathLength="1": draws the stroke in. */
+  .anim-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 0.9s cubic-bezier(0.6, 0.1, 0.3, 1) forwards;
+    animation-delay: var(--d, 0s);
   }
-
-  .text-dim { color: var(--muted-foreground); }
+  .anim-spin {
+    animation: spin 14s linear infinite;
+  }
+  .hover-wiggle:hover {
+    animation: wiggle 0.45s ease-in-out;
+  }
 }
 
-@layer components {
-  .container {
-    width: 100%;
-    margin-inline: auto;
-    padding-inline: 1.5rem;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  @media (min-width: 87.5rem) {
-    .container { max-width: 1400px; }
-  }
-
-  .section-padding {
-    padding-inline: 1.5rem;
-  }
-  @media (min-width: 768px) {
-    .section-padding { padding-inline: 2.5rem; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

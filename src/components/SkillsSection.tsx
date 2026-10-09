@@ -1,24 +1,40 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+"use client";
+
+import { useRef, type CSSProperties } from "react";
 import { useTranslations } from "next-intl";
+import { CheckDoodle, Squiggle } from "@/components/notebook/Doodles";
+import { SectionHeading } from "@/components/notebook/SectionHeading";
+import { Tape, type TapeColor } from "@/components/notebook/Tape";
+import { withEmoji } from "@/components/notebook/withEmoji";
+import { useReveal } from "@/hooks/useReveal";
+import { cn } from "@/lib/utils";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const skills = [
+const skills: {
+  key: string;
+  note: string;
+  tilt: string;
+  tape: TapeColor;
+  items: string[];
+}[] = [
   {
     key: "frontend",
-    numeral: "i",
+    note: "var(--cream)",
+    tilt: "-rotate-2",
+    tape: "pink",
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion"],
   },
   {
     key: "backend",
-    numeral: "ii",
+    note: "var(--mint)",
+    tilt: "rotate-[1.5deg]",
+    tape: "yellow",
     items: ["Laravel", "Node.js", "Django", "REST APIs", "GraphQL", "PostgreSQL"],
   },
   {
     key: "tools",
-    numeral: "iii",
+    note: "var(--blush)",
+    tilt: "-rotate-1",
+    tape: "blue",
     items: ["Git", "Docker", "CI/CD", "Vercel", "Hostinger", "n8n"],
   },
 ];
@@ -27,75 +43,52 @@ const SkillsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations("HomePage.skillsSection");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(".reveal-item").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 24, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 90%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  useReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} className="relative border-b border-hairline bg-surface/30">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32">
-        <div className="reveal-item flex items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-          <span className="font-serif italic text-accent">03</span>
-          <span className="h-px w-8 bg-rule" />
-          <span>{t("sectionLabel")}</span>
-        </div>
+    <section ref={sectionRef} className="relative px-4 pb-20 pt-10 sm:px-8 md:pb-28 md:pt-14">
+      <SectionHeading
+        note={t("note")}
+        label={t("sectionLabel")}
+        title={
+          <>
+            {t("titleLine1")}{" "}
+            <span className="marker [--marker:var(--sky)]">{t("titleLine2")}</span>
+          </>
+        }
+      />
 
-        <h2 className="reveal-item mt-8 max-w-3xl font-serif text-[32px] font-light leading-[1.1] tracking-[-0.015em] text-foreground text-balance sm:text-[42px]">
-          {t("titleLine1")}{" "}
-          <em className="italic text-accent-warm">{t("titleLine2")}</em>
-        </h2>
+      <ul className="mx-auto mt-16 grid max-w-[1080px] grid-cols-1 justify-items-center gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        {skills.map(({ key, note, tilt, tape, items }) => (
+          <li
+            key={key}
+            data-reveal
+            className={cn(
+              "sticky-note w-full max-w-[330px] px-7 pb-8 pt-10 transition-[rotate,translate] duration-300 hover:-translate-y-1.5 hover:rotate-0 sm:last:col-span-2 lg:last:col-span-1",
+              tilt,
+            )}
+            style={{ "--note": note } as CSSProperties}
+          >
+            <Tape color={tape} className="-top-3 left-1/2 -translate-x-1/2 -rotate-3" />
+            <h3 className="font-hand text-[30px] leading-none text-ink">
+              {t(`categories.${key}`)}
+            </h3>
+            <Squiggle className="mt-2 h-3 w-24 text-tangerine" />
+            <ul className="mt-5 space-y-1">
+              {items.map((item) => (
+                <li key={item} className="flex items-center gap-3 font-hand text-[21px] leading-8 text-ink">
+                  <CheckDoodle className="h-6 w-6 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
 
-        <ol className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-hairline bg-hairline md:grid-cols-3">
-          {skills.map((s) => (
-            <li
-              key={s.key}
-              className="reveal-item relative flex flex-col gap-5 bg-background p-8 transition-colors hover:bg-surface"
-            >
-              <span className="pointer-events-none absolute left-0 top-0 h-px w-8 bg-accent/60" />
-              <div className="flex items-baseline justify-between">
-                <span className="font-serif text-[15px] italic text-accent">
-                  {s.numeral}.
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">
-                  {s.items.length} tools
-                </span>
-              </div>
-              <div className="font-serif text-[24px] font-light leading-none tracking-tight text-foreground">
-                {t(`categories.${s.key}`)}
-              </div>
-              <ul className="flex flex-wrap gap-2">
-                {s.items.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full border border-rule px-3 py-1 text-[11px] tracking-wide text-muted-foreground"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <p data-reveal className="mt-14 text-center font-note text-[24px] text-ink-soft -rotate-2">
+        {withEmoji(t("aside"))}
+      </p>
     </section>
   );
 };

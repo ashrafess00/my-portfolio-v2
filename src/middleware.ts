@@ -1,20 +1,10 @@
-import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "@/i18n/routing";
 
-export default async function middleware(req: Request) {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("lang")?.value;
+export default createMiddleware(routing);
 
-  if (!lang) {
-    const acceptLang = req.headers.get("accept-language") || "";
-    const userLang = acceptLang.split(",")[0].split("-")[0];
-    const locale = ["en", "es", "fr", "de", "ar"].includes(userLang)
-      ? userLang
-      : "en";
-
-    const res = NextResponse.next();
-    res.cookies.set("lang", locale, { path: "/" });
-    return res;
-  }
-  return NextResponse.next();
-}
+export const config = {
+  // Match everything except /api, Next internals, and files with an extension
+  // (which covers /robots.txt, /sitemap.xml and everything in /public).
+  matcher: "/((?!api|_next|_vercel|.*\\..*).*)",
+};

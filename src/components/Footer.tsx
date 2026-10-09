@@ -1,96 +1,99 @@
+"use client";
+
 import { useTranslations } from "next-intl";
+import { ArrowUp } from "lucide-react";
+import { SOCIAL_LINKS } from "@/components/Navbar";
+import { Smiley } from "@/components/notebook/Doodles";
+import { SectionLink, scrollToSection, type SectionId } from "@/components/notebook/SectionLink";
+import { withEmoji } from "@/components/notebook/withEmoji";
 import { SOCIALS } from "@/lib/site";
+import { cn } from "@/lib/utils";
+
+const SITEMAP: SectionId[] = ["about", "projects", "skills", "contact"];
 
 const Footer = () => {
   const t = useTranslations("HomePage.contactSection");
   const tn = useTranslations("Navigation");
 
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-background">
-      <div className="mx-auto max-w-[1400px] px-6 py-12 md:px-10">
-        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center rounded-full border border-rule font-serif text-[13px] italic text-foreground">
-                ae
-              </span>
-              <span className="font-serif text-[16px] italic text-foreground">
-                Achraf Essaoudi
-              </span>
-            </div>
-            <p className="mt-4 max-w-xs text-[12px] leading-relaxed text-muted-foreground">
-              {t("footer.role")} — building calm, reliable websites for
-              businesses that care about the details.
-            </p>
-          </div>
+    <footer className="relative px-4 pb-8 pt-2 sm:px-8">
+      <div aria-hidden className="wavy-rule" />
 
-          <div className="md:col-span-3">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Sitemap
-            </div>
-            <ul className="mt-4 space-y-2 text-[13px] text-foreground">
-              {["about", "projects", "skills", "contact"].map((id) => (
-                <li key={id}>
-                  <button
-                    onClick={() => scrollTo(id)}
-                    className="hover:text-accent"
-                  >
-                    {tn(id)}
-                  </button>
-                </li>
-              ))}
-            </ul>
+      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr] md:items-start">
+        <div>
+          <div className="flex items-center gap-3">
+            <Smiley className="h-10 w-10" />
+            <span className="font-hand text-[26px] leading-none text-ink">Achraf Essaoudi</span>
           </div>
-
-          <div className="md:col-span-4">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Elsewhere
-            </div>
-            <ul className="mt-4 space-y-2 text-[13px] text-foreground">
-              <li>
-                <a
-                  href={SOCIALS.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent"
-                >
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a
-                  href={SOCIALS.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${SOCIALS.email}`}
-                  className="hover:text-accent"
-                >
-                  {SOCIALS.email}
-                </a>
-              </li>
-            </ul>
-          </div>
+          <p className="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink-soft">
+            {t("footer.role")}
+          </p>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-hairline pt-6 text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:flex-row sm:items-center">
-          <span>© {year} Achraf Essaoudi</span>
-          {/* <span className="normal-case">
-            <span className="font-serif italic text-foreground">Set in Fraunces &amp; Inter</span>{" "}
-            — handmade with care.
-          </span> */}
+        <nav aria-label="Sitemap">
+          <ul className="space-y-2.5">
+            {SITEMAP.map((id) => (
+              <li key={id}>
+                <SectionLink
+                  id={id}
+                  className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink underline-offset-[5px] hover:underline hover:decoration-wavy hover:decoration-tangerine"
+                >
+                  {tn(id)}
+                </SectionLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div>
+          <ul className="flex gap-2">
+            {SOCIAL_LINKS.map(({ href, label, icon: Icon, color }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={cn(
+                    "grid h-9 w-9 place-items-center rounded-full border-[1.5px] border-ink text-ink transition-[rotate,scale] hover:-rotate-12 hover:scale-110",
+                    color,
+                  )}
+                >
+                  <Icon aria-hidden className="h-4 w-4" strokeWidth={2.2} />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={`mailto:${SOCIALS.email}`}
+            className="mt-4 inline-block font-hand text-[20px] text-ink underline decoration-paper-line decoration-2 underline-offset-4 transition-colors hover:text-cobalt hover:decoration-cobalt"
+          >
+            {SOCIALS.email}
+          </a>
         </div>
+      </div>
+
+      <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-paper-line pt-5 sm:flex-row sm:items-center">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
+          © {year} Achraf Essaoudi
+        </span>
+        <span className="font-note text-[20px] leading-tight text-ink-soft">
+          {withEmoji(t("footer.madeWith"))}
+        </span>
+        <button
+          type="button"
+          onClick={() => scrollToSection("top")}
+          className="group inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-cobalt"
+        >
+          {t("footer.backToTop")}
+          <ArrowUp
+            aria-hidden
+            className="h-3.5 w-3.5 transition-[translate] group-hover:-translate-y-0.5"
+            strokeWidth={2.6}
+          />
+        </button>
       </div>
     </footer>
   );

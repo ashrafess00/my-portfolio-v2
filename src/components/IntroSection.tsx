@@ -1,118 +1,142 @@
-import { useTranslations } from "next-intl";
-import HeroMockup from "@/components/HeroMockup";
+"use client";
 
-const ArrowRight = ({ className = "" }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 20 20"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.25"
-    aria-hidden
-  >
-    <path
-      d="M3 10h14M12 5l5 5-5 5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+import type { CSSProperties } from "react";
+import { useTranslations } from "next-intl";
+import { ArrowUpRight } from "lucide-react";
+import {
+  DoodleArrow,
+  Flower,
+  GooglyEye,
+  HorizonArc,
+  ScribbleBox,
+  Swoosh,
+} from "@/components/notebook/Doodles";
+import { scrollToSection } from "@/components/notebook/SectionLink";
+
+// Staggers the CSS entrance animations (see .anim-* in globals.css).
+const at = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
 const IntroSection = () => {
   const t = useTranslations("HomePage.introSection");
 
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
-  const stats = [
-    // { k: t("stats.projectsK"), v: t("stats.projectsV") },
-    { k: t("stats.yearsK"), v: t("stats.yearsV") },
-    // { k: t("stats.referralK"), v: t("stats.referralV") },
-  ];
-
   return (
-    <section id="top" className="relative overflow-hidden">
-      {/* soft warm wash top-right */}
+    <section id="top" className="relative px-4 pb-24 pt-12 sm:px-8 md:pb-32 md:pt-16">
+      <h1 className="flex flex-col items-center text-center">
+        <span className="anim-rise relative font-note text-[22px] leading-none text-ink-soft md:text-[26px]" style={at(0.05)}>
+          {t("myNameIs")}
+          <Swoosh
+            className="absolute -bottom-3.5 left-1/2 h-3 w-[120%] -translate-x-1/2 text-ink-soft"
+            delay={0.3}
+          />
+        </span>
+
+        {/* Name in a scribbled box, with stickers + tags around it */}
+        <span className="relative mt-8 inline-block">
+          <span
+            className="anim-pop block px-[0.3em] pb-[0.08em] pt-[0.14em] font-pixel text-[clamp(84px,15vw,176px)] leading-[0.8] tracking-[0.02em] text-ink"
+            style={at(0.15)}
+          >
+            ACHRAF
+          </span>
+          <ScribbleBox
+            className="pointer-events-none absolute inset-0 h-full w-full text-tangerine"
+            delay={0.45}
+          />
+
+          <span
+            aria-hidden
+            className="anim-pop absolute -top-4 -start-3 rounded-md border-[1.5px] border-ink bg-mint px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-ink -rotate-6 sm:-start-16 sm:text-[10px]"
+            style={at(0.95)}
+          >
+            {t("stickerBuild")}
+          </span>
+          <span
+            aria-hidden
+            className="anim-pop absolute -top-3 -end-3 rounded-md border-[1.5px] border-ink bg-cream px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-ink rotate-[4deg] sm:-end-20 sm:text-[10px]"
+            style={at(1.05)}
+          >
+            {t("stickerDetail")}
+          </span>
+
+          <span
+            aria-hidden
+            className="anim-pop absolute start-[-0.5rem] top-[calc(100%+4.25rem)] whitespace-nowrap bg-sun px-3 py-0.5 font-note text-[19px] text-ink shadow-[0_2px_0_rgba(28,27,24,0.15)] -rotate-3 sm:start-[-7.5rem] sm:top-[calc(100%+1.6rem)] sm:text-[21px]"
+            style={at(1.15)}
+          >
+            {t("badgeTitle")}
+          </span>
+          <DoodleArrow
+            className="absolute start-[-3.25rem] top-[calc(100%-0.6rem)] hidden h-11 w-12 text-ink sm:block rtl:-scale-x-100"
+            delay={1.3}
+          />
+
+          <span
+            aria-hidden
+            className="anim-pop absolute end-[-0.5rem] top-[calc(100%+4.5rem)] whitespace-nowrap bg-mint px-3 py-0.5 font-note text-[19px] text-ink shadow-[0_2px_0_rgba(28,27,24,0.15)] rotate-3 sm:end-[-7rem] sm:top-[calc(100%+1.9rem)] sm:text-[21px]"
+            style={at(1.25)}
+          >
+            {t("place")}
+          </span>
+          <DoodleArrow
+            className="absolute end-[-3.25rem] top-[calc(100%-0.6rem)] hidden h-11 w-12 -scale-x-100 text-ink sm:block rtl:scale-x-100"
+            delay={1.4}
+          />
+        </span>
+
+        <span className="sr-only">
+          Essaoudi — {t("role")}, {t("place")}
+        </span>
+      </h1>
+
+      <p
+        className="anim-rise mt-6 flex items-center justify-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ink sm:text-[11px]"
+        style={at(1.2)}
+      >
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cobalt opacity-60" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-cobalt" />
+        </span>
+        {t("available")}
+      </p>
+
+      <p
+        className="anim-rise mx-auto mt-24 max-w-[19ch] text-center text-[clamp(34px,5.4vw,64px)] font-semibold leading-[1.06] tracking-[-0.04em] text-ink text-balance sm:mt-16"
+        style={at(0.3)}
+      >
+        {t("headline1")}{" "}
+        <GooglyEye className="inline-block h-[0.8em] w-[0.8em] align-[-0.1em]" />
+        <br className="max-sm:hidden" /> {t("headline2")}{" "}
+        <Flower className="anim-spin inline-block h-[0.8em] w-[0.8em] align-[-0.08em]" />
+      </p>
+
       <div
-        aria-hidden
-        className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full opacity-[0.15] blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(212,163,115,0.5), transparent 60%)",
-        }}
-      />
-
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-6 pb-24 pt-14 md:px-10 md:pt-16 lg:grid-cols-12 lg:gap-8 lg:pb-28 lg:pt-20">
-        {/* Left: copy */}
-        <div className="reveal lg:col-span-6 lg:pr-6">
-          {/* <div className="mb-9 flex flex-wrap items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            <span className="font-serif italic text-accent">{t("eyebrow")}</span>
-            <span className="h-px w-8 bg-rule" />
-            <span>{t("location")}</span>
-          </div> */}
-
-          <h1 className="font-serif text-[42px] font-light leading-[1.03] tracking-[-0.02em] text-foreground text-balance sm:text-[54px] lg:text-[66px]">
-            {t("titleLine1")}{" "}
-            <em className="italic text-accent-warm">{t("titleHighlight")}</em>{" "}
-            {t("titleLine3")}
-          </h1>
-
-          <p className="mt-8 max-w-[46ch] text-[15px] leading-relaxed text-muted-foreground text-pretty">
-            {t("tagline")}
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center gap-5">
-            <button
-              onClick={() => scrollTo("projects")}
-              className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3.5 text-[13px] font-medium tracking-wide text-accent-foreground transition-all hover:bg-accent-warm"
-            >
-              {t("viewMyWork")}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
-            <button
-              onClick={() => scrollTo("contact")}
-              className="group inline-flex items-center gap-2 border-b border-rule pb-1 text-[13px] tracking-wide text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              {t("getInTouch")}
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-            </button>
-          </div>
-
-          <dl className="mt-16 grid max-w-md grid-cols-3 gap-6 border-t border-hairline pt-8 text-start">
-            {stats.map((s) => (
-              <div key={s.v}>
-                <dt className="font-serif text-2xl font-light text-foreground">
-                  {s.k}
-                </dt>
-                <dd className="mt-1 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                  {s.v}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        {/* Right: desk + monitor */}
-        <div
-          className="reveal relative lg:col-span-6"
-          style={{ animationDelay: "0.15s" }}
+        className="anim-rise mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-4"
+        style={at(0.45)}
+      >
+        <button
+          type="button"
+          onClick={() => scrollToSection("contact")}
+          className="group inline-flex h-12 items-center gap-3 rounded-[4px] bg-ink pe-5 ps-2 font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-paper transition-[translate,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--sun)]"
         >
-          <HeroMockup />
-        </div>
+          <span className="grid h-8 w-8 place-items-center rounded-[3px] bg-cobalt">
+            <ArrowUpRight
+              aria-hidden
+              className="h-4 w-4 transition-[rotate] duration-300 group-hover:rotate-45 rtl:-scale-x-100"
+              strokeWidth={2.6}
+            />
+          </span>
+          {t("getInTouch")}
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollToSection("projects")}
+          className="font-note text-[23px] text-ink-soft underline decoration-tangerine decoration-wavy decoration-2 underline-offset-[7px] transition-colors hover:text-ink"
+        >
+          {t("orSeeWork")} ↓
+        </button>
       </div>
 
-      {/* Bottom hairline meta */}
-      {/* <div className="border-t border-hairline">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground md:px-10">
-          <span>{t("meta")}</span>
-          <button
-            onClick={() => scrollTo("about")}
-            className="hidden items-center gap-2 transition-colors hover:text-accent sm:inline-flex"
-          >
-            {t("scroll")} <span className="text-accent">↓</span>
-          </button>
-        </div>
-      </div> */}
+      <HorizonArc className="pointer-events-none absolute inset-x-0 bottom-4 h-12 w-full text-[#cdc8bd] md:h-16" />
     </section>
   );
 };

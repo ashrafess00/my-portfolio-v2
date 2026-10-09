@@ -1,4 +1,14 @@
 {
+  "Metadata": {
+    "home": {
+      "title": "Achraf Essaoudi — Full Stack Developer & Web Builder",
+      "description": "I design and build fast, friendly websites and web apps for real businesses — from booking-ready sites for hotels and restaurants to custom platforms. Let's build yours."
+    },
+    "projects": {
+      "title": "Projects — Web & Full Stack Work by Achraf Essaoudi",
+      "description": "A selection of websites, web apps and automation work — from booking-ready sites for hotels and restaurants to custom platforms built with Next.js, Laravel and React."
+    }
+  },
   "Navigation": {
     "home": "Home",
     "about": "About",
@@ -19,6 +29,13 @@
       "tagline": "Full stack developer crafting friendly, fast, and reliable websites — from hotels and restaurants to complex custom platforms.",
       "viewMyWork": "View my work",
       "getInTouch": "Get in touch",
+      "myNameIs": "my name is",
+      "stickerBuild": "ships things",
+      "stickerDetail": "pixel perfect-ish",
+      "place": "Martil, Morocco",
+      "headline1": "I build websites that",
+      "headline2": "just feel right.",
+      "orSeeWork": "or peek at my work",
       "badgeTitle": "Full Stack Dev",
       "badgeSubtitle": "Let's build together",
       "scroll": "Scroll",
@@ -48,6 +65,19 @@
     "aboutSection": {
       "backgroundWord": "About Me",
       "sectionLabel": "About",
+      "note": "about me!",
+      "label": "what's up",
+      "story": "Hi! I'm Achraf, a full-stack developer from Morocco ✨ I turn ideas into fast, friendly websites — for hotels, restaurants, startups and big custom platforms. I care about clean code, tiny details, and squashing the bugs nobody else spots 🎨",
+      "photoAlt": "Portrait of Achraf Essaoudi",
+      "photoCaption": "that's me!",
+      "deskAlt": "UI design, code and database schema from a recent project",
+      "deskCaption": "on my screen lately",
+      "stamps": {
+        "websites": "Websites",
+        "webApps": "Web Apps",
+        "dashboards": "Dashboards",
+        "automation": "AI Automation"
+      },
       "titleLine1": "I turn ideas into",
       "titleLine2": "delightful websites.",
       "paragraph1": "I'm Achraf Essaoudi, a full stack developer who loves building elegant, performant web applications. I work across the whole stack — from pixel-perfect interfaces to solid, scalable backends.",
@@ -73,6 +103,10 @@
     "projectsSection": {
       "backgroundWord": "Stunning Experiences",
       "sectionLabel": "Selected Work",
+      "note": "stuff I've built",
+      "tab": "Project",
+      "private": "Private client work",
+      "seeAll": "peek at the full archive",
       "titleLine1": "Projects that",
       "titleLine2": "speak for themselves.",
       "viewProject": "View project",
@@ -114,6 +148,8 @@
     },
     "skillsSection": {
       "sectionLabel": "Skills",
+      "note": "my toolbox",
+      "aside": "…and always learning something new ✏️",
       "titleLine1": "The tools I use to",
       "titleLine2": "build great things.",
       "categories": {
@@ -125,6 +161,16 @@
     "contactSection": {
       "backgroundWord": "Let's Work Together",
       "sectionLabel": "Contact",
+      "note": "say hi!",
+      "postcard": {
+        "dear": "Dear Achraf,",
+        "from": "From:",
+        "replyTo": "Reply to:",
+        "to": "To:",
+        "postmark": "MARTIL ★ MOROCCO ★",
+        "airmail": "Par avion · Air mail",
+        "delivered": "Delivered"
+      },
       "titleLine1": "Let's build",
       "titleLine2": "something great.",
       "description": "Got a project in mind? Drop me a message and let's make it happen.",
@@ -153,7 +199,9 @@
       },
       "footer": {
         "copy": "© 2025 — Designed & Developed with intention",
-        "role": "Full Stack Developer"
+        "role": "Full Stack Developer",
+        "madeWith": "made with ☕, mint tea & a few too many console.logs",
+        "backToTop": "back to top"
       }
     }
   },
@@ -300,6 +348,11 @@
   "ProjectsPage": {
     "title": "My Projects",
     "description": "A collection of my work showcasing various technologies, design approaches, and problem-solving skills. Each project represents a unique challenge and learning opportunity.",
+    "note": "the whole drawer",
+    "back": "back home",
+    "live": "Live",
+    "code": "Code",
+    "count": "{count, plural, one {# project} other {# projects}}",
     "projects": [
       {
         "id": 1,

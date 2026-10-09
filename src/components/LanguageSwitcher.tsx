@@ -1,9 +1,15 @@
+"use client";
+
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
-import { setCookie } from "@/lib/actions";
+import { useLocale } from "next-intl";
+import { Check, ChevronDown, Globe } from "lucide-react";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
 
 const languages: {
-  code: "en" | "ar" | "dr" | "fr";
+  code: Locale;
   label: string;
   full: string;
 }[] = [
@@ -13,25 +19,20 @@ const languages: {
 ];
 
 const LanguageSwitcher = () => {
-  const [active, setActive] = useState<"en" | "ar" | "dr" | "fr">("en");
+  const active = useLocale() as Locale;
+  const router = useRouter();
+  // Locale-free ("/projects"), so switching only swaps the prefix.
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (open && itemsRef.current) {
-      const items = itemsRef.current.children;
       gsap.fromTo(
-        items,
-        { opacity: 0, y: -8, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.25,
-          stagger: 0.05,
-          ease: "back.out(1.4)",
-        },
+        itemsRef.current.children,
+        { opacity: 0, y: -6 },
+        { opacity: 1, y: 0, duration: 0.2, stagger: 0.04, ease: "power2.out" },
       );
     }
   }, [open]);
@@ -42,76 +43,71 @@ const LanguageSwitcher = () => {
         setOpen(false);
       }
     };
-
-    const getLangFromCookie = (): "en" | "ar" | "dr" | "fr" | null => {
-      const match = document.cookie.match(/(?:^|; )lang=([^;]*)/);
-      return match
-        ? (decodeURIComponent(match[1]) as "en" | "ar" | "dr" | "fr")
-        : null;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
-    const langCode = getLangFromCookie();
-    if (langCode) {
-      const found = languages.find((lang) => lang.code === langCode);
-      if (found) setActive(found.code as "en" | "ar" | "dr" | "fr");
-    }
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
   }, []);
 
-  const currentLang = languages.find((l) => l.code === active)!;
+  const currentLang = languages.find((l) => l.code === active) ?? languages[0];
 
-  const handleLanguageChange = (lang: "en" | "ar" | "dr" | "fr") => {
-    setActive(lang);
-    setCookie("lang", lang);
+  const handleLanguageChange = (code: Locale) => {
+    setOpen(false);
+    router.replace(pathname, { locale: code });
   };
 
   return (
     <div ref={menuRef} className="relative">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
-        className="group flex items-center gap-2 px-3.5 py-2 border border-border rounded-full bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label={currentLang.full}
+        className="inline-flex h-9 items-center gap-1.5 rounded-[4px] border-2 border-ink bg-paper px-2 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-sun"
       >
-        <span className="font-display text-xs tracking-[0.15em] uppercase text-foreground group-hover:text-primary transition-colors duration-300">
-          {currentLang.label}
-        </span>
-        <span
-          className={`w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-muted-foreground transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
+        <Globe aria-hidden className="h-3.5 w-3.5" strokeWidth={2.2} />
+        <span lang={currentLang.code}>{currentLang.label}</span>
+        <ChevronDown
+          aria-hidden
+          className={cn("h-3 w-3 transition-[rotate]", open && "rotate-180")}
+          strokeWidth={2.6}
         />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 min-w-[150px] border border-border bg-popover/95 backdrop-blur-md rounded-2xl overflow-hidden z-50 shadow-2xl shadow-black/50">
-          <div ref={itemsRef}>
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => {
-                  // setActive(lang.code);
-                  // setOpen(false);
-                  handleLanguageChange(lang.code);
-                  setOpen(false);
-                }}
-                className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-all duration-200 hover:bg-secondary/80 ${
-                  active === lang.code
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <span className="font-display text-xs tracking-[0.15em] uppercase w-6">
-                  {lang.label}
-                </span>
-                <span className="font-body text-xs text-inherit">
-                  {lang.full}
-                </span>
-                {active === lang.code && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />
-                )}
-              </button>
-            ))}
-          </div>
+        <div
+          ref={itemsRef}
+          role="menu"
+          className="absolute end-0 top-full z-50 mt-2 min-w-[170px] rounded-md border-2 border-ink bg-paper p-1 shadow-[4px_4px_0_var(--ink)]"
+        >
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              type="button"
+              role="menuitem"
+              lang={lang.code}
+              onClick={() => handleLanguageChange(lang.code)}
+              className={cn(
+                "flex w-full items-center gap-3 rounded-[3px] px-3 py-2 text-start text-ink transition-colors",
+                active === lang.code ? "bg-sun" : "hover:bg-sun/40",
+              )}
+            >
+              <span className="w-6 font-mono text-[11px] font-bold uppercase tracking-[0.14em]">
+                {lang.label}
+              </span>
+              <span className="text-[13px]">{lang.full}</span>
+              {active === lang.code && (
+                <Check aria-hidden className="ms-auto h-3.5 w-3.5" strokeWidth={2.6} />
+              )}
+            </button>
+          ))}
         </div>
       )}
     </div>

@@ -1,187 +1,175 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "@/data/projects";
+"use client";
+
+import { useRef, type CSSProperties, type ReactNode } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { ArrowUpRight, Lock } from "lucide-react";
+import { projects } from "@/data/projects";
+import { DoodleArrow, Sparkle } from "@/components/notebook/Doodles";
+import { SectionHeading } from "@/components/notebook/SectionHeading";
+import { Tape, type TapeColor } from "@/components/notebook/Tape";
+import { useReveal } from "@/hooks/useReveal";
+import { Link } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 
-gsap.registerPlugin(ScrollTrigger);
+// One folder colour per project, cycling.
+const FOLDERS: { surface: string; tape: TapeColor }[] = [
+  { surface: "bg-cobalt text-white", tape: "yellow" },
+  { surface: "bg-ink text-paper", tape: "pink" },
+  { surface: "bg-sun text-ink", tape: "blue" },
+  { surface: "bg-bubblegum text-ink", tape: "mint" },
+  { surface: "bg-leaf text-ink", tape: "yellow" },
+  { surface: "bg-tangerine text-ink", tape: "blue" },
+  { surface: "bg-mint text-ink", tape: "pink" },
+];
 
-const ProjectImageLink = ({
-  href,
-  children,
-}: {
-  href?: string;
-  children: React.ReactNode;
-}) => {
-  const className =
-    "group relative block overflow-hidden rounded-sm bg-surface";
-  if (!href) return <div className={className}>{children}</div>;
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-    >
-      {children}
-    </a>
-  );
-};
+const linkClass =
+  "group/link inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] underline decoration-2 underline-offset-[6px] transition-[text-decoration-color] hover:decoration-wavy";
 
-const ArrowRight = ({ className = "" }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 20 20"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.25"
-    aria-hidden
-  >
-    <path
-      d="M3 10h14M12 5l5 5-5 5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+const ExternalLink = ({ href, children }: { href: string; children: ReactNode }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+    {children}
+    <ArrowUpRight
+      aria-hidden
+      className="h-3.5 w-3.5 transition-[translate] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 rtl:-scale-x-100"
+      strokeWidth={2.6}
     />
-  </svg>
+  </a>
 );
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations("HomePage.projectsSection");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(".reveal-item").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 28, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 88%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  useReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} className="relative border-b border-hairline">
-      <div className="mx-auto max-w-[1400px] px-6 pt-24 md:px-10 md:pt-32">
-        <div className="reveal-item flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            <span className="font-serif italic text-accent">02</span>
-            <span className="h-px w-8 bg-rule" />
-            <span>{t("sectionLabel")}</span>
-          </div>
-          <h2 className="max-w-2xl font-serif text-[32px] font-light leading-[1.1] tracking-[-0.015em] text-foreground text-balance sm:text-[42px]">
-            {t("titleLine1")}{" "}
-            <em className="italic text-accent-warm">{t("titleLine2")}</em>
-          </h2>
-        </div>
-      </div>
+    <section ref={sectionRef} className="relative px-4 pb-20 pt-10 sm:px-8 md:px-12 md:pb-28 md:pt-14">
+      <SectionHeading
+        note={t("note")}
+        label={t("sectionLabel")}
+        title={
+          <>
+            {t("titleLine1")} <span className="marker">{t("titleLine2")}</span>
+          </>
+        }
+      />
 
-      <div className="mt-12 md:mt-16">
+      <ol className="mt-14 flex flex-col gap-10 [--tab-w:7.5rem] md:mt-20 md:gap-28 xl:[--tab-w:10.5rem]">
         {projects.map((project, i) => {
-          const imageLeft = i % 2 === 0;
-          const last = i === projects.length - 1;
-          // Prefer the live site; fall back to the GitHub repo if there's no live URL.
+          const folder = FOLDERS[i % FOLDERS.length];
+          const title = t(`projects.${project.id}.title`);
+          const number = String(i + 1).padStart(2, "0");
           const href = project.websiteUrl || project.githubUrl || undefined;
+          // Where the tab sits along the top edge: spread across the width on
+          // desktop (so stacked tabs line up), cycling through 3 spots on phones.
+          const tabPosition = {
+            "--tab-m": (i % 3) / 2,
+            "--tab-d": projects.length > 1 ? i / (projects.length - 1) : 0,
+          } as CSSProperties;
+
           return (
-            <article
-              key={project.id}
-              className={`border-t border-hairline ${last ? "border-b" : ""}`}
-            >
-              <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-6 py-16 md:px-10 md:py-20 lg:grid-cols-12 lg:gap-12">
-                {/* Image */}
-                <div
-                  className={`reveal-item lg:col-span-7 ${
-                    imageLeft ? "lg:order-1" : "lg:order-2"
-                  }`}
+            <li key={project.id} className="folder group" style={tabPosition}>
+              {/* Folder tab */}
+              <div className="relative h-9">
+                <span
+                  className={cn(
+                    "folder-tab absolute bottom-0 flex h-9 items-center gap-2 ps-5 font-mono text-[11px] font-bold uppercase tracking-[0.16em]",
+                    folder.surface,
+                  )}
                 >
-                  <ProjectImageLink href={href}>
-                    <div className="relative aspect-[16/10] w-full">
-                      <Image
-                        src={project.img}
-                        alt={t(`projects.${project.id}.title`)}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 58vw"
-                        className="object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-                      />
-                    </div>
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(180deg, rgba(3,15,24,0) 55%, rgba(3,15,24,0.35) 100%)",
-                      }}
-                    />
-                  </ProjectImageLink>
-                </div>
+                  <Sparkle className="h-2.5 w-2.5" />
+                  <span className="hidden xl:inline">{t("tab")}</span>
+                  {number}
+                </span>
+              </div>
 
-                {/* Text */}
-                <div
-                  className={`reveal-item flex flex-col justify-center lg:col-span-5 ${
-                    imageLeft ? "lg:order-2 lg:pl-6" : "lg:order-1 lg:pr-6"
-                  }`}
-                >
-                  <div className="flex items-baseline gap-4">
-                    {/* <span className="font-serif text-[56px] font-light italic leading-none text-accent">
-                      {n}
-                    </span> */}
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                      {project.year} · {project.tags[0]}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-6 font-serif text-[28px] font-light leading-[1.1] tracking-[-0.015em] text-foreground text-balance sm:text-[34px]">
-                    {t(`projects.${project.id}.title`)}
+              {/* Folder body */}
+              <article
+                className={cn(
+                  "relative grid overflow-hidden rounded-md md:h-[27.5rem] md:grid-cols-[minmax(0,46%)_1fr]",
+                  folder.surface,
+                )}
+              >
+                <div className="relative z-10 flex flex-col p-7 sm:p-9 md:p-11">
+                  <p className="flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em]">
+                    <span aria-hidden className="h-2 w-2 rounded-full bg-current" />
+                    {project.year} · {project.tags[0]}
+                  </p>
+                  <h3 className="mt-5 text-[clamp(34px,4.4vw,58px)] font-semibold leading-[0.98] tracking-[-0.045em] text-balance">
+                    {title}
                   </h3>
-
-                  <p className="mt-5 max-w-[52ch] text-[14px] leading-relaxed text-muted-foreground text-pretty">
+                  <p className="mt-4 line-clamp-4 max-w-[46ch] text-[15px] leading-relaxed opacity-85">
                     {t(`projects.${project.id}.desc`)}
                   </p>
-
-                  <ul className="mt-6 flex flex-wrap gap-2">
+                  <ul className="mt-5 flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
                       <li
                         key={tag}
-                        className="rounded-full border border-rule px-3 py-1 text-[11px] tracking-wide text-muted-foreground"
+                        className="rounded-full border-[1.5px] border-current/35 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.1em]"
                       >
                         {tag}
                       </li>
                     ))}
                   </ul>
 
-                  {href && (
-                    <div className="mt-8 border-t border-hairline pt-6">
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-2 border-b border-rule pb-1 text-[12px] uppercase tracking-[0.18em] text-foreground transition-colors hover:border-accent hover:text-accent"
-                      >
-                        {project.websiteUrl
-                          ? t("viewProject")
-                          : t("viewOnGithub")}
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                      </a>
-                    </div>
-                  )}
+                  <div className="mt-auto flex flex-wrap gap-x-6 gap-y-3 pt-7">
+                    {project.websiteUrl && (
+                      <ExternalLink href={project.websiteUrl}>{t("viewProject")}</ExternalLink>
+                    )}
+                    {project.githubUrl && (
+                      <ExternalLink href={project.githubUrl}>{t("viewOnGithub")}</ExternalLink>
+                    )}
+                    {!href && (
+                      <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] opacity-70">
+                        <Lock aria-hidden className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        {t("private")}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </article>
+
+                {/* Screenshot, taped on and bleeding off the bottom edge */}
+                <div className="relative min-h-[15rem] sm:min-h-[19rem] md:min-h-0">
+                  <a
+                    href={href}
+                    target={href ? "_blank" : undefined}
+                    rel={href ? "noopener noreferrer" : undefined}
+                    tabIndex={href ? -1 : undefined}
+                    aria-hidden
+                    className={cn(
+                      "absolute -bottom-10 end-6 start-6 top-0 block transition-[rotate,translate] duration-500 group-hover:-translate-y-2 group-hover:rotate-0 sm:end-9 sm:start-9 md:-bottom-12 md:end-10 md:start-2 md:top-11",
+                      i % 2 === 0 ? "rotate-2" : "-rotate-2",
+                      !href && "pointer-events-none",
+                    )}
+                  >
+                    <Tape color={folder.tape} className="-top-2.5 start-8 -rotate-[8deg]" />
+                    <Tape color={folder.tape} className="-top-2 end-8 rotate-[6deg]" />
+                    <div className="relative h-full w-full overflow-hidden rounded-[4px] border-[6px] border-white bg-white shadow-[0_24px_40px_-20px_rgba(0,0,0,0.65)]">
+                      <Image
+                        src={project.img}
+                        alt={title}
+                        fill
+                        sizes="(max-width: 768px) 90vw, 640px"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  </a>
+                </div>
+              </article>
+            </li>
           );
         })}
+      </ol>
+
+      <div data-reveal className="mt-14 flex justify-center md:mt-20">
+        <Link
+          href="/projects"
+          className="group inline-flex items-center gap-2 font-note text-[26px] text-ink transition-colors hover:text-cobalt"
+        >
+          {t("seeAll")}
+          <DoodleArrow className="h-9 w-10 rotate-[35deg] transition-[translate] group-hover:translate-x-1 rtl:-scale-x-100" />
+        </Link>
       </div>
     </section>
   );

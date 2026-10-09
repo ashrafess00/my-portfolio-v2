@@ -1,4 +1,14 @@
 {
+  "Metadata": {
+    "home": {
+      "title": "Achraf Essaoudi — Développeur Full Stack & Créateur de Sites Web",
+      "description": "Je conçois et développe des sites web et applications rapides et agréables pour de vraies entreprises — des sites de réservation pour hôtels et restaurants aux plateformes sur mesure. Construisons le vôtre."
+    },
+    "projects": {
+      "title": "Projets — Travaux Web & Full Stack d'Achraf Essaoudi",
+      "description": "Une sélection de sites web, d'applications et de projets d'automatisation — des sites de réservation pour hôtels et restaurants aux plateformes sur mesure développées avec Next.js, Laravel et React."
+    }
+  },
   "Navigation": {
     "home": "Accueil",
     "about": "A propos",
@@ -18,6 +28,13 @@
       "tagline": "Developpeur full stack qui conçoit des sites conviviaux, rapides et fiables — des hotels et restaurants aux plateformes sur mesure complexes.",
       "viewMyWork": "Voir mes projets",
       "getInTouch": "Me contacter",
+      "myNameIs": "je m'appelle",
+      "stickerBuild": "livre des projets",
+      "stickerDetail": "presque pixel perfect",
+      "place": "Martil, Maroc",
+      "headline1": "Je crée des sites web qui",
+      "headline2": "sonnent juste.",
+      "orSeeWork": "ou jette un œil à mes projets",
       "badgeTitle": "Dev Full Stack",
       "badgeSubtitle": "Construisons ensemble",
       "scroll": "Defiler",
@@ -47,6 +64,19 @@
     "aboutSection": {
       "backgroundWord": "A propos",
       "sectionLabel": "A propos",
+      "note": "à propos de moi !",
+      "label": "quoi de neuf ?",
+      "story": "Salut ! Moi c'est Achraf, développeur full-stack basé au Maroc ✨ Je transforme les idées en sites rapides et agréables — pour des hôtels, des restaurants, des startups et de grosses plateformes sur mesure. J'aime le code propre, les petits détails et chasser les bugs que personne d'autre ne voit 🎨",
+      "photoAlt": "Portrait d'Achraf Essaoudi",
+      "photoCaption": "c'est moi !",
+      "deskAlt": "Design d'interface, code et schéma de base de données d'un projet récent",
+      "deskCaption": "sur mon écran en ce moment",
+      "stamps": {
+        "websites": "Sites web",
+        "webApps": "Applis web",
+        "dashboards": "Dashboards",
+        "automation": "Automatisation IA"
+      },
       "titleLine1": "Je transforme les idees en",
       "titleLine2": "sites web remarquables.",
       "paragraph1": "Je suis Achraf Essaoudi, un developpeur full stack qui adore creer des applications web elegantes et performantes. Je maîtrise toute la chaîne — des interfaces soignees aux backends solides et evolutifs.",
@@ -72,6 +102,10 @@
     "projectsSection": {
       "backgroundWord": "Experiences marquantes",
       "sectionLabel": "Selection",
+      "note": "des trucs que j'ai faits",
+      "tab": "Projet",
+      "private": "Projet client privé",
+      "seeAll": "voir toutes les archives",
       "titleLine1": "Des projets qui",
       "titleLine2": "parlent d'eux-memes.",
       "viewProject": "Voir le projet",
@@ -113,6 +147,8 @@
     },
     "skillsSection": {
       "sectionLabel": "Competences",
+      "note": "ma boîte à outils",
+      "aside": "…et j'apprends toujours un truc nouveau ✏️",
       "titleLine1": "Les outils que j'utilise pour",
       "titleLine2": "creer de belles choses.",
       "categories": {
@@ -124,6 +160,16 @@
     "contactSection": {
       "backgroundWord": "Travaillons ensemble",
       "sectionLabel": "Contact",
+      "note": "dis bonjour !",
+      "postcard": {
+        "dear": "Cher Achraf,",
+        "from": "De :",
+        "replyTo": "Répondre à :",
+        "to": "À :",
+        "postmark": "MARTIL ★ MAROC ★",
+        "airmail": "Par avion · Air mail",
+        "delivered": "Livré"
+      },
       "titleLine1": "Construisons",
       "titleLine2": "quelque chose de grand.",
       "description": "Vous avez un projet en tete ? Envoyez-moi un message et realisons-le ensemble.",
@@ -152,8 +198,25 @@
       },
       "footer": {
         "copy": "© 2025 — Concu et developpe avec intention",
-        "role": "Developpeur Full Stack"
+        "role": "Developpeur Full Stack",
+        "madeWith": "fait avec ☕, du thé à la menthe et un peu trop de console.log",
+        "backToTop": "haut de page"
       }
     }
+  },
+  "ProjectsPage": {
+    "title": "Mes projets",
+    "description": "Une sélection de mes travaux : différentes technologies, approches de design et façons de résoudre des problèmes. Chaque projet a été un défi unique et une belle occasion d'apprendre.",
+    "filters": [
+      "Tous les projets",
+      "Projets 42",
+      "Développement web",
+      "Automatisation IA"
+    ],
+    "note": "tout le tiroir",
+    "back": "retour à l'accueil",
+    "live": "En ligne",
+    "code": "Code",
+    "count": "{count, plural, one {# projet} other {# projets}}"
   }
 }
