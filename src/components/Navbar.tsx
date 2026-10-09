@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
+  Briefcase,
   Diamond,
   Github,
   Heart,
@@ -29,6 +30,7 @@ const NAV: { id: SectionId; key: string; icon: typeof Star; filled?: boolean }[]
 export const SOCIAL_LINKS = [
   { href: SOCIALS.github, label: "GitHub", icon: Github, color: "bg-sun" },
   { href: SOCIALS.linkedin, label: "LinkedIn", icon: Linkedin, color: "bg-bubblegum" },
+  { href: SOCIALS.upwork, label: "Upwork", icon: Briefcase, color: "bg-tangerine" },
   { href: SOCIALS.whatsapp, label: "WhatsApp", icon: MessageCircle, color: "bg-leaf" },
 ];
 

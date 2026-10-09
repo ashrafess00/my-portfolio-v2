@@ -24,7 +24,7 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Portfolio Contact from ${name}`;
+    const subject = "from portfolio";
     setIsSubmitting(true);
     try {
       await axios.post("/api/contact", { name, email, subject, message });
@@ -208,6 +208,7 @@ const ContactSection = () => {
                 {[
                   { href: SOCIALS.github, label: "GitHub" },
                   { href: SOCIALS.linkedin, label: "LinkedIn" },
+                  { href: SOCIALS.upwork, label: "Upwork" },
                 ].map(({ href, label }) => (
                   <a
                     key={label}

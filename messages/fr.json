@@ -111,6 +111,10 @@
       "viewProject": "Voir le projet",
       "viewOnGithub": "Voir sur GitHub",
       "projects": {
+        "hirfaty": {
+          "title": "Hirfaty",
+          "desc": "Une marketplace qui relie les artisans marocains aux acheteurs — tapis, luminaires et arts de la table faits main, chaque pièce associée à sa ville d'origine. J'en suis le tech lead, responsable de toute la partie technique de la plateforme."
+        },
         "myjibi": {
           "title": "MyJibi",
           "desc": "Mon application web et mobile de finances personnelles pour suivre votre argent, definir des objectifs d'epargne et garder le controle de votre budget."

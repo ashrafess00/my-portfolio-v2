@@ -112,6 +112,10 @@
       "viewProject": "View project",
       "viewOnGithub": "View on GitHub",
       "projects": {
+        "hirfaty": {
+          "title": "Hirfaty",
+          "desc": "A marketplace connecting Moroccan artisans with buyers — handmade rugs, lighting and tableware, each piece tagged with the city it comes from. I'm the tech lead, responsible for the technical side of the platform."
+        },
         "myjibi": {
           "title": "MyJibi",
           "desc": "My personal finance web and mobile app to track your money, set savings goals, and stay on top of your budget."
@@ -406,10 +410,10 @@
       {
         "id": 9,
         "title": "Hirfaty.com",
-        "description": "My job in the project was to fix bugs, and host the platform on hostinger, i used Ngnix as a reverse proxy to serve the ReactJs frontend and the NodeJs backend, and MongoDb as a database.",
+        "description": "A marketplace connecting Moroccan artisans with buyers: handmade rugs, lighting and tableware from cities like Fès, Marrakech and Safi. I'm the tech lead, responsible for the technical side of the platform.",
         "category": "web",
         "technologies": ["Hostinger", "MongoDb", "ReactJs", "Hosting"],
-        "image": "/projects/hirfaty.png",
+        "image": "/projects/hirfaty.webp",
         "liveUrl": "https://hirfaty.com/"
       },
       {

@@ -1,5 +1,19 @@
 export const projects = [
   {
+    id: "hirfaty",
+    year: "2026",
+    title: "Hirfaty",
+    desc: "A marketplace connecting Moroccan artisans with buyers — handmade rugs, lighting and tableware, each piece tagged with the city it comes from. I'm the tech lead, responsible for the technical side of the platform.",
+    tags: ["Tech Lead", "React", "Node.js", "MongoDB"],
+    img: "/projects/hirfaty.webp",
+    size: "large",
+    uri: "/projects/hirfaty",
+    websiteUrl: "https://hirfaty.com",
+    githubUrl: null,
+    fullDesc:
+      "Hirfaty is a marketplace for Moroccan craftsmanship: artisans from cities like Fès, Marrakech, Safi and Béni Mellal list their handmade pieces, from rugs and lighting to tableware. As tech lead I'm responsible for the technical side of the platform.",
+  },
+  {
     id: "myjibi",
     year: "2026",
     title: "MyJibi",
