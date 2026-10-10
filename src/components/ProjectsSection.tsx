@@ -26,8 +26,19 @@ const FOLDERS: { surface: string; tape: TapeColor }[] = [
 const linkClass =
   "group/link inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] underline decoration-2 underline-offset-[6px] transition-[text-decoration-color] hover:decoration-wavy";
 
-const ExternalLink = ({ href, children }: { href: string; children: ReactNode }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+const ExternalLink = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={linkClass}
+  >
     {children}
     <ArrowUpRight
       aria-hidden
@@ -44,7 +55,10 @@ const ProjectsSection = () => {
   useReveal(sectionRef);
 
   return (
-    <section ref={sectionRef} className="relative px-4 pb-20 pt-10 sm:px-8 md:px-12 md:pb-28 md:pt-14">
+    <section
+      ref={sectionRef}
+      className="relative px-4 pb-20 pt-10 sm:px-8 md:px-12 md:pb-28 md:pt-14"
+    >
       <SectionHeading
         note={t("note")}
         label={t("sectionLabel")}
@@ -69,9 +83,9 @@ const ProjectsSection = () => {
           } as CSSProperties;
 
           return (
-            <li key={project.id} className="folder group" style={tabPosition}>
+            <li key={project.id} className="folder group " style={tabPosition}>
               {/* Folder tab */}
-              <div className="relative h-9">
+              <div className="relative h-9 ">
                 <span
                   className={cn(
                     "folder-tab absolute bottom-0 flex h-9 items-center gap-2 ps-5 font-mono text-[11px] font-bold uppercase tracking-[0.16em]",
@@ -89,11 +103,19 @@ const ProjectsSection = () => {
                 className={cn(
                   "relative grid overflow-hidden rounded-md md:h-[27.5rem] md:grid-cols-[minmax(0,46%)_1fr]",
                   folder.surface,
+                  i == 0
+                    ? "!rounded-tl-[0]"
+                    : i == projects.length - 1
+                      ? "rounded-tr-[0]"
+                      : "",
                 )}
               >
                 <div className="relative z-10 flex flex-col p-7 sm:p-9 md:p-11">
                   <p className="flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em]">
-                    <span aria-hidden className="h-2 w-2 rounded-full bg-current" />
+                    <span
+                      aria-hidden
+                      className="h-2 w-2 rounded-full bg-current"
+                    />
                     {project.year} · {project.tags[0]}
                   </p>
                   <h3 className="mt-5 text-[clamp(34px,4.4vw,58px)] font-semibold leading-[0.98] tracking-[-0.045em] text-balance">
@@ -115,14 +137,22 @@ const ProjectsSection = () => {
 
                   <div className="mt-auto flex flex-wrap gap-x-6 gap-y-3 pt-7">
                     {project.websiteUrl && (
-                      <ExternalLink href={project.websiteUrl}>{t("viewProject")}</ExternalLink>
+                      <ExternalLink href={project.websiteUrl}>
+                        {t("viewProject")}
+                      </ExternalLink>
                     )}
                     {project.githubUrl && (
-                      <ExternalLink href={project.githubUrl}>{t("viewOnGithub")}</ExternalLink>
+                      <ExternalLink href={project.githubUrl}>
+                        {t("viewOnGithub")}
+                      </ExternalLink>
                     )}
                     {!href && (
                       <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] opacity-70">
-                        <Lock aria-hidden className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        <Lock
+                          aria-hidden
+                          className="h-3.5 w-3.5"
+                          strokeWidth={2.4}
+                        />
                         {t("private")}
                       </span>
                     )}
@@ -143,8 +173,14 @@ const ProjectsSection = () => {
                       !href && "pointer-events-none",
                     )}
                   >
-                    <Tape color={folder.tape} className="-top-2.5 start-8 -rotate-[8deg]" />
-                    <Tape color={folder.tape} className="-top-2 end-8 rotate-[6deg]" />
+                    <Tape
+                      color={folder.tape}
+                      className="-top-2.5 start-8 -rotate-[8deg]"
+                    />
+                    <Tape
+                      color={folder.tape}
+                      className="-top-2 end-8 rotate-[6deg]"
+                    />
                     <div className="relative h-full w-full overflow-hidden rounded-[4px] border-[6px] border-white bg-white shadow-[0_24px_40px_-20px_rgba(0,0,0,0.65)]">
                       <Image
                         src={project.img}
