@@ -1,0 +1,22 @@
+services:
+  portfolio:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_POSTHOG_KEY: ${NEXT_PUBLIC_POSTHOG_KEY:-}
+        NEXT_PUBLIC_POSTHOG_HOST: ${NEXT_PUBLIC_POSTHOG_HOST:-}
+    image: portfolio:latest
+    container_name: portfolio
+    restart: unless-stopped
+    env_file: .env
+    # Bound to localhost only: the reverse proxy already running on the VPS
+    # (nginx / Caddy / Traefik) forwards achrafessaoudi.com to this port.
+    # Change APP_PORT in .env if 3000 is taken by another app.
+    ports:
+      - "127.0.0.1:${APP_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3000/en"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
