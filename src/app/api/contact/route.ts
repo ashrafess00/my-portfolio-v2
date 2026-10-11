@@ -52,24 +52,76 @@ const htmlEmail = (name: string, email: string, message: string) => `
 </html>
 `;
 
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const json = (body: unknown, status: number) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+
 export async function POST(req: Request) {
-  const { name, email, subject, message } = await req.json();
+  let body: Record<string, unknown>;
+  try {
+    body = await req.json();
+  } catch {
+    return json({ success: false, error: "Invalid JSON" }, 400);
+  }
+
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  const email = typeof body.email === "string" ? body.email.trim() : "";
+  const subject = typeof body.subject === "string" ? body.subject.trim() : "";
+  const message = typeof body.message === "string" ? body.message.trim() : "";
+
+  if (!name || !message || !EMAIL_RE.test(email) || name.length > 200 || email.length > 320 || subject.length > 200 || message.length > 5000) {
+    return json({ success: false, error: "Invalid input" }, 400);
+  }
+
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error("[contact] EMAIL_USER / EMAIL_PASS are not set");
+    return json({ success: false, error: "Mail is not configured" }, 500);
+  }
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    // Port 587 + STARTTLS rather than the "gmail" preset (465): the VPS
+    // blocks outbound 465.
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    requireTLS: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
+    // Fail fast instead of hanging past the reverse proxy's timeout (-> 504)
+    // when outbound SMTP is blocked or slow.
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 20_000,
   });
 
-  await transporter.sendMail({
-    from: email,
-    to: process.env.EMAIL_USER,
-    subject: subject || "New Message from Portfolio",
-    text: message,
-    html: htmlEmail(name, email, message),
-  });
+  try {
+    await transporter.sendMail({
+      // Gmail only sends as the authenticated account; the visitor goes in Reply-To.
+      from: `"Portfolio contact" <${process.env.EMAIL_USER}>`,
+      replyTo: email,
+      to: process.env.EMAIL_USER,
+      subject: subject || "New Message from Portfolio",
+      text: `${name} <${email}>\n\n${message}`,
+      html: htmlEmail(escapeHtml(name), escapeHtml(email), escapeHtml(message).replace(/\n/g, "<br>")),
+    });
+  } catch (err) {
+    console.error("[contact] sendMail failed:", err);
+    return json({ success: false, error: "Failed to send message" }, 502);
+  }
 
-  return new Response(JSON.stringify({ success: true }), { status: 200 });
+  return json({ success: true }, 200);
 }
