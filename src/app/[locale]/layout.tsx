@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import {
   Aref_Ruqaa,
   Caveat,
+  Dancing_Script,
   Gochi_Hand,
   IBM_Plex_Sans_Arabic,
   Inter,
@@ -36,7 +37,14 @@ const caveat = Caveat({
   subsets: ["latin"],
 });
 
-// Pixel display face for the name.
+// Joined-up script for the hero name (written in by .write-* in globals.css).
+const dancing = Dancing_Script({
+  variable: "--font-dancing",
+  subsets: ["latin"],
+  weight: "700",
+});
+
+// Pixel display face.
 const jersey = Jersey_15({
   variable: "--font-jersey",
   subsets: ["latin"],
@@ -75,6 +83,7 @@ const fontVariables = [
   inter,
   gochi,
   caveat,
+  dancing,
   jersey,
   spaceMono,
   plexArabic,

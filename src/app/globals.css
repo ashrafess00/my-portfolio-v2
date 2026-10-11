@@ -54,6 +54,7 @@
   --font-note: var(--font-note-stack);
   --font-mono: var(--font-mono-stack);
   --font-pixel: var(--font-pixel-stack);
+  --font-script: var(--font-script-stack);
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
@@ -114,6 +115,7 @@
   --font-note-stack: var(--font-caveat), "Segoe Print", cursive;
   --font-mono-stack: var(--font-space-mono), ui-monospace, monospace;
   --font-pixel-stack: var(--font-jersey), var(--font-space-mono), monospace;
+  --font-script-stack: var(--font-dancing), "Segoe Script", cursive;
 }
 
 /* Arabic: lead each stack with an Arabic face. Marhey + Aref Ruqaa keep the
@@ -144,6 +146,14 @@
   to { opacity: 1; translate: 0 0; }
 }
 @keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+/* Slides a .write-* mask across the hero name, left to right. */
+@keyframes write {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+@keyframes trace {
   to { stroke-dashoffset: 0; }
 }
 @keyframes spin {
@@ -368,6 +378,19 @@
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     animation: draw 0.9s cubic-bezier(0.6, 0.1, 0.3, 1) forwards;
+    animation-delay: var(--d, 0s);
+  }
+  /* Hero name "written by hand" (HandwrittenName): a soft-edged mask sweeps
+     left to right, the pen outline traces in first and the ink fills behind it. */
+  .write-mask {
+    transform-box: fill-box;
+    animation: write 1.7s cubic-bezier(0.45, 0.05, 0.35, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  .write-trace {
+    stroke-dasharray: 2400;
+    stroke-dashoffset: 2400;
+    animation: trace 1.9s cubic-bezier(0.45, 0.05, 0.35, 1) forwards;
     animation-delay: var(--d, 0s);
   }
   .anim-spin {

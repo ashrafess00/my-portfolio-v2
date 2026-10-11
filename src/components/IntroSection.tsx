@@ -11,6 +11,7 @@ import {
   ScribbleBox,
   Swoosh,
 } from "@/components/notebook/Doodles";
+import { HandwrittenName } from "@/components/notebook/HandwrittenName";
 import { scrollToSection } from "@/components/notebook/SectionLink";
 
 // Staggers the CSS entrance animations (see .anim-* in globals.css).
@@ -32,15 +33,15 @@ const IntroSection = () => {
 
         {/* Name in a scribbled box, with stickers + tags around it */}
         <span className="relative mt-8 inline-block">
-          <span
-            className="anim-pop block px-[0.3em] pb-[0.08em] pt-[0.14em] font-pixel text-[clamp(84px,15vw,176px)] leading-[0.8] tracking-[0.02em] text-ink"
-            style={at(0.15)}
-          >
-            ACHRAF
-          </span>
+          <span className="sr-only">Achraf</span>
+          <HandwrittenName
+            name="Achraf"
+            className="block h-auto w-[clamp(270px,52vw,600px)] px-[4%] pb-[1%] pt-[3%] text-ink"
+            delay={0.2}
+          />
           <ScribbleBox
             className="pointer-events-none absolute inset-0 h-full w-full text-tangerine"
-            delay={0.45}
+            delay={1.6}
           />
 
           <span
