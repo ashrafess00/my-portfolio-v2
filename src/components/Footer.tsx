@@ -6,7 +6,6 @@ import { SOCIAL_LINKS } from "@/components/Navbar";
 import { Smiley } from "@/components/notebook/Doodles";
 import { SectionLink, scrollToSection, type SectionId } from "@/components/notebook/SectionLink";
 import { withEmoji } from "@/components/notebook/withEmoji";
-import { SOCIALS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const SITEMAP: SectionId[] = ["about", "projects", "skills", "contact"];
@@ -66,12 +65,6 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-          <a
-            href={`mailto:${SOCIALS.email}`}
-            className="mt-4 inline-block font-hand text-[20px] text-ink underline decoration-paper-line decoration-2 underline-offset-4 transition-colors hover:text-cobalt hover:decoration-cobalt"
-          >
-            {SOCIALS.email}
-          </a>
         </div>
       </div>
 

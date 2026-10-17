@@ -188,22 +188,6 @@ const ContactSection = () => {
             </p>
             <ul className="mt-2 border-t-2 border-paper-line font-hand text-[20px] text-ink">
               <li className="border-b-2 border-paper-line py-1.5">Achraf Essaoudi</li>
-              <li className="border-b-2 border-paper-line py-1.5">
-                <a href={`mailto:${SOCIALS.email}`} className={addressLink}>
-                  {SOCIALS.email}
-                </a>
-              </li>
-              <li className="border-b-2 border-paper-line py-1.5">
-                <a
-                  href={SOCIALS.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  dir="ltr"
-                  className={addressLink}
-                >
-                  {SOCIALS.phone}
-                </a>
-              </li>
               <li className="flex gap-5 border-b-2 border-paper-line py-1.5">
                 {[
                   { href: SOCIALS.github, label: "GitHub" },

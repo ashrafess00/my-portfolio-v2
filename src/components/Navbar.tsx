@@ -9,7 +9,6 @@ import {
   Heart,
   LayoutGrid,
   Linkedin,
-  MessageCircle,
   Star,
   User,
 } from "lucide-react";
@@ -31,7 +30,6 @@ export const SOCIAL_LINKS = [
   { href: SOCIALS.github, label: "GitHub", icon: Github, color: "bg-sun" },
   { href: SOCIALS.linkedin, label: "LinkedIn", icon: Linkedin, color: "bg-bubblegum" },
   { href: SOCIALS.upwork, label: "Upwork", icon: Briefcase, color: "bg-tangerine" },
-  { href: SOCIALS.whatsapp, label: "WhatsApp", icon: MessageCircle, color: "bg-leaf" },
 ];
 
 const SPY_IDS: SectionId[] = ["top", "about", "projects", "skills", "contact"];
